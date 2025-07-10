@@ -6,7 +6,7 @@ var exe = require('./../connection');
 
 
 router.get("/",function (req, res) {
-  res.send("admin/home.ejs");
+  res.render("admin/home.ejs");
 
 });
 
