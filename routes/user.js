@@ -28,6 +28,10 @@ router.get("/student",function (req, res) {
   res.render("user/student.ejs");
 
 });
+router.get("/admin",function (req, res) {
+  res.render("user/admin.ejs");
+
+});
 
 
 module.exports = router;
