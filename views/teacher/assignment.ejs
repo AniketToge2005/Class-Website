@@ -1,0 +1,70 @@
+<%-include("navbar")%>
+
+<style>
+     .body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .form-container {
+      max-width: 400px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section {
+      margin-bottom: 20px;
+    }
+
+    .form-section label {
+      font-weight: 500;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+    }
+</style>
+
+<div class="container form-container">
+    <h3 class="text-center mb-4">Add an Assignment</h3>
+    <form id="assignmentRequestForm">
+      
+      <!-- Class Selection -->
+      <div class="form-section">
+        <label for="classSelect" class="form-label">Select Your Class:</label>
+        <select id="classSelect" name="class" class="form-select" required>
+          <option value="">-- Choose Class --</option>
+          <option value="math101">Mathematics 101</option>
+          <option value="eng201">English Literature 201</option>
+          <option value="bio301">Biology 301</option>
+          <option value="hist102">World History 102</option>
+          <option value="cs202">Computer Science 202</option>
+        </select>
+      </div>
+
+      <!-- Assignment Title -->
+      <div class="form-section">
+        <label for="assignmentTitle" class="form-label">Assignment Title:</label>
+        <input type="text" id="assignmentTitle" name="assignmentTitle" class="form-control" placeholder="Enter assignment name" required>
+      </div>
+
+      <!-- Subject -->
+      <div class="form-section">
+        <label for="subject" class="form-label">Subject:</label>
+        <input type="text" id="subject" name="subject" class="form-control" placeholder="Enter subject area" required>
+      </div>
+
+      <!-- Due Date -->
+      <div class="form-section">
+        <label for="dueDate" class="form-label">Due Date:</label>
+        <input type="date" id="dueDate" name="dueDate" class="form-control" required>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary">Add Assignment</button>
+    </form>
+  </div>
+<%-include("footer")%>
