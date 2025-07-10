@@ -3,11 +3,18 @@ var bodyparser= require("body-parser");
 var upload = require("express-fileupload");
 var session = require("express-session");
 
+
 var user = require("./routes/user");
-// var admin = require('./routes/admin');  
+var admin = require('./routes/admin');
+
+
+
+var student = require("./routes/student");
+var teacher = require("./routes/teacher");
+var dashboard = require("./routes/dashboard");
 var app = express();
 
-app.set('view engine','ejs');
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -21,6 +28,12 @@ app.use(session({
 }))
 
 app.use("/",user);
-// app.use("/admin",admin);
+app.use("/add",admin);
+app.use("/stu",student);
+app.use("/teach",teacher);
+app.use("/dash",dashboard);
+
+
+
 
 app.listen(1000);
