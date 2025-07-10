@@ -1,0 +1,406 @@
+<%- include("navbar.ejs")%>
+<style>
+  /* Full body setup */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f9f9fa, #f3f6f6);
+    padding-top: 0px; /* Adjust spacing below navbar */
+  }
+
+  /* Header */
+   .header {
+            position: relative;
+            text-align: center;
+            background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #F56040);
+            color: white;
+            padding-top: 20px;
+            height: 180px;
+        }
+
+        .header h1 {
+            margin-top: 60px;
+        }
+
+        .waves {
+            position: relative;
+            width: 100%;
+            height: 50px;
+        }
+
+        .parallax > use {
+            animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+        }
+
+        .parallax > use:nth-child(1) {
+            animation-delay: -2s;
+            animation-duration: 7s;
+        }
+        .parallax > use:nth-child(2) {
+            animation-delay: -3s;
+            animation-duration: 10s;
+        }
+        .parallax > use:nth-child(3) {
+            animation-delay: -4s;
+            animation-duration: 13s;
+        }
+        .parallax > use:nth-child(4) {
+            animation-delay: -5s;
+            animation-duration: 20s;
+        }
+
+        @keyframes move-forever {
+            0% { transform: translate3d(-90px,0,0); }
+            100% { transform: translate3d(85px,0,0); }
+        }
+
+        /* Floating bubbles animation */
+        .area {
+            background: transparent;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .circles li {
+            position: absolute;
+            list-style: none;
+            animation: animate 25s linear infinite;
+            bottom: -150px;
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+
+        .circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; background:#a0ab4269; animation-delay: 0s; }
+        .circles li:nth-child(2) { left: 10%; width: 20px; height: 20px; background:#833ab456; animation-delay: 2s; animation-duration: 12s; }
+        .circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; background:#c135844f; animation-delay: 4s; }
+        .circles li:nth-child(4) { left: 40%; width: 60px; height: 60px; background:#f561404c; animation-delay: 0s; animation-duration: 18s; }
+        .circles li:nth-child(5) { left: 65%; width: 20px; height: 20px; background:#f5614048; animation-delay: 0s; }
+        .circles li:nth-child(6) { left: 75%; width: 110px; height: 110px; background: #405ce63f; animation-delay: 3s; }
+        .circles li:nth-child(7) { left: 35%; width: 150px; height: 150px; background:#833ab444; animation-delay: 7s; }
+        .circles li:nth-child(8) { left: 50%; width: 25px; height: 25px; background: #c1358450; animation-delay: 15s; animation-duration: 45s; }
+        .circles li:nth-child(9) { left: 20%; width: 15px; height: 15px; background:#e1306b53; animation-delay: 2s; animation-duration: 35s; }
+        .circles li:nth-child(10){ left:85%; width:150px; height:150px; background:#f561403a; animation-delay: 0s; animation-duration:11s; }
+
+        @keyframes animate {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; border-radius: 0; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; border-radius: 50%; }
+        }
+  /* Login container */
+  .container {
+    max-width: 1100px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 2;
+    position: relative;
+  }
+
+  .left-panel, .right-panel {
+    flex: 1;
+    min-width: 300px;
+    padding: 50px 40px;
+  }
+
+  .left-panel {
+    background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #F56040);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .left-panel::before,
+  .left-panel::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .left-panel::before {
+    width: 300px;
+    height: 300px;
+    top: -150px;
+    right: -150px;
+  }
+
+  .left-panel::after {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    left: -100px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .logo i {
+    margin-right: 12px;
+    color: #4ef9d0;
+  }
+
+  .welcome h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+
+  .features {
+    margin-top: 25px;
+  }
+
+  .features li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+  }
+
+  .features li i {
+    margin-right: 10px;
+    color: #4ef9d0;
+  }
+
+  /* Form */
+  .right-panel {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #1a2980;
+    margin-bottom: 10px;
+  }
+
+  .form p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .input-icon {
+    position: relative;
+  }
+
+  .input-icon i {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #888;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 12px 15px 12px 42px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: 0.3s;
+  }
+
+  .form-control:focus {
+    border-color: #26d0ce;
+    box-shadow: 0 0 0 3px rgba(38, 208, 206, 0.2);
+    outline: none;
+  }
+
+  .options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #F56040);
+    color: #fff;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(38, 208, 206, 0.3);
+  }
+
+  .social {
+    text-align: center;
+    margin-top: 25px;
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .facebook { background: #3b5998; }
+  .google   { background: #dd4b39; }
+  .microsoft{ background: #00a1f1; }
+
+  .signup {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .signup a {
+    color: #1a2980;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .signup a:hover {
+    color: #26d0ce;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<body>
+  
+<div class="header">
+        <div class="inner-header flex">
+            <h1 class="font-weight-bold">Student Login</h1>
+        </div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            </g>
+        </svg>
+    </div>
+
+    <!-- Floating Bubbles Background -->
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+   </div>
+
+  <!-- Login Box -->
+  <div class="container">
+    <div class="left-panel">
+      <div class="logo">
+        <i class="fas fa-graduation-cap"></i> EduPortal
+      </div>
+      <div class="welcome">
+        <h1>Welcome Back!</h1>
+        <p>Access your courses, assignments, and academic records in one place.</p>
+      </div>
+      <ul class="features">
+        <li><i class="fas fa-book"></i> Course Materials</li>
+        <li><i class="fas fa-tasks"></i> Assignment Tracking</li>
+        <li><i class="fas fa-chart-line"></i> Performance Analytics</li>
+      </ul>
+    </div>
+    <div class="right-panel">
+      <form class="form">
+        <h2>Student Login</h2>
+        <p>Sign in to your dashboard</p>
+        <div class="form-group">
+          <label for="username">Student ID or Email</label>
+          <div class="input-icon">
+            <i class="fas fa-user"></i>
+            <input type="text" id="username" class="form-control" placeholder="Enter ID or Email" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-icon">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" class="form-control" placeholder="Enter password" required>
+          </div>
+        </div>
+        <div class="options">
+          <label><input type="checkbox"> Remember me</label>
+          <a href="#">Forgot Password?</a>
+        </div>
+        <button type="submit" class="btn">Login</button>
+        <div class="social">
+          <p>Or login with</p>
+          <div class="social-icons">
+            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon google"><i class="fab fa-google"></i></a>
+            <a href="#" class="social-icon microsoft"><i class="fab fa-microsoft"></i></a>
+          </div>
+        </div>
+        <div class="signup">
+          New student? <a href="#">Create an account</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+<%- include("footer.ejs")%>

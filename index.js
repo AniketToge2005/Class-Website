@@ -1,0 +1,26 @@
+var express =require("express");
+var bodyparser= require("body-parser");
+var upload = require("express-fileupload");
+var session = require("express-session");
+
+var user = require("./routes/user");
+// var admin = require('./routes/admin');  
+var app = express();
+
+app.set('view engine','ejs');
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
+app.use(upload());
+app.use(express.static("public/"))
+app.use(session({
+    secret:"asdfghjkl",
+    saveUninitialized:"true",
+    resave:"true"
+}))
+
+app.use("/",user);
+// app.use("/admin",admin);
+
+app.listen(1000);
