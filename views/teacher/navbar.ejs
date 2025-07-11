@@ -33,23 +33,7 @@
   transition: all 0.3s ease;
 }
 
-/* Medium devices (tablets, 768px and down) */
-@media (max-width: 768px) {
-  .custom-section {
-    padding: 15px;
-    margin-top: 20px;
-    font-size: 15px;
-  }
-}
-
-/* Small devices (phones, 576px and down) */
-@media (max-width: 576px) {
-  .custom-section {
-    padding: 12px;
-    font-size: 14px;
-    margin-top: 15px;
-  }
-}
+ 
 
     :root {
       --primary: #4361ee;
@@ -322,7 +306,7 @@
     @media (max-width: 992px) { .content-grid { grid-template-columns: 1fr; } }
     @media (max-width: 768px) {
       .sidebar { width: 70px; }
-      .sidebar .logo h1, .sidebar .menu-text, .sidebar .menu-divider { display: none; }
+      .sidebar .logo h1, .sidebar .menu-text, .sidebar .menu-divider { display: inline; }
       .main-content { margin-left: 70px; }
       .search-bar { width: 200px; }
       .stats-container { grid-template-columns: 1fr; }
@@ -332,19 +316,57 @@
       .search-bar { width: 100%; margin-bottom: 15px; }
       .top-right { width: 100%; justify-content: space-between; }
     }
+    .mobile-menu-toggle {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 2001;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: block;
+      }
+      .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 260px;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+        z-index: 2000;
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .main-content {
+        margin-left: 0 !important;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Mobile Menu Toggle Button -->
+<button class="mobile-menu-toggle" onclick="toggleSidebar()">
+  <i class="fas fa-bars"></i>
+</button>
   <div class="sidebar">
     <div class="logo"><i class="fas fa-graduation-cap"></i><h1>EduManage</h1></div>
-    <a href="/teach" class="menu-item active"><i class="fas fa-home"></i><span class="menu-text">Dashboard</span></a>
+    <a href="/teach" class="menu-item"><i class="fas fa-home"></i><span class="menu-text">Dashboard</span></a>
     <div class="menu-divider">Teacher</div>
     <a href="/teach/my_classes" class="menu-item"><i class="fas fa-users"></i><span class="menu-text">My Classes</span></a>
     <a href="/teach/assignment" class="menu-item"><i class="fas fa-tasks"></i><span class="menu-text">Assignments</span></a>
     <a href="/teach/study_material" class="menu-item"><i class="fas fa-book"></i><span class="menu-text">Study Materials</span></a>
     <a href="/teach/attendance" class="menu-item"><i class="fas fa-calendar-check"></i><span class="menu-text">Attendance</span></a>
      <div class="menu-divider">General</div>
-    <a href="#" class="menu-item"><i class="fas fa-bullhorn"></i><span class="menu-text">Announcements</span></a>
+    <a href="/teach/announcement" class="menu-item"><i class="fas fa-bullhorn"></i><span class="menu-text">Announcements</span></a>
     <a href="#" class="menu-item"><i class="fas fa-comments"></i><span class="menu-text">Feedback</span></a>
   </div>
   <div class="main-content">
@@ -356,5 +378,16 @@
       </div>
     </div>
 
+    <script>
+      // Highlight active menu item based on current URL
+      const current = window.location.pathname;
+      document.querySelectorAll('.menu-item').forEach(link => {
+        if (link.getAttribute('href') === current) {
+          link.classList.add('active');
+        }
+      });
 
+    
+    </script>
+    
   <section class="custom-section">

@@ -1,3 +1,23 @@
+
+
+
 </section>
+<script>
+      function toggleSidebar() {
+        document.querySelector('.sidebar').classList.toggle('open');
+      }
+      // Optional: close sidebar when clicking outside
+      document.addEventListener('click', function(event) {
+        const sidebar = document.querySelector('.sidebar');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        if (window.innerWidth <= 768) {
+          if (!sidebar.contains(event.target) && !toggle.contains(event.target)) {
+            sidebar.classList.remove('open');
+          }
+        }
+      });
+  
+</script>
+  
 </body>
 </html>

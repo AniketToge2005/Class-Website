@@ -1,3 +1,163 @@
-<%-include("navbar")%>
-<h2>My Classes</h2>
-<%-include("footer")%>
+<%- include("navbar") %>
+ <style>
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+      color: #fff;
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .content {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .form-section, .list-section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .btn {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #3645a0;
+    }
+
+    .class-list .class-item {
+      background: #f1f5ff;
+      border-left: 4px solid #4b6cb7;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .class-item h3 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    .class-item .info {
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 5px;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: #888;
+      font-size: 1rem;
+      padding: 40px 0;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+    }
+  </style>
+
+
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-chalkboard-teacher"></i> Manage Your Classes</h1>
+    </header>
+
+    <div class="content">
+      <div class="form-section">
+        <div class="section-title"><i class="fas fa-plus"></i> Add Class</div>
+        <form>
+          <label for="className">Class Name</label>
+          <input type="text" id="className" placeholder="e.g. Physics 11" required>
+
+          <label for="subject">Subject</label>
+          <select id="subject">
+            <option value="">Select</option>
+            <option value="math">Math</option>
+            <option value="science">Science</option>
+            <option value="history">History</option>
+          </select>
+
+          <label for="date">Date</label>
+          <input type="date" id="date">
+
+          <label for="time">Time</label>
+          <input type="time" id="time">
+
+          <label for="description">Description</label>
+          <textarea id="description" rows="3"></textarea>
+
+          <button type="submit" class="btn">Add Class</button>
+        </form>
+      </div>
+
+      <div class="list-section">
+        <div class="section-title"><i class="fas fa-list"></i> My Classes</div>
+        <div class="class-list">
+          <div class="class-item">
+            <h3>Physics 11</h3>
+            <div class="info">Subject: Science | Date: 2025-07-15 | Time: 10:00 AM</div>
+          </div>
+          <div class="class-item">
+            <h3>Maths Basics</h3>
+            <div class="info">Subject: Math | Date: 2025-07-16 | Time: 12:00 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%- include("footer") %>
