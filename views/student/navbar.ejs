@@ -76,6 +76,15 @@
       border-bottom: 1px solid #334155;
       margin-bottom: 20px;
     }
+
+    .gradient-text {
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin: 0;
+}
     .logo i {
       font-size: 28px;
       color: var(--success);
@@ -84,9 +93,7 @@
     .logo h1 {
       font-size: 22px;
       font-weight: 600;
-      background: linear-gradient(90deg, var(--success), var(--primary));
-      /* webkit-background-clip: text;
-      webkit-text-fill-color: transparent; */
+      
     }
     .menu-item {
       padding: 12px 20px;
@@ -322,7 +329,11 @@
 </head>
 <body>
   <div class="sidebar">
-    <div class="logo"><i class="fas fa-graduation-cap"></i><h1>EduManage</h1></div>
+   <div class="logo">
+  <i class="fas fa-graduation-cap"></i>
+  <h1 class="gradient-text">EduManage</h1>
+</div>
+
     <a href="#" class="menu-item active"><i class="fas fa-home"></i><span class="menu-text">Dashboard</span></a>
     <div class="menu-divider">Teacher</div>
     <a href="/admin/my_classes" class="menu-item"><i class="fas fa-users"></i><span class="menu-text">My Classes</span></a>
