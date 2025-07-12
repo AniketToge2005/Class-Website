@@ -1,5 +1,5 @@
 var express =require("express");
-var bodyparser= require("body-parser");
+var bodyparser = require("body-parser");
 var upload = require("express-fileupload");
 var session = require("express-session");
 
@@ -17,7 +17,7 @@ var app = express();
 
 
 
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyparser.urlencoded({ extended: true }));
 app.use(express.json());
 
 

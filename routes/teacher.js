@@ -14,9 +14,21 @@ router.get("/my_classes",function(req,res){
   res.render("teacher/my_classes.ejs")
 })
 
-router.get("/assignment",function(req,res){
-  res.render("teacher/assignment.ejs")
+router.get("/assignment",async function(req,res){
+  var sql = `SELECT * FROM assignment`
+  var data = await exe(sql);
+  var obj = {"alist":data}
+  res.render("teacher/assignment.ejs",obj)
 })
+router.post("/save_assignment",async function(req, res) {
+  // console.log("Received assignment data:", req.body);
+  var d = req.body;
+  var sql = "INSERT INTO assignment (batch_name,title,subject,due_date,description) VALUES (?,?,?,?,?)";
+  var data = await exe(sql,[d.batch_name,d.title,d.subject,d.due_date,d.description]);
+  // res.send(data);
+  res.redirect("/teach/assignment")
+  // res.send(req.body);
+});
 
 router.get("/study_material",function(req,res){
   res.render("teacher/study_material.ejs")
@@ -28,5 +40,8 @@ router.get("/attendance",function(req,res){
 router.get("/announcement",function(req,res){
   res.render("teacher/announcement.ejs")
 })
+
+
+ 
 
 module.exports = router;
