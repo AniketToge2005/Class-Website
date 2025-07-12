@@ -5,7 +5,7 @@ var conn = mysql.createConnection({
     host:"localhost",
     user:"root",
     password:"",
-    database:"student_admin"
+    database:"class_website"
 })
 
 var exe = util.promisify(conn.query).bind(conn);
