@@ -1,350 +1,611 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EduManage – Teacher & Admin Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Faculty Dashboard | A2Z Intern</title>
+  
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+ <!-- CKEditor 5 Classic build CDN -->
+<script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
   <style>
-   .custom-section {
-  background-color: #fff;
-  padding: 20px;
-  margin-top: 30px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--text-primary);
-  font-size: 16px;
-  line-height: 1.6;
-  transition: all 0.3s ease;
-}
-
-/* Medium devices (tablets, 768px and down) */
-@media (max-width: 768px) {
-  .custom-section {
-    padding: 15px;
-    margin-top: 20px;
-    font-size: 15px;
-  }
-}
-
-/* Small devices (phones, 576px and down) */
-@media (max-width: 576px) {
-  .custom-section {
-    padding: 12px;
-    font-size: 14px;
-    margin-top: 15px;
-  }
-}
-
     :root {
-      --primary: #4361ee;
-      --secondary: #3f37c9;
-      --success: #4cc9f0;
-      --danger: #f72585;
-      --warning: #f8961e;
-      --info: #4895ef;
-      --light: #f8f9fa;
-      --dark: #212529;
-      --sidebar: #1e293b;
-      --card-bg: #ffffff;
-      --border: #e2e8f0;
-      --text-primary: #1e293b;
-      --text-secondary: #64748b;
-      --teacher: #3b82f6;
-      --admin: #8b5cf6;
+      --primary-color: #385e85;
+      --secondary-color: #2721a0;
+      --accent-color: #4895ef;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+      --sidebar-width: 280px;
+      --sidebar-collapsed-width: 80px;
+      --transition-speed: 0.3s;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
-      font-family: 'Poppins', sans-serif;
-      background: #f1f5f9;
-      color: var(--text-primary);
-      display: flex; min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      overflow-x: hidden;
     }
+    
+    /* Sidebar styling */
     .sidebar {
-      width: 260px;
-      background: var(--sidebar);
-      color: #fff;
-      padding: 20px 0;
+      width: var(--sidebar-width);
+      height: 100vh;
       position: fixed;
-      height: 100%;
-      overflow-y: auto;
+      left: 0;
+      top: 0;
+      color: white;
+      background: linear-gradient(45deg, #2d3352, #07010f);
+      transition: all var(--transition-speed) ease;
+      z-index: 1000;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     }
+    
+    .sidebar-collapsed {
+      width: var(--sidebar-collapsed-width);
+    }
+    
+    .sidebar-collapsed .logo h2,
+    .sidebar-collapsed .menu-item-text {
+      display: none;
+    }
+    
     .logo {
-      display: flex; align-items: center;
-      padding: 0 20px 20px;
-      border-bottom: 1px solid #334155;
-      margin-bottom: 20px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
+    
     .logo i {
       font-size: 28px;
-      color: var(--success);
-      margin-right: 12px;
+      transition: all var(--transition-speed) ease;
     }
-    .logo h1 {
-      font-size: 22px;
+    
+    .logo h2 {
+      font-size: 1.2rem;
       font-weight: 600;
-      background: linear-gradient(90deg, var(--success), var(--primary));
-      /* webkit-background-clip: text;
-      webkit-text-fill-color: transparent; */
+      margin-left: 10px;
+      margin-bottom: 0;
+      white-space: nowrap;
     }
+    
+    .menu1 {
+      padding: 15px 0;
+    }
+    
     .menu-item {
-      padding: 12px 20px;
       display: flex;
       align-items: center;
-      color: #cbd5e1;
+      padding: 12px 20px;
+      color: rgba(255, 255, 255, 0.8);
       text-decoration: none;
-      transition: background 0.2s;
-      margin: 5px 0;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
     }
-    .menu-item:hover, .menu-item.active {
-      background: rgba(56,78,117,0.4);
-      color: #fff;
-      border-left: 3px solid var(--primary);
+    .menu-item:hover{
+      color: black;
+      background-color: rgba(255, 255, 255, 0.598);
+      opacity: 0.7;
     }
+    
+    
+    .menu-item.active {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      border-left: 3px solid white;
+    }
+    
     .menu-item i {
-      margin-right: 12px;
-      font-size: 18px;
+      font-size: 1.1rem;
       width: 24px;
       text-align: center;
+      margin-right: 15px;
     }
-    .menu-divider {
-      padding: 0 20px;
-      margin: 15px 0;
-      color: #64748b;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    
+    .menu-item-text {
+      white-space: nowrap;
     }
+    
+    /* Main content area */
     .main-content {
-      flex: 1;
-      margin-left: 260px;
-      padding: 20px;
+      margin-left: var(--sidebar-width);
+      transition: all var(--transition-speed) ease;
+      min-height: 100vh;
     }
-    .top-bar {
+    
+    .main-content-collapsed {
+      margin-left: var(--sidebar-collapsed-width);
+    }
+    
+    /* Top navbar */
+    .top-navbar {
+      height: 70px;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      margin-bottom: 25px;
+      padding: 0 25px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
-    .search-bar {
-      position: relative;
-      width: 350px;
-    }
-    .search-bar input {
-      width: 100%;
-      padding: 12px 20px 12px 45px;
-      border-radius: 30px;
-      border: 1px solid var(--border);
-      background: var(--light);
-      font-size: 14px;
-      transition: box-shadow 0.3s;
-    }
-    .search-bar input:focus {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(66,153,225,0.2);
-      border-color: var(--primary);
-    }
-    .search-bar i {
-      position: absolute;
-      left: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #94a3b8;
-    }
-    .top-right { display: flex; align-items: center; }
-    .notification, .user-profile {
-      position: relative;
-      margin-left: 20px;
+    
+    .toggle-btn {
+      border: none;
+      background: none;
+      font-size: 1.2rem;
+      color: var(--dark-color);
       cursor: pointer;
     }
-    .notification i, .user-profile i {
-      font-size: 20px;
-      color: var(--text-secondary);
-    }
-    .notification-count {
-      position: absolute;
-      top: -5px; right: -5px;
-      background: var(--danger);
-      color: #fff;
-      font-size: 10px;
-      width: 18px; height: 18px;
-      border-radius: 50%;
+    
+    .user-profile {
+      margin-left: auto;
       display: flex;
       align-items: center;
-      justify-content: center;
+      cursor: pointer;
+      position: relative;
     }
-    .user-profile img {
-      width: 40px; height: 40px;
+    
+    .user-avatar {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--primary);
+      margin-right: 10px;
+      border: 2px solid var(--accent-color);
     }
-    .dashboard-title {
-      display: flex; align-items: center;
-      margin-bottom: 25px;
-    }
-    .dashboard-title h2 {
-      font-size: 26px; font-weight: 600;
-    }
-    .role-badge {
-      margin-left: 15px;
-      padding: 5px 15px;
-      border-radius: 20px;
-      font-size: 14px;
+    
+    .user-name {
       font-weight: 500;
-      color: #fff;
+      margin-right: 10px;
     }
-    .role-badge.teacher { background: var(--teacher); }
-    .role-badge.admin   { background: var(--admin); }
-    .stats-container {
-      display: grid;
-      gap: 20px;
-      margin-bottom: 30px;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
-    .stat-card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      display: flex;
-      transition: transform 0.3s;
-    }
-    .stat-card:hover { transform: translateY(-5px); }
-    .stat-icon {
-      width: 60px; height: 60px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 15px;
-      font-size: 24px;
-    }
-    .stat-1 .stat-icon { background: rgba(67,97,238,0.15); color: var(--primary); }
-    .stat-2 .stat-icon { background: rgba(76,201,240,0.15); color: var(--success); }
-    .stat-3 .stat-icon { background: rgba(247,37,133,0.15); color: var(--danger); }
-    .stat-4 .stat-icon { background: rgba(248,150,30,0.15); color: var(--warning); }
-    .stat-info h3 { font-size: 24px; font-weight: 600; margin-bottom: 5px; }
-    .stat-info p { color: var(--text-secondary); font-size: 14px; }
-    .content-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 25px;
-    }
-    .grid-column { display: flex; flex-direction: column; gap: 25px; }
-
-    .card { background: var(--card-bg); border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden; }
-    .card-header {
-      padding: 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .card-header h3 { font-size: 18px; font-weight: 600; }
-    .card-header a { color: var(--primary); font-size: 14px; text-decoration: none; }
-    .card-body { padding: 20px; }
-
-    .table { width: 100%; border-collapse: collapse; }
-    .table th, .table td { padding: 12px 15px; font-size: 14px; border-bottom: 1px solid var(--border); }
-    .table th { font-weight: 500; color: var(--text-secondary); font-size: 13px; }
-    .status-badge {
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 500;
-    }
-    .status-pending  { background: #fef3c7; color: #d97706; }
-    .status-submitted{ background: #dcfce7; color: #15803d; }
-    .status-late     { background: #fee2e2; color: #b91c1c; }
-
-    .activity-list { list-style: none; }
-    .activity-item {
-      display: flex;
-      padding: 15px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .activity-item:last-child { border-bottom: none; }
-    .activity-icon {
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 15px;
-    }
-    .activity-icon.teacher { background: rgba(59,130,246,0.15); color: var(--teacher); }
-    .activity-icon.admin   { background: rgba(139,92,246,0.15); color: var(--admin); }
-    .activity-content h4 { font-size: 15px; margin-bottom: 5px; }
-    .activity-content p { font-size: 13px; color: var(--text-secondary); }
-    .activity-time { font-size: 12px; color: #94a3b8; margin-top: 5px; }
-
-    .quick-actions {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 15px;
-    }
-    .quick-btn {
-      background: var(--light);
-      border: none;
+    
+    .dropdown-menu {
+      position: absolute;
+      right: 0;
+      top: 50px;
+      width: 250px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       padding: 15px;
-      border-radius: 10px;
+      display: none;
+    }
+    
+    .dropdown-menu.show {
+      display: block;
+      animation: fadeIn 0.2s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .user-info {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      color: var(--text-primary);
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 10px;
+    }
+    
+    .user-info img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+    
+    .user-details h5 {
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    
+    .user-details p {
+      margin-bottom: 0;
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+    
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      padding: 8px 0;
+      color: var(--dark-color);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    
+    .dropdown-item:hover {
+      color: var(--primary-color);
+    }
+    
+    .dropdown-item i {
+      width: 25px;
+      text-align: center;
+      margin-right: 10px;
+    }
+    
+    /* Content container */
+    .content-container {
+      padding: 25px;
+    }
+    
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 25px;
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card-header {
+      background-color: white;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      font-weight: 600;
+      padding: 15px 20px;
+      border-radius: 10px 10px 0 0 !important;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+      
+      .sidebar.show {
+        transform: translateX(0);
+      }
+      
+      .main-content {
+        margin-left: 0;
+      }
+    }
+    
+    /* Settings modal */
+    .settings-icon {
+      font-size: 1.2rem;
+      color: var(--dark-color);
       cursor: pointer;
-      transition: background 0.3s;
-      font-size: 14px;
-      font-weight: 500;
+      margin-left: 20px;
+      transition: all 0.3s ease;
     }
-    .quick-btn i { font-size: 18px; margin-bottom: 8px; }
+    
+    .settings-icon:hover {
+      color: var(--primary-color);
+      transform: rotate(45deg);
+    }
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.9s ease, opacity 0.7s ease;
+  opacity: 0;
+  background-color: #4c4a86;
+}
 
-    @media (max-width: 992px) { .content-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 768px) {
-      .sidebar { width: 70px; }
-      .sidebar .logo h1, .sidebar .menu-text, .sidebar .menu-divider { display: none; }
-      .main-content { margin-left: 70px; }
-      .search-bar { width: 200px; }
-      .stats-container { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 576px) {
-      .top-bar { flex-direction: column; align-items: flex-start; }
-      .search-bar { width: 100%; margin-bottom: 15px; }
-      .top-right { width: 100%; justify-content: space-between; }
-    }
+.submenu.show {
+  max-height: 300px; /* large enough to fit content */
+  opacity: 1;
+}
+
+.toggle-icon {
+  transition: transform 0.4s ease;
+}
+
+.toggle-icon.rotate {
+  transform: rotate(180deg);
+}
+
+
+
+
+
+.submenu a.menu-item {
+  display: block;
+  padding: 8px 10px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.submenu a.menu-item:hover {
+  background-color: #e8f0ff;
+  border-radius: 5px;
+}
+
+
+
+
   </style>
 </head>
-<body>
-  <div class="sidebar">
-    <div class="logo"><i class="fas fa-graduation-cap"></i><h1>EduManage</h1></div>
-    <a href="#" class="menu-item active"><i class="fas fa-home"></i><span class="menu-text">Dashboard</span></a>
-    <div class="menu-divider">Teacher</div>
-    <a href="/admin/my_classes" class="menu-item"><i class="fas fa-users"></i><span class="menu-text">My Classes</span></a>
-    <a href="#" class="menu-item"><i class="fas fa-tasks"></i><span class="menu-text">Assignments</span></a>
-    <a href="#" class="menu-item"><i class="fas fa-book"></i><span class="menu-text">Study Materials</span></a>
-    <a href="#" class="menu-item"><i class="fas fa-calendar-check"></i><span class="menu-text">Attendance</span></a>
-    <div class="menu-divider">Admin</div>
-    <a href="#" class="menu-item"><i class="fas fa-user-cog"></i><span class="menu-text">User Management</span></a>
-    <a href="#" class="menu-item"><i class="fas fa-chart-line"></i><span class="menu-text">Reports</span></a>
-    <a href="#" class="menu-item"><i class="fas fa-cog"></i><span class="menu-text">System Settings</span></a>
-    <div class="menu-divider">General</div>
-    <a href="#" class="menu-item"><i class="fas fa-bullhorn"></i><span class="menu-text">Announcements</span></a>
-    <a href="#" class="menu-item"><i class="fas fa-comments"></i><span class="menu-text">Feedback</span></a>
+  <!-- Sidebar Navigation -->
+  <div class="sidebar" id="sidebar">
+    <div class="logo">
+      <i class="fas fa-graduation-cap me-2"></i>
+      <h2>Admin Dashboard</h2>
+    </div>
+    
+    <div class="menu1">
+      <a href="/admin/dashbord" class="menu-item">
+        <i class="fas fa-chart-line"></i>
+        <span class="menu-item-text">Dashboard</span>
+      </a>
+      
+<!-- Students Dropdown -->
+<!-- Manage Users Parent Item -->
+<div class="menu-item submenu-toggle" onclick="toggleSubmenu('user-submenu')">
+  <i class="fa-solid fa-graduation-cap"></i>
+  <span class="menu-item-text">Manage Users</span>
+  <i class="fas fa-chevron-down ms-auto toggle-icon"></i>
+</div>
+
+<script>
+  function toggleSubmenu(id) {
+    var submenu = document.getElementById(id);
+    if (submenu.style.display === "none" || submenu.style.display === "") {
+      submenu.style.display = "block";
+    } else {
+      submenu.style.display = "none";
+    }
+  }
+</script>
+
+<div class="submenu">
+  <a href="/admin/students" class="menu-item">
+    <i class="fas fa-list"></i>
+    <span class="menu-item-text"></span>
+  </a>
+  <a href="/admin/add_std" class="menu-item">
+    <i class="fas fa-user-plus"></i>
+    <span class="menu-item-text">Add Student</span>
+  </a>
+</div>
+
+<!-- Facultys Dropdown -->
+
+
+
+  
+      <a href="/admin/activities" class="menu-item">
+        <i class="fas fa-tasks"></i>
+        <span class="menu-item-text">Monitor Class Activities</span>
+      </a>
+      
+      <a href="/admin/course" class="menu-item">
+        <i class="fas fa-calendar-alt"></i>
+        <span class="menu-item-text">Create Courses</span>
+      </a>
+      
+      <a href="/admin/announcements" class="menu-item">
+       <i class="fa-solid fa-cloud-arrow-up"></i>
+        <span class="menu-item-text">Send Announcements</span>
+      </a>
+
+      <a href="/admin/notice" class="menu-item">
+        <i class="fa-regular fa-bell"></i>
+        <span class="menu-item-text">Notices</span>
+      </a>
+    
+    </div>
   </div>
-  <div class="main-content">
-    <div class="top-bar">
-      <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search…"></div>
-      <div class="top-right">
-        <div class="notification"><i class="fas fa-bell"></i><span class="notification-count">3</span></div>
-        <div class="user-profile"><img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User"></div>
+
+  <!-- Main Content Area -->
+  <div class="main-content" id="mainContent">
+    <!-- Top Navigation Bar -->
+    <nav class="top-navbar shadow-lg">
+      <button class="toggle-btn" id="toggleSidebar">
+        <i class="fas fa-bars"></i>
+      </button>
+
+
+      
+      <div class="user-profile" id="userProfile">
+
+        <div class="notifaction">
+        </div>
+
+        <style>
+          .notifaction{
+            height: 12px;
+            width: 12px;
+            background-color: red;
+            border-radius:6px;
+            position: relative;
+            top: -10px;
+            left: 10px;
+            z-index: -1;
+
+          }
+        </style>
+
+        <i class="fa-solid fa-bell fs-5" data-bs-toggle="modal" data-bs-target="#exampleModal" id="bell"></i>
+
+         <i class="fas fa-cog settings-icon me-4 text-primary" data-bs-toggle="modal" data-bs-target="#settingsModal"></i>
+
+        <img src="/upload/" alt="User" class="user-avatar">
+
+        
+        <!-- User Dropdown Menu -->
+        <div class="dropdown-menu p-3" id="userDropdown">
+          <div class="user-info">
+            <img src="/upload/" alt="User">
+            <div class="user-details">
+              <h5></h5>
+              <p></p>
+            </div>
+          </div>
+          
+          <a href="/admin/profile" class="dropdown-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+          </a>
+          
+          <a href="/admin/logout" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+        </div>
+      </div>
+      
+    </nav>
+    
+   
+  
+  <!-- Settings Modal -->
+  <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Theme Color</label>
+            <select class="form-select">
+              <option>Default</option>
+              <option>Dark Mode</option>
+              <option>Light Mode</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Notification Preferences</label>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+              <label class="form-check-label" for="emailNotifications">Email Notifications</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="pushNotifications" checked>
+              <label class="form-check-label" for="pushNotifications">Push Notifications</label>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save Changes</button>
+        </div>
       </div>
     </div>
+  </div>
+
+  <!-- Modal -->
+<div class="modal fade rounded-3" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style="background-color: #373573;" class="modal-header text-center">
+        <h5 class="modal-title" id="exampleModalLabel">Notices Bar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body rounded-3">
+
+        
+          <div class="mb-2 border-bottom">
+          <p class="float-end"><b>Date :</b></b></p>
+          <p> <b>Title :</b> </p>
+          <p><b>Information  :</b></p>
+          <p  class="text-primary"><b>Send By :</b></b>
+          </div>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Modal Container */
+.modal-content {
+  background-color: #fefefe;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+
+/* Modal Header */
+.modal-header {
+  background-color: #4a90e2;
+  color: #fff;
+  border-bottom: none;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.modal-title {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 0 auto;
+}
+
+/* Close Button */
+.btn-close {
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 0.5rem;
+  margin-right: -10px;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: #fafafa;
+}
+
+/* Notice Entry Styles */
+.modal-body p {
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.modal-body b {
+  color: #333;
+}
+
+.modal-body .float-end {
+  float: right;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Optional: Scrollbar Customization (for modern browsers) */
+.modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.modal-body::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 3px;
+}
+
+</style>
+
+  <!-- JavaScript Libraries -->
 
 
-  <section class="custom-section">
+
+    
+
