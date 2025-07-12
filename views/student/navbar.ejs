@@ -76,6 +76,15 @@
       border-bottom: 1px solid #334155;
       margin-bottom: 20px;
     }
+
+    .gradient-text {
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin: 0;
+}
     .logo i {
       font-size: 28px;
       color: var(--success);
@@ -84,9 +93,7 @@
     .logo h1 {
       font-size: 22px;
       font-weight: 600;
-      background: linear-gradient(90deg, var(--success), var(--primary));
-      /* webkit-background-clip: text;
-      webkit-text-fill-color: transparent; */
+      
     }
     .menu-item {
       padding: 12px 20px;
@@ -322,13 +329,18 @@
 </head>
 <body>
   <div class="sidebar">
-    <div class="logo"><i class="fas fa-graduation-cap"></i><h1>EduManage</h1></div>
+   <div class="logo">
+  <i class="fas fa-graduation-cap"></i>
+  <h1 class="gradient-text">EduManage</h1>
+</div>
+
     <a href="#" class="menu-item active"><i class="fas fa-home"></i><span class="menu-text">Dashboard</span></a>
     <div class="menu-divider">Teacher</div>
     <a href="/admin/my_classes" class="menu-item"><i class="fas fa-users"></i><span class="menu-text">My Classes</span></a>
     <a href="#" class="menu-item"><i class="fas fa-tasks"></i><span class="menu-text">Assignments</span></a>
     <a href="#" class="menu-item"><i class="fas fa-book"></i><span class="menu-text">Study Materials</span></a>
     <a href="#" class="menu-item"><i class="fas fa-calendar-check"></i><span class="menu-text">Attendance</span></a>
+        <a href="/stu/submission" class="menu-item"><i class="fas fa-calendar-check"></i><span class="menu-text">Submission</span></a>
     <div class="menu-divider">Admin</div>
     <!-- <a href="#" class="menu-item"><i class="fas fa-user-cog"></i><span class="menu-text">User Management</span></a>
     <a href="#" class="menu-item"><i class="fas fa-chart-line"></i><span class="menu-text">Reports</span></a>
@@ -342,7 +354,10 @@
       <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search…"></div>
       <div class="top-right">
         <div class="notification"><i class="fas fa-bell"></i><span class="notification-count">3</span></div>
-        <div class="user-profile"><img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User"></div>
+       <a href="/stu/profile" class="user-profile">
+  <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User">
+</a>
+
       </div>
     </div>
 
