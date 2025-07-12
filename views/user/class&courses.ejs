@@ -1,0 +1,526 @@
+<%-include("navbar")%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classes 5–12 Courses - EduSync</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --secondary: #3f37c9;
+      --accent: #4cc9f0;
+      --success: #4ade80;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --text: #334155;
+      --bg-gradient: linear-gradient(135deg, #4361ee, #3a0ca3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0f4ff 0%, #e8f2ff 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero Header */
+    .hero-header {
+      background: var(--bg-gradient);
+      color: white;
+      padding: 80px 0 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(76, 201, 240, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    .hero-header h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      font-family: 'Rubik', sans-serif;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Courses Container */
+    .courses-container {
+      padding: 80px 0;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(67, 97, 238, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      border: 1px solid rgba(67, 97, 238, 0.08);
+    }
+
+    .course-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(67, 97, 238, 0.2);
+    }
+
+    .course-header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 25px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .course-header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.2); opacity: 0.6; }
+    }
+
+    .course-header h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .course-header p {
+      opacity: 0.9;
+      font-size: 0.95rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .course-content {
+      padding: 30px;
+      position: relative;
+    }
+
+    .course-content h3 {
+      color: var(--secondary);
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .course-content h3::before {
+      content: "📚";
+      font-size: 1.2rem;
+    }
+
+    .course-content ul {
+      list-style: none;
+      margin-bottom: 25px;
+    }
+
+    .course-content li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(67, 97, 238, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .course-content li:hover {
+      background: rgba(67, 97, 238, 0.03);
+      padding-left: 8px;
+      border-radius: 8px;
+    }
+
+    .course-content li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .course-content li:last-child {
+      border-bottom: none;
+    }
+
+    .btn {
+      display: block;
+      padding: 15px 25px;
+      background: linear-gradient(135deg, var(--accent), #38b6e0);
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 12px;
+      margin: 0 30px 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(76, 201, 240, 0.4);
+    }
+
+    /* Stream Cards for Class 11-12 */
+    .stream-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .stream-card {
+      background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
+      border: 2px solid rgba(67, 97, 238, 0.1);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .stream-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(76, 201, 240, 0.2);
+    }
+
+    .stream-card h4 {
+      color: var(--secondary);
+      font-size: 1rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .stream-card p {
+      font-size: 0.9rem;
+      color: var(--text);
+      opacity: 0.8;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .courses-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      
+      .course-card {
+        margin: 0 10px;
+      }
+      
+      .course-content {
+        padding: 25px 20px;
+      }
+      
+      .btn {
+        margin: 0 20px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-header {
+        padding: 60px 0 40px;
+      }
+      
+      .hero-header h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-header p {
+        font-size: 1rem;
+      }
+      
+      .courses-container {
+        padding: 50px 0;
+      }
+    }
+
+    /* Animation for cards */
+    .course-card {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .course-card:nth-child(1) { animation-delay: 0.1s; }
+    .course-card:nth-child(2) { animation-delay: 0.2s; }
+    .course-card:nth-child(3) { animation-delay: 0.3s; }
+    .course-card:nth-child(4) { animation-delay: 0.4s; }
+    .course-card:nth-child(5) { animation-delay: 0.5s; }
+    .course-card:nth-child(6) { animation-delay: 0.6s; }
+    .course-card:nth-child(7) { animation-delay: 0.7s; }
+    .course-card:nth-child(8) { animation-delay: 0.8s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Header -->
+  <section class="hero-header">
+    <div class="container">
+      <h1>Curriculum by Class (5–12)</h1>
+      <p>Comprehensive overview of key subjects and topics for each grade level, designed to guide students through their academic journey</p>
+    </div>
+  </section>
+
+  <!-- Courses Container -->
+  <section class="courses-container">
+    <div class="container">
+      <div class="courses-grid">
+
+        <!-- Class 5 -->
+        <div class="course-card">
+          <div class="course-header">
+            <h2>Class 5</h2>
+            <p>Building Strong Foundations</p>
+          </div>
+          <div class="course-content">
+            <h3>Core Subjects</h3>
+            <ul>
+              <li>Mathematics – Fractions, Geometry basics, Decimals</li>
+              <li>Science – Plants, Animals, Matter & Energy</li>
+              <li>English – Grammar, Reading comprehension, Writing</li>
+              <li>Social Studies – Geography, Indian history, Civics</li>
+            </ul>
+            <a href="#class5" class="btn">Explore Class 5 <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Class 6 -->
+        <div class="course-card">
+          <div class="course-header">
+            <h2>Class 6</h2>
+            <p>Developing Critical Thinking</p>
+          </div>
+          <div class="course-content">
+            <h3>Core Subjects</h3>
+            <ul>
+              <li>Mathematics – Ratio, Algebra introduction, Geometry</li>
+              <li>Science – Food, Materials, Universe & Space</li>
+              <li>English – Writing skills, Vocabulary, Literature</li>
+              <li>Social Studies – Ancient civilizations, Maps, Culture</li>
+            </ul>
+            <a href="#class6" class="btn">Explore Class 6 <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Class 7 -->
+        <div class="course-card">
+          <div class="course-header">
+            <h2>Class 7</h2>
+            <p>Exploring Advanced Concepts</p>
+          </div>
+          <div class="course-content">
+            <h3>Core Subjects</h3>
+            <ul>
+              <li>Mathematics – Integers, Algebra, Data handling</li>
+              <li>Science – Motion, Light, Nutrition, Heat</li>
+              <li>English – Literature analysis, Writing skills</li>
+              <li>Social Studies – Medieval India, Modern world</li>
+            </ul>
+            <a href="#class7" class="btn">Explore Class 7 <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Class 8 -->
+        <div class="course-card">
+          <div class="course-header">
+            <h2>Class 8</h2>
+            <p>Preparing for Higher Studies</p>
+          </div>
+          <div class="course-content">
+            <h3>Core Subjects</h3>
+            <ul>
+              <li>Mathematics – Linear equations, Graphs, Mensuration</li>
+              <li>Science – Metals, Electricity, Cells, Force</li>
+              <li>English – Comprehension, Essay writing, Grammar</li>
+              <li>Social Studies – Modern India, Civics, Economics</li>
+            </ul>
+            <a href="#class8" class="btn">Explore Class 8 <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Class 9 -->
+        <div class="course-card">
+          <div class="course-header">
+            <h2>Class 9</h2>
+            <p>Foundation for Board Exams</p>
+          </div>
+          <div class="course-content">
+            <h3>Core Subjects</h3>
+            <ul>
+              <li>Mathematics – Polynomials, Triangles, Statistics</li>
+              <li>Science – Matter, Force, Cell biology, Chemistry</li>
+              <li>English – Literature, Grammar, Writing skills</li>
+              <li>Social Studies – India & contemporary world I</li>
+            </ul>
+            <a href="#class9" class="btn">Explore Class 9 <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Class 10 -->
+        <div class="course-card">
+          <div class="course-header">
+            <h2>Class 10</h2>
+            <p>Board Exam Preparation</p>
+          </div>
+          <div class="course-content">
+            <h3>Core Subjects</h3>
+            <ul>
+              <li>Mathematics – Quadratics, Real numbers, Trigonometry</li>
+              <li>Science – Light, Electricity, Chemical reactions</li>
+              <li>English – Reading, Writing, Literature analysis</li>
+              <li>Social Studies – Contemporary India, Economics</li>
+            </ul>
+            <a href="#class10" class="btn">Explore Class 10 <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Class 11 -->
+        <div class="course-card">
+          <div class="course-header">
+            <h2>Class 11</h2>
+            <p>Specialization Begins</p>
+          </div>
+          <div class="course-content">
+            <h3>Choose Your Stream</h3>
+            <div class="stream-cards">
+              <div class="stream-card">
+                <h4>Science</h4>
+                <p>Physics, Chemistry, Biology/Maths</p>
+              </div>
+              <div class="stream-card">
+                <h4>Commerce</h4>
+                <p>Business Studies, Economics, Accounts</p>
+              </div>
+              <div class="stream-card">
+                <h4>Arts</h4>
+                <p>History, Political Science, Psychology</p>
+              </div>
+            </div>
+            <a href="#class11" class="btn">Explore Class 11 <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Class 12 -->
+        <div class="course-card">
+          <div class="course-header">
+            <h2>Class 12</h2>
+            <p>Career Preparation</p>
+          </div>
+          <div class="course-content">
+            <h3>Advanced Specialization</h3>
+            <div class="stream-cards">
+              <div class="stream-card">
+                <h4>Science</h4>
+                <p>Core Physics, Calculus, Organic Chemistry</p>
+              </div>
+              <div class="stream-card">
+                <h4>Commerce</h4>
+                <p>Entrepreneurship, Statistics, Accounts</p>
+              </div>
+              <div class="stream-card">
+                <h4>Arts</h4>
+                <p>Sociology, Geography, Media Studies</p>
+              </div>
+            </div>
+            <a href="#class12" class="btn">Explore Class 12 <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
+
+<%-include("footer")%>

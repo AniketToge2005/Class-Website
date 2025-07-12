@@ -20,6 +20,10 @@ router.get("/about",function (req, res) {
   res.render("user/about.ejs");
 
 });
+router.get("/courses",function (req, res) {
+  res.render("user/class&courses.ejs");
+
+});
 router.get("/teacher",function (req, res) {
   res.render("user/teacher.ejs");
 
