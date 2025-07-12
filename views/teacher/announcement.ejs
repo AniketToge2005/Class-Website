@@ -1,0 +1,148 @@
+<%- include("navbar") %>
+
+<style>
+  .section-header {
+    text-align: center;
+    margin: 30px 0 20px;
+  }
+
+  .section-header h2 {
+    color: #2c3e50;
+    font-weight: 600;
+  }
+
+  .announcement-form,
+  .announcement-list {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+  }
+
+  .form-label {
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .form-control,
+  select {
+    border-radius: 6px;
+  }
+
+  .btn-submit {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    width: 100%;
+  }
+
+  .btn-submit:hover {
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+  }
+
+  .announcement-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9fafb;
+  }
+
+  .announcement-card h5 {
+    color: #1f2937;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .announcement-card small {
+    color: #6b7280;
+  }
+
+  .announcement-actions {
+    margin-top: 10px;
+  }
+
+  .announcement-actions a {
+    margin-right: 10px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 576px) {
+    .btn-submit {
+      font-size: 15px;
+    }
+  }
+</style>
+
+<div class="container">
+  <div class="section-header">
+    <h2>Teacher Announcements</h2>
+    <p>Post and manage announcements for your classes</p>
+  </div>
+
+  <!-- Announcement Form -->
+  <div class="announcement-form">
+    <form action="/teacher/announcements/add" method="POST">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label" for="title">Announcement Title</label>
+          <input type="text" name="title" id="title" class="form-control" required placeholder="Enter title">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label" for="postedBy">Posted By</label>
+          <input type="text" name="postedBy" id="postedBy" class="form-control" value="Mr. Sharma" required>
+        </div>
+
+        <div class="col-md-12">
+          <label class="form-label" for="description">Description</label>
+          <textarea name="description" id="description" class="form-control" rows="3" placeholder="Write announcement details..." required></textarea>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label" for="datetime">Date & Time</label>
+          <input type="datetime-local" name="datetime" id="datetime" class="form-control" required>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label" for="target_classes">Target Classes</label>
+          <select name="target_classes" id="target_classes" class="form-control" required>
+            <option value="">Select Class</option>
+            <option value="Grade 10-A">Grade 10-A</option>
+            <option value="Grade 11-B">Grade 11-B</option>
+            <option value="Grade 12-C">Grade 12-C</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <button type="submit" class="btn-submit">Post Announcement</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Announcement List -->
+  <div class="announcement-list">
+    <h4 class="mb-4">Recent Announcements</h4>
+
+    <!-- Example announcement card -->
+    <div class="announcement-card">
+      <h5>Exam Schedule Released</h5>
+      <p>The mid-term exams will begin from 15th September. Kindly check your timetable in the portal.</p>
+      <small><strong>Class:</strong> Grade 10-A &nbsp; | &nbsp; <strong>Posted:</strong> 2024-08-01 10:00 AM &nbsp; | &nbsp; <strong>By:</strong> Mr. Sharma</small>
+
+      <div class="announcement-actions mt-2">
+        <a href="/teacher/announcements/edit/1" class="text-primary"><i class="fas fa-edit"></i> Edit</a>
+        <a href="/teacher/announcements/delete/1" class="text-danger" onclick="return confirm('Delete this announcement?')"><i class="fas fa-trash"></i> Delete</a>
+      </div>
+    </div>
+
+    <!-- Add more announcement-card divs dynamically -->
+  </div>
+</div>
+
+<%- include("footer") %>

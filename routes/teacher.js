@@ -6,9 +6,27 @@ var exe = require('./../connection');
 
 
 
-router.get("/",function (req, res) {
-  res.send("teacher");
-
+router.get("/",function(req, res) {
+  res.render("teacher/home.ejs")
 });
+
+router.get("/my_classes",function(req,res){
+  res.render("teacher/my_classes.ejs")
+})
+
+router.get("/assignment",function(req,res){
+  res.render("teacher/assignment.ejs")
+})
+
+router.get("/study_material",function(req,res){
+  res.render("teacher/study_material.ejs")
+})
+
+router.get("/attendance",function(req,res){
+  res.render("teacher/attendance.ejs")
+})
+router.get("/announcement",function(req,res){
+  res.render("teacher/announcement.ejs")
+})
 
 module.exports = router;

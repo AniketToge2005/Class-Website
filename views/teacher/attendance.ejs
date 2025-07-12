@@ -1,0 +1,138 @@
+<style>
+  .calendar-nav button { width: 40px; }
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  .calendar-grid .day, .calendar-grid .weekday {
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
+  }
+  .calendar-grid .weekday {
+    font-weight: 600;
+    background: #f0f0f0;
+  }
+  .calendar-grid .day {
+    cursor: pointer;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: background 0.2s;
+  }
+  .calendar-grid .day:hover {
+    background: #ddeeff;
+  }
+  .calendar-grid .day.past { opacity: .6; }
+  .calendar-grid .day.marked-present { background: #e0f7e9; }
+  .calendar-grid .day.marked-absent  { background: #fde0e0; }
+</style>
+
+<%- include("navbar") %>
+
+<div class="container py-4">
+  <h2 class="text-center mb-4">Attendance Calendar</h2>
+
+  <div class="calendar-nav d-flex justify-content-between align-items-center mb-3">
+    <button id="prevMonth" class="btn btn-outline-primary">&lt;</button>
+    <h4 id="currentMonth" class="mb-0"></h4>
+    <button id="nextMonth" class="btn btn-outline-primary">&gt;</button>
+  </div>
+
+  <div id="calendar" class="calendar-grid"></div>
+</div>
+
+<!-- Modal for marking attendance -->
+<div class="modal fade" id="attModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="attForm" action="/teacher/mark-attendance" method="POST">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">Mark Attendance — <span id="modalDate"></span></h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="date" id="attDateInput">
+          <div class="form-group mb-3">
+            <label for="classSelect">Class</label>
+            <select name="class" id="classSelect" class="form-control" required>
+              <option value="">Select Class</option>
+              <option value="grade10a">Grade 10-A</option>
+              <option value="grade9b">Grade 9-B</option>
+              <!-- etc. -->
+            </select>
+          </div>
+          <!-- Here you'd dynamically insert your student list with radio buttons -->
+          <p class="text-muted small">Student list goes here…</p>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary w-100">Save Attendance</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  const weekdays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  let today = new Date();
+
+  function renderCalendar(date) {
+    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    const startWeekDay = firstDay.getDay();
+    const daysInMonth = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate();
+
+    const cal = document.getElementById('calendar');
+    cal.innerHTML = '';
+
+    // Weekday headers
+    weekdays.forEach(wd => {
+      const w = document.createElement('div');
+      w.textContent = wd;
+      w.classList.add('weekday');
+      cal.append(w);
+    });
+
+    // Blank slots before 1st
+    for (let i=0; i<startWeekDay; i++) {
+      cal.append(document.createElement('div'));
+    }
+
+    // Day cells
+    for (let d=1; d<=daysInMonth; d++) {
+      const cell = document.createElement('div');
+      cell.textContent = d;
+      cell.classList.add('day');
+
+      const cellDate = new Date(date.getFullYear(), date.getMonth(), d);
+      if (cellDate < new Date().setHours(0,0,0,0)) {
+        cell.classList.add('past');
+      }
+
+      cell.addEventListener('click', () => openModal(cellDate));
+      cal.append(cell);
+    }
+
+    // Update header
+    document.getElementById('currentMonth')
+      .textContent = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+  }
+
+  document.getElementById('prevMonth')
+    .onclick = () => { today.setMonth(today.getMonth()-1); renderCalendar(today); };
+  document.getElementById('nextMonth')
+    .onclick = () => { today.setMonth(today.getMonth()+1); renderCalendar(today); };
+
+  function openModal(date) {
+    const iso = date.toISOString().split('T')[0];
+    document.getElementById('modalDate').textContent = iso;
+    document.getElementById('attDateInput').value = iso;
+    new bootstrap.Modal(document.getElementById('attModal')).show();
+  }
+
+  // Initial render
+  renderCalendar(today);
+</script>
+
+<!-- Bootstrap JS (make sure you have this) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
