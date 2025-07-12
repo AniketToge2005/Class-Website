@@ -1,161 +1,38 @@
-/* Reset and Base Styles */
 :root {
-  --primary-gradient: white;
-  /* Matches logo */
-  --secondary-color: #333333;
+  --primary-color: white;
+  --text-dark: #111;
   --text-light: black;
-  --text-dark: #111111;
-  --bg-light: #f5f5f5;
-  --transition-speed: 0.3s;
   --nav-height: 70px;
-  --shadow: 0 4px 6px rgba(126, 7, 7, 0.1);
+  --transition-speed: 0.3s;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-
-
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-}
-
-/* Main Navbar */
+/* Navbar Base */
 .navbar {
-  background-image: var(--primary-gradient);
-  /* ✅ use background-image */
-  color: var(--text-light);
   width: 100%;
+  background: var(--primary-color);
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: all var(--transition-speed) ease;
   box-shadow: var(--shadow);
-}
-
-
-.navbar.scrolled {
-  height: var(--nav-height);
-  background-color: rgba(13, 110, 253, 0.95);
-  backdrop-filter: blur(5px);
+  transition: background var(--transition-speed);
 }
 
 .nav-container {
+  max-width: 1200px;
+  height: var(--nav-height);
+  margin: 0 auto;
+  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  height: var(--nav-height);
-  padding: 0 2rem;
-  margin: 0 auto;
-}
-
-.logo a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: #fff;
-  /* your preferred color */
-}
-
-.logo-img {
-  height: 48px;
-  width: 48px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-left: -45px;
-  /* optional: round logo */
-}
-
-.gradient-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 42px;
-  margin-left: -12px;
-  background: linear-gradient(to right, #C8102E, #2B2B2B);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
-}
-
-.logo-text {
-  font-size: 1.8rem;
-  /* around 28-30px */
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  margin-left: -15px;
-}
-
-
-/* Navigation Links */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-link {
-  color: var(--text-light);
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  position: relative;
-  padding: 0.5rem 0;
-  transition: color var(--transition-speed);
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--secondary-color);
-  transition: width var(--transition-speed) ease;
-}
-
-.nav-link:hover::after,
-.nav-link:focus::after {
-  width: 100%;
-}
-
-.nav-link:hover {
-  color: var(--secondary-color);
-}
-
-.login-btn {
-  background-color: var(--bg-light);
-  color: var(--primary-color);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-weight: 600;
-  transition: all var(--transition-speed);
-}
-
-.login-btn {
-  background-color: var(--bg-light);
-  color: #C8102E;
-  /* or your brand color (Red from logo) */
-}
-
-
-/* Hamburger Menu */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  z-index: 1001;
-  padding: 0.5rem;
 }
 
 .logo a {
@@ -163,57 +40,102 @@ body {
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  color: inherit;
 }
 
-.logo img {
-  height: 100px;
-  width: 110px;
+.logo-img {
+  height: 110px;
+  width: 100px;
   border-radius: 50%;
   object-fit: cover;
+
 }
 
+.gradient-text {
+  font-size: 42px;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(to right, #C8102E, #2B2B2B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navigation */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  transition: color var(--transition-speed);
+}
+
+.nav-link:hover {
+  color: #C8102E;
+}
+
+.login-btn {
+  background: #f5f5f5;
+  color: #C8102E;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background: #C8102E;
+  color: white;
+}
+
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
 
 .bar {
-  height: 3px;
   width: 25px;
-  background-color: var(--text-light);
-  margin: 3px 0;
-  border-radius: 2px;
-  transition: all 0.4s ease;
+  height: 3px;
+  background-color: #000;
+  margin: 4px 0;
+  transition: 0.4s;
 }
 
 .menu-toggle.active .bar1 {
   transform: rotate(-45deg) translate(-5px, 6px);
 }
-
 .menu-toggle.active .bar2 {
   opacity: 0;
 }
-
 .menu-toggle.active .bar3 {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Responsive Rules */
+/* Mobile */
 @media (max-width: 768px) {
   .menu-toggle {
     display: flex;
   }
 
   .nav-links {
+    margin-top: 170px;
     position: fixed;
-    top: var(--nav-height);
+    top:-100px;
     left: -100%;
-    background-color: var(--primary-color);
-    width: 80%;
-    height: calc(100vh - var(--nav-height));
+    width: 50%;
+    height: 320px;
+    background: white;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     gap: 2rem;
-    transition: left 0.5s ease;
-    box-shadow: 2px 0 10px rgba(223, 212, 212, 0.1);
+    transition: left 0.4s ease;
+    z-index: 999;
   }
 
   .nav-links.active {
@@ -221,28 +143,20 @@ body {
   }
 
   .nav-link {
-    font-size: 1.2rem;
-    padding: 0.5rem 1rem;
-  }
-
-  .nav-link::after {
-    height: 3px;
+    font-size: 1.3rem;
   }
 
   .login-btn {
-    padding: 0.75rem 1.5rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
   }
-}
 
-
-@media (max-width: 768px) {
   .logo-img {
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
   }
 
-  .logo-text {
-    font-size: 1.4rem;
+  .gradient-text {
+    font-size: 1.5rem;
   }
 }
