@@ -10,4 +10,10 @@ router.get("/",function (req, res) {
 
 });
 
+
+router.get("/submission",function (req, res) {
+  res.render("student/submission.ejs");
+
+});
+
 module.exports = router;
