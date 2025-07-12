@@ -46,7 +46,7 @@
       left: 0;
       top: 0;
       color: white;
-      background: linear-gradient(45deg, #0f35f6, #f533a4);
+      background: linear-gradient(45deg, #2d3352, #07010f);
       transition: all var(--transition-speed) ease;
       z-index: 1000;
       box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
@@ -319,14 +319,24 @@
 
 
 
+.submenu a.menu-item {
+  display: block;
+  padding: 8px 10px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.submenu a.menu-item:hover {
+  background-color: #e8f0ff;
+  border-radius: 5px;
+}
 
 
 
 
   </style>
 </head>
-
-<body>
   <!-- Sidebar Navigation -->
   <div class="sidebar" id="sidebar">
     <div class="logo">
@@ -341,11 +351,24 @@
       </a>
       
 <!-- Students Dropdown -->
-<div class="menu-item submenu-toggle">
+<!-- Manage Users Parent Item -->
+<div class="menu-item submenu-toggle" onclick="toggleSubmenu('user-submenu')">
   <i class="fa-solid fa-graduation-cap"></i>
   <span class="menu-item-text">Manage Users</span>
   <i class="fas fa-chevron-down ms-auto toggle-icon"></i>
 </div>
+
+<script>
+  function toggleSubmenu(id) {
+    var submenu = document.getElementById(id);
+    if (submenu.style.display === "none" || submenu.style.display === "") {
+      submenu.style.display = "block";
+    } else {
+      submenu.style.display = "none";
+    }
+  }
+</script>
+
 <div class="submenu">
   <a href="/admin/students" class="menu-item">
     <i class="fas fa-list"></i>
