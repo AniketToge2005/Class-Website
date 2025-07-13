@@ -37,6 +37,9 @@ router.get("/profile",function (req, res) {
   res.render("user/profile.ejs");
 })
 
+router.get("/class",function (req, res) {
+  res.render("user/class5.ejs");
+})
 
 
 
