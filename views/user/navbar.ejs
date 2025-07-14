@@ -18,46 +18,53 @@
 
     <!-- Navigation Links -->
     <ul class="nav-links" id="nav-links">
-      <li><a href="/" class="nav-link">Home</a></li>
-      <li><a href="/about" class="nav-link">About</a></li>
-      <li><a href="/courses" class="nav-link">Class & Courses</a></li>
-      <li><a href="/contact" class="nav-link">Contact</a></li>
-      <li><a href="/login" class="login-btn nav-link">Login</a></li>
+      <li><a href="/" class="nav-link" data-page="home">Home</a></li>
+      <li><a href="/about" class="nav-link" data-page="about">About</a></li>
+      <li><a href="/courses" class="nav-link" data-page="courses">Class & Courses</a></li>
+      <li><a href="/contact" class="nav-link" data-page="contact">Contact</a></li>
+      <li><a href="/login" class="login-btn nav-link" data-page="login">Login</a></li>
     </ul>
   </div>
 </nav>
 
-
-<!-- Link your CSS -->
 <link rel="stylesheet" href="/css/navbar.css">
 
-<!-- Navbar Script -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const navbar = document.getElementById('navbar');
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.getElementById('nav-links');
 
-    // Sticky navbar effect
+    // Sticky on scroll
     window.addEventListener('scroll', function () {
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Mobile menu toggle
+    // Toggle menu open/close
     menuToggle.addEventListener('click', function () {
       this.classList.toggle('active');
       navLinks.classList.toggle('active');
       this.setAttribute('aria-expanded', this.classList.contains('active'));
     });
 
-    // Close menu when clicking a link (on mobile)
+    // Set specific size based on link clicked
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', function () {
         if (window.innerWidth <= 768) {
+          navLinks.classList.remove(
+            'home-active',
+            'about-active',
+            'courses-active',
+            'contact-active',
+            'login-active'
+          );
+
+          const page = this.getAttribute('data-page');
+          if (page) {
+            navLinks.classList.add(`${page}-active`);
+          }
+
+          // Close menu
           menuToggle.classList.remove('active');
           navLinks.classList.remove('active');
           menuToggle.setAttribute('aria-expanded', 'false');
