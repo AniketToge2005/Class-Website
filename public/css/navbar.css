@@ -42,6 +42,8 @@
   align-items: center;
   gap: 8px;
   text-decoration: none;
+  margin-left: -62px;
+   
 }
 
 .logo-img {
@@ -49,6 +51,8 @@
   width: 100px;
   border-radius: 50%;
   object-fit: cover;
+    margin-right:-20px;
+
 }
 
 .gradient-text {
