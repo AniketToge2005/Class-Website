@@ -6,8 +6,14 @@
 
 <style>
   @keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(40px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   * {
@@ -163,7 +169,7 @@
     align-items: center;
   }
 
-  .login-box .student-icon {
+  .login-box .admin-icon {
     font-size: 60px;
     color: white;
     margin-bottom: 20px;
@@ -261,7 +267,7 @@
 
 <!-- ===== Banner Heading ===== -->
 <div class="page-banner">
-  <h1>Student Login</h1>
+  <h1>Admin Login</h1>
 </div>
 
 <!-- ===== Login Section ===== -->
@@ -271,18 +277,18 @@
     <div class="logo-title">
       Welcome to 
       <img src="./Aniket2.png" alt="TI Logo" class="logo-img logologin-img" style="height: 55px; margin-left: -20px; margin-bottom: 8px;">
-      Classes
+      Classes - Admin Panel
     </div>
-    <p>We provide expert academic coaching from <strong>5th to 12th Standard</strong>.</p>
+    <p>This section is restricted to administrative users only.</p>
     <ul>
-      <li>Experienced Subject Teachers</li>
-      <li>Assignments & Performance Tracking</li>
-      <li>Instant Support via WhatsApp</li>
-      <li>Trusted by 500+ Students</li>
+      <li>Manage Students & Faculty</li>
+      <li>Track Attendance & Reports</li>
+      <li>Update Courses & Schedules</li>
+      <li>Control Panel Access</li>
     </ul>
     <div class="contact-info">
       <p><strong>Developed by A2Z IT Hub | © 2025</strong></p>
-      <p>Have questions? Reach us:</p>
+      <p>Need help? Contact us:</p>
       <div class="contact-icons">
         <a href="https://wa.me/917666168187" target="_blank">
           <i class="fab fa-whatsapp"></i> 7666168187
@@ -296,24 +302,24 @@
 
   <!-- Right Login Box -->
   <div class="login-box">
-    <i class="fas fa-user-graduate student-icon"></i>
-    <h2>Student Login</h2>
+    <i class="fas fa-user-shield admin-icon"></i>
+    <h2>Admin Login</h2>
     <form>
       <div class="form-group">
-        <label for="student-email">Email or Username</label>
-        <input type="text" id="student-email" required placeholder="Enter your email or username">
+        <label for="admin-email">Admin Username</label>
+        <input type="text" id="admin-email" required placeholder="Enter your username">
       </div>
       <div class="form-group">
-        <label for="student-password">Password</label>
-        <input type="password" id="student-password" required placeholder="Enter your password">
+        <label for="admin-password">Password</label>
+        <input type="password" id="admin-password" required placeholder="Enter your password">
       </div>
-      <button type="submit" class="btn">Student Login</button>
+      <button type="submit" class="btn">Login</button>
     </form>
     <div class="forgot-password">
       <a href="#">Forgot Password?</a>
     </div>
     <div class="register-link">
-      Don't have an account? <a href="/registerStudent">Register Here</a>
+      Not an admin? <a href="/">Return to Home</a>
     </div>
   </div>
 </div>
