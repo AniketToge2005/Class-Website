@@ -42,7 +42,8 @@
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  margin-left: -62px;
+  float: left;
+  margin-right: 100%;
    
 }
 
