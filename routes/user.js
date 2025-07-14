@@ -32,6 +32,10 @@ router.get("/student",function (req, res) {
   res.render("user/student.ejs");
 
 });
+router.get("/loginstudent",function (req, res) {
+  res.render("user/loginstudent.ejs");
+
+});
 
 router.get("/profile",function (req, res) {
   res.render("user/profile.ejs");
@@ -55,6 +59,10 @@ router.get("/class8",function (req, res) {
 
 router.get("/class9",function (req, res) {
   res.render("user/class9.ejs");
+})
+
+router.get("/class10",function (req, res) {
+  res.render("user/class10.ejs");
 })
 
 router.get("/class10",function (req, res) {
