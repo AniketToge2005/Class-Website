@@ -65,6 +65,43 @@
   -webkit-text-fill-color: transparent;
 }
 
+
+
+
+/* Add some margin-top to the main content to avoid hiding behind navbar */
+    main {
+      margin-top: 80px;
+    }
+
+    .main-content {
+      padding: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 100%;
+      margin-top: -100px;
+    }
+
+    .main-content h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .main-content p {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+
+
+
+
+
+
+
+
+
 /* Navigation */
 .nav-links {
   

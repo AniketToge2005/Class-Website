@@ -1,71 +1,47 @@
-<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Bootstrap CSS CDN -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-q7z2W7tDdUJzKGoFErXWBl5UdcZFQG5tZ+uvF2AqUb3PjEokPaPJQdMwmVpzR9nS" crossorigin="anonymous">
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Responsive Sticky Navbar</title>
-  <link rel="stylesheet" href="/css/navbar.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-q7z2W7tDdUJzKGoFErXWBl5UdcZFQG5tZ+uvF2AqUb3PjEokPaPJQdMwmVpzR9nS" crossorigin="anonymous" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/navbar.css" />
 </head>
 <body>
 
-=======
->>>>>>> Stashed changes
   <!-- Responsive Sticky Navbar -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
+  <nav class="navbar fixed-top" id="navbar">
+    <div class="nav-container d-flex justify-content-between align-items-center px-3 py-2">
+      
       <!-- Logo -->
-      <div class="logo">
-        <a href="/" aria-label="Home">
-<<<<<<< Updated upstream
-          <img src="/Aniket2.png" alt="Logo" class="logo-img" style="height: 100%;">
-=======
-          <img src="/Aniket2.png" alt="Logo" class="logo-img">
->>>>>>> Stashed changes
-          <span class="gradient-text">Classes</span>
+      <div class="logo d-flex align-items-center">
+        <a href="/" aria-label="Home" class="d-flex align-items-center text-decoration-none">
+          <img src="/Aniket2.png" alt="Logo" class="logo-img" style="height: 40px; margin-right: 8px;">
+          <span class="gradient-text fw-bold">Classes</span>
         </a>
       </div>
 
       <!-- Hamburger Menu -->
-      <div class="menu-toggle" id="mobile-menu" aria-label="Toggle menu" aria-expanded="false">
+      <div class="menu-toggle d-lg-none" id="mobile-menu" aria-label="Toggle menu" aria-expanded="false">
         <span class="bar bar1"></span>
         <span class="bar bar2"></span>
         <span class="bar bar3"></span>
       </div>
 
       <!-- Navigation Links -->
-      <ul class="nav-links" id="nav-links">
-<<<<<<< Updated upstream
+      <ul class="nav-links list-unstyled d-lg-flex gap-4 mb-0 align-items-center" id="nav-links">
         <li><a href="/" class="nav-link" data-page="home">Home</a></li>
         <li><a href="/about" class="nav-link" data-page="about">About</a></li>
         <li><a href="/courses" class="nav-link" data-page="courses">Class & Courses</a></li>
         <li><a href="/contact" class="nav-link" data-page="contact">Contact</a></li>
-        <li><a href="/login" class="login-btn nav-link" data-page="login">Login</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const navbar = document.getElementById('navbar');
-      const menuToggle = document.getElementById('mobile-menu');
-      const navLinks = document.getElementById('nav-links');
-
-      // Sticky on scroll
-      window.addEventListener('scroll', function () {
-        navbar.classList.toggle('scrolled', window.scrollY > 50);
-      });
-=======
-        <li><a href="/" class="nav-link">Home</a></li>
-        <li><a href="/about" class="nav-link">About</a></li>
-        <li><a href="/courses" class="nav-link">Class & Courses</a></li>
-        <li><a href="/contact" class="nav-link">Contact</a></li>
         <li class="dropdown">
-          <a href="#" class="nav-link">Login</a>
-          <ul class="dropdown-menu" id="nav-links">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button">Login</a>
+          <ul class="dropdown-menu">
             <li><a href="/loginstudent" class="dropdown-item">Student</a></li>
             <li><a href="/loginAdmin" class="dropdown-item">Admin</a></li>
           </ul>
@@ -73,85 +49,9 @@
       </ul>
     </div>
   </nav>
->>>>>>> Stashed changes
+   <main>
+    <div class="main-content">
 
-      // Toggle menu open/close
-      menuToggle.addEventListener('click', function () {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        this.setAttribute('aria-expanded', this.classList.contains('active'));
-      });
+  <!-- JavaScript -->
+ 
 
-<<<<<<< Updated upstream
-      // Set specific size based on link clicked
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function () {
-          if (window.innerWidth <= 768) {
-            navLinks.classList.remove(
-              'home-active',
-              'about-active',
-              'courses-active',
-              'contact-active',
-              'login-active'
-            );
-
-            const page = this.getAttribute('data-page');
-            if (page) {
-              navLinks.classList.add(`${page}-active`);
-            }
-
-            // Close menu
-            menuToggle.classList.remove('active');
-            navLinks.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          }
-        });
-=======
-  <!-- Link your CSS -->
-  <link rel="stylesheet" href="/css/navbar.css">
-
-  <!-- Navbar Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const navbar = document.getElementById('navbar');
-      const menuToggle = document.getElementById('mobile-menu');
-      const navLinks = document.getElementById('nav-links');
-
-      // Sticky navbar effect
-      window.addEventListener('scroll', function () {
-        if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
->>>>>>> Stashed changes
-      });
-
-      // Mobile menu toggle
-      menuToggle.addEventListener('click', function () {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        this.setAttribute('aria-expanded', this.classList.contains('active'));
-      });
-
-      // Close menu when clicking a link (on mobile)
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function () {
-          if (window.innerWidth <= 768) {
-            menuToggle.classList.remove('active');
-            navLinks.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          }
-        });
-      });
-    });
-  </script>
-<<<<<<< Updated upstream
-
-<!-- Bootstrap JS Bundle CDN (with Popper) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-6FjJkSEzz3wLax+U8/vOyXkT6EmXGnFVAIZoszM3sNwSoZTxsA4zZa9Zq6T3bDbY" crossorigin="anonymous"></script>
-
-</body>
-</html>
-=======
->>>>>>> Stashed changes

@@ -1,0 +1,56 @@
+     </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const navbar = document.getElementById('navbar');
+      const menuToggle = document.getElementById('mobile-menu');
+      const navLinks = document.getElementById('nav-links');
+
+      // Sticky scroll effect
+      window.addEventListener('scroll', function () {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+      });
+
+      // Toggle mobile menu
+      menuToggle.addEventListener('click', function () {
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        this.setAttribute('aria-expanded', this.classList.contains('active'));
+      });
+
+      // Mobile link click close menu
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function () {
+          if (window.innerWidth <= 768) {
+            navLinks.classList.remove(
+              'home-active',
+              'about-active',
+              'courses-active',
+              'contact-active',
+              'login-active'
+            );
+
+            const page = this.getAttribute('data-page');
+            if (page) {
+              navLinks.classList.add(`${page}-active`);
+            }
+
+            // Close mobile menu
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-6FjJkSEzz3wLax+U8/vOyXkT6EmXGnFVAIZoszM3sNwSoZTxsA4zZa9Zq6T3bDbY"
+    crossorigin="anonymous"></script>
+
+</body>
+</html>
