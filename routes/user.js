@@ -37,8 +37,28 @@ router.get("/profile",function (req, res) {
   res.render("user/profile.ejs");
 })
 
-router.get("/class",function (req, res) {
+router.get("/class5",function (req, res) {
   res.render("user/class5.ejs");
+})
+
+router.get("/class6",function (req, res) {
+  res.render("user/class6.ejs");
+})
+
+router.get("/class7",function (req, res) {
+  res.render("user/class7.ejs");
+})
+
+router.get("/class8",function (req, res) {
+  res.render("user/class8.ejs");
+})
+
+router.get("/class9",function (req, res) {
+  res.render("user/class9.ejs");
+})
+
+router.get("/class10",function (req, res) {
+  res.render("user/class10.ejs");
 })
 
 
