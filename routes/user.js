@@ -37,6 +37,11 @@ router.get("/loginstudent",function (req, res) {
 
 });
 
+router.get("/loginadmin",function (req, res) {
+  res.render("user/loginadmin.ejs");
+
+});
+
 router.get("/profile",function (req, res) {
   res.render("user/profile.ejs");
 })

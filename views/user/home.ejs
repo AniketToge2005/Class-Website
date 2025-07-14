@@ -1,381 +1,7 @@
 <%- include("navbar") %>
-
-
- 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>/* Color palette */
-:root {
-  --accent: #4cc9f0;
-  --accent-dark: #38b6e0;
-  --secondary: #3f37c9;
-  --light-bg: #f8f9fa;
-  --dark-text: #334155;
-  --gradient: linear-gradient(135deg, #ca465e, #0b0a0ad7);
-}
-
-/* Base */
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: var(--light-bg);
-  color: var(--dark-text);
-  overflow-x: hidden;
-}
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px;
-}
-a { text-decoration: none; }
-
-/* Header */
-header {
-  background: var(--gradient);
-  color: #fff;
-  position: sticky;
-  top: 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  z-index: 10;
-}
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 0;
-}
-.logo {
-  font-family: 'Rubik', sans-serif;
-  font-size: 1.8rem;
-  color: #fff;
-}
-.logo i { color: var(--accent); }
-nav ul {
-  display: flex;
-  gap: 30px;
-  list-style: none;
-  margin: 0;
-}
-nav a {
-  color: #fff;
-  font-weight: 500;
-  padding: 8px 12px;
-  border-radius: 50px;
-  transition: background 0.3s;
-}
-nav a:hover { background: rgba(255,255,255,0.15); }
-.auth-buttons { display: flex; gap: 15px; }
-.btn {
-  padding: 12px 28px;
-  border: none;
-  border-radius: 50px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.btn-login {
-  background: transparent;
-  color: #fff;
-  border: 2px solid #fff;
-}
-.btn-login:hover { background: rgba(255,255,255,0.2); }
-.btn-signup {
-  background: var(--accent);
-  color: #212529;
-}
-.btn-signup:hover {
-  background: var(--accent-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(76,201,240,0.4);
-}
-.mobile-menu-btn {
-  display: none;
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  color: #fff;
-}
-
-/* Animations */
-@keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-50px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(76,201,240,0.7); }
-  70%  { box-shadow: 0 0 0 15px rgba(76,201,240,0); }
-  100% { box-shadow: 0 0 0 0 rgba(76,201,240,0); }
-}
-.slide-content h1 {
-  animation: fadeInLeft 1s ease-out;
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-.slide-content p {
-  animation: fadeInRight 1s ease-out;
-  font-size: 1.3rem;
-  margin-bottom: 30px;
-}
-.slide-content .btn { animation: pulse 2s infinite; }
-
-/* Sections */
-section { padding: 80px 0; }
-.features   { background: #fff; }
-.classes    { background: #f0f4ff; }
-.stats      { background: linear-gradient(135deg, #ca465e, #0b0a0ad7);; color: #fff; text-align: center; }
-.testimonials,
-.cta        { background: #fff; text-align: center; }
-.section-title {
-  text-align: center;
-  margin-bottom: 60px;
-}
-.section-title h2 {
-  font-family: 'Rubik', sans-serif;
-  font-size: 2.8rem;
-  color: var(--secondary);
-}
-.section-title p {
-  max-width: 700px;
-  margin: auto;
-  font-size: 1.2rem;
-}
-
-/* Grids */
-.features-grid,
-.classes-grid,
-.testimonial-grid,
-.stats-grid {
-  display: grid;
-  gap: 30px;
-}
-.features-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-.classes-grid  { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.testimonial-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-.stats-grid    { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-
-/* Cards */
-.feature-card,
-.class-card,
-.testimonial-card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.feature-card:hover,
-.class-card:hover,
-.testimonial-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(67,97,238,0.15);
-}
-.feature-icon,
-.author-avatar {
-  width: 80px;
-  height: 80px;
-  background: var(--accent);
-  color: #fff;
-  font-size: 2rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-/* Class Card */
-.class-header {
-  background: var(--gradient);
-  color: #fff;
-  text-align: center;
-  padding: 25px;
-  border-radius: 15px 15px 0 0;
-  margin: -30px -30px 20px;
-}
-.class-content ul {
-  list-style: none;
-  padding: 0;
-}
-.class-content li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-.class-btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 12px 28px;
-  background: var(--accent);
-  color: #212529;
-  border-radius: 10px;
-  transition: background 0.3s, transform 0.3s;
-}
-.class-btn:hover {
-  background: var(--accent-dark);
-  transform: translateY(-3px);
-}
-
-/* Stats */
-.stat-item {
-  padding: 30px;
-}
-.stat-number {
-  font-family: 'Rubik', sans-serif;
-  font-size: 3.5rem;
-  font-weight: 700;
-}
-.stat-text {
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-/* Testimonials */
-.testimonial-text {
-  font-style: italic;
-  margin-bottom: 20px;
-}
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-.author-info h4 {
-  margin: 0 0 5px;
-  font-size: 1.2rem;
-}
-.author-info p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--dark-text);
-  opacity: 0.8;
-}
-
-/* CTA */
-.cta {
-  background: var(--gradient);
-  color: #fff;
-}
-.cta h2 {
-  font-family: 'Rubik', sans-serif;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-}
-.btn-light {
-  background: #fff;
-  color: var(--secondary);
-  padding: 14px 36px;
-  position: relative;
-  top: 30px;
-  border-radius: 25px;
-  font-weight: 600;
-  transition: all 0.3s;
-}
-.btn-light:hover {
-  background: #f0f0f0;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-}
-
-/* Hero Slider */
-/* Hero Slider */
-.hero-slider {
-  position: relative;
-  height: 90vh;
-  max-height: 800px;
-  overflow: hidden;
-  margin-top: -78px;
-}
-
-/* Base slide state: slightly zoomed in & invisible */
-.slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transform: scale(1.05);
-  transition: opacity 1s ease, transform 1s ease;
-  display: flex;
-  align-items: center;
-  padding: 0 15px;
-}
-
-/* Active slide: fully visible & back to normal scale */
-.slide.active {
-  opacity: 1;
-  transform: scale(1);
-  z-index: 1;
-}
-
-/* Dark gradient overlay to ensure text legibility */
-.slide::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
-  z-index: -1;
-}
-
-
-/* Slide content will still animate from below */
-.slide-content {
-  max-width: 800px;
-  padding: 40px;
-  color: #fff;
-  transform: translateY(50px);
-  opacity: 0;
-  transition: transform 0.8s ease, opacity 0.8s ease;
-  transition-delay: 0.3s;
-}
-.slide.active .slide-content {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-/* Controls & indicators (no change needed) */
-.slider-controls,
-.slider-indicators {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 15px;
-  z-index: 10;
-}
- 
-.indicator {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.5);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.indicator.active {
-  background: var(--accent);
-  transform: scale(1.3);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  nav ul,
-  .auth-buttons { display: none; }
-  .mobile-menu-btn { display: block; }
-  .section-title h2 { font-size: 2.2rem; }
-}
-@media (max-width: 480px) {
-  .section-title h2 { font-size: 1.8rem; }
-  .section-title p  { font-size: 1rem; }
-}
-</style>
+    <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body>
@@ -430,10 +56,8 @@ section { padding: 80px 0; }
             
             <!-- Slider Controls -->
             <div class="slider-controls">
-                <button class="slider-btn prev-btn">
-                </button>
-                <button class="slider-btn next-btn">
-                </button>
+                <button class="slider-btn prev-btn" aria-label="Previous Slide"></button>
+                <button class="slider-btn next-btn" aria-label="Next Slide"></button>
             </div>
             
             <!-- Slider Indicators -->
@@ -444,6 +68,7 @@ section { padding: 80px 0; }
                 <div class="indicator" data-slide="3"></div>
             </div>
         </section>
+
     
      
     
@@ -494,7 +119,7 @@ section { padding: 80px 0; }
             
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" style="margin-left:auto; margin-right:auto; display:flex; align-items:center; justify-content:center; width:80px; height:80px; font-size:2.5rem;">
                         <i class="fas fa-book-open"></i>
                     </div>
                     <h3>Class Materials</h3>
@@ -502,7 +127,7 @@ section { padding: 80px 0; }
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" style="margin-left:auto; margin-right:auto; display:flex; align-items:center; justify-content:center; width:80px; height:80px; font-size:2.5rem;">
                         <i class="fas fa-tasks"></i>
                     </div>
                     <h3>Assignments</h3>
@@ -510,7 +135,7 @@ section { padding: 80px 0; }
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" style="margin-left:auto; margin-right:auto; display:flex; align-items:center; justify-content:center; width:80px; height:80px; font-size:2.5rem;">
                         <i class="fas fa-user-check"></i>
                     </div>
                     <h3>Attendance</h3>
@@ -518,7 +143,7 @@ section { padding: 80px 0; }
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" style="margin-left:auto; margin-right:auto; display:flex; align-items:center; justify-content:center; width:80px; height:80px; font-size:2.5rem;">
                         <i class="fas fa-comments"></i>
                     </div>
                     <h3>Discussion Forum</h3>
@@ -526,7 +151,7 @@ section { padding: 80px 0; }
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" style="margin-left:auto; margin-right:auto; display:flex; align-items:center; justify-content:center; width:80px; height:80px; font-size:2.5rem;">
                         <i class="fas fa-calendar-alt"></i>
                     </div>
                     <h3>Class Schedule</h3>
@@ -534,7 +159,7 @@ section { padding: 80px 0; }
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" style="margin-left:auto; margin-right:auto; display:flex; align-items:center; justify-content:center; width:80px; height:80px; font-size:2.5rem;">
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <h3>Progress Tracking</h3>
@@ -543,6 +168,88 @@ section { padding: 80px 0; }
             </div>
         </div>
     </section>
+
+      <!-- Stats Section -->
+      <section class="stats" id="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="10000">0</div>
+                    <div class="stat-text">Active Students</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-text">Expert Teachers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="95" data-suffix="%">0%</div>
+                    <div class="stat-text">Satisfaction Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="24" data-suffix="/7">0/7</div>
+                    <div class="stat-text">Support Available</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+    // Animated number counter for stats when stats section enters viewport
+    function animateNumber(el, target, suffix = '', duration = 1500) {
+        let start = 0;
+        let startTime = null;
+        target = +target;
+        function formatNumber(n) {
+            if (target >= 1000) {
+                return n.toLocaleString();
+            }
+            return n;
+        }
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            let value = Math.floor(progress * (target - start) + start);
+            if (progress === 1) value = target;
+            el.textContent = formatNumber(value) + suffix;
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                el.textContent = formatNumber(target) + suffix;
+            }
+        }
+        requestAnimationFrame(step);
+    }
+
+    // Only animate when stats section is scrolled into view
+    document.addEventListener("DOMContentLoaded", function() {
+        let statsAnimated = false;
+        function runStatsAnimation() {
+            if (statsAnimated) return;
+            statsAnimated = true;
+            document.querySelectorAll('.stat-number').forEach(function(el) {
+                const target = el.getAttribute('data-target');
+                const suffix = el.getAttribute('data-suffix') || (target >= 1000 ? '+' : '');
+                animateNumber(el, target, suffix);
+            });
+        }
+
+        // Intersection Observer for stats section
+        const statsSection = document.getElementById('stats-section');
+        if ('IntersectionObserver' in window && statsSection) {
+            const observer = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        runStatsAnimation();
+                        observer.unobserve(statsSection);
+                    }
+                });
+            }, { threshold: 0.3 });
+            observer.observe(statsSection);
+        } else {
+            // Fallback: animate on DOMContentLoaded
+            runStatsAnimation();
+        }
+    });
+    </script>
 
     <!-- Classes Section -->
     <section class="classes">
@@ -623,74 +330,10 @@ section { padding: 80px 0; }
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">10,000+</div>
-                    <div class="stat-text">Active Students</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">500+</div>
-                    <div class="stat-text">Expert Teachers</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">95%</div>
-                    <div class="stat-text">Satisfaction Rate</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-text">Support Available</div>
-                </div>
-            </div>
-        </div>
-    </section>
+  
 
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>What Students & Teachers Say</h2>
-                <p>Hear from our community about their experiences</p>
-            </div>
-            
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">This platform has made teaching so much easier. I can easily share materials, track assignments, and communicate with my students all in one place.</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">RS</div>
-                        <div class="author-info">
-                            <h4>Rahul Sharma</h4>
-                            <p>Science Teacher, Class 9</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">I love how organized everything is! I never miss an assignment now, and I can access all my study materials even when I'm not at school.</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">PM</div>
-                        <div class="author-info">
-                            <h4>Priya Mehta</h4>
-                            <p>Class 8 Student</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-text">As a parent, I appreciate how transparent the system is. I can see my child's progress, attendance, and assignments all in one dashboard.</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AK</div>
-                        <div class="author-info">
-                            <h4>Anil Kumar</h4>
-                            <p>Parent of Class 6 Student</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
+ 
 
     <!-- CTA Section -->
     <section class="cta">
@@ -698,10 +341,18 @@ section { padding: 80px 0; }
             <div class="cta-content">
                 <h2>Ready to Transform Your Learning Experience?</h2>
                 <p>Join thousands of students and teachers who are already using EduSync to make education more engaging and effective.</p>
-                <a href="#" class="btn-light">Get Started Now</a>
+                <div class="cta-buttons">
+                    <a href="tel:918010431965" class="btn-light cta-btn" id="call-btn">
+                        <i class="fas fa-phone-alt" style="margin-right: 6px;"></i>Enquiry Now
+                    </a>
+                    <a href="https://wa.me/918010431965" class="btn-light cta-btn" target="_blank" id="join-whatsapp-btn">
+                        <i class="fab fa-whatsapp" style="margin-right: 6px;"></i>WhatsApp
+                    </a>
+                </div>
             </div>
         </div>
     </section>
+    
 
     
     <script>
@@ -713,44 +364,7 @@ section { padding: 80px 0; }
             navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
         });
         
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const featureCards = document.querySelectorAll('.feature-card');
-            const classCards = document.querySelectorAll('.class-card');
-            const testimonials = document.querySelectorAll('.testimonial-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            featureCards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
-            });
-            
-            classCards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s';
-                observer.observe(card);
-            });
-            
-            testimonials.forEach(testimonial => {
-                testimonial.style.opacity = 0;
-                testimonial.style.transform = 'translateY(30px)';
-                testimonial.style.transition = 'opacity 0.5s ease 0.4s, transform 0.5s ease 0.4s';
-                observer.observe(testimonial);
-            });
-        });
+         
     </script>
 </body>
 </html>
