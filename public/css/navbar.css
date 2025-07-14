@@ -7,6 +7,8 @@
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
+
 /* Reset */
 * {
   margin: 0;
@@ -40,6 +42,8 @@
   align-items: center;
   gap: 8px;
   text-decoration: none;
+  margin-left: -62px;
+   
 }
 
 .logo-img {
@@ -47,6 +51,7 @@
   width: 100px;
   border-radius: 50%;
   object-fit: cover;
+    margin-right:-20px;
 
 }
 
@@ -61,6 +66,7 @@
 
 /* Navigation */
 .nav-links {
+  
   display: flex;
   list-style: none;
   gap: 1.5rem;
@@ -109,14 +115,16 @@
 .menu-toggle.active .bar1 {
   transform: rotate(-45deg) translate(-5px, 6px);
 }
+
 .menu-toggle.active .bar2 {
   opacity: 0;
 }
+
 .menu-toggle.active .bar3 {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* Mobile */
+/* Mobile Specific */
 @media (max-width: 768px) {
   .menu-toggle {
     display: flex;
@@ -125,7 +133,7 @@
   .nav-links {
     margin-top: 170px;
     position: fixed;
-    top:-100px;
+    top: -100px;
     left: -100%;
     width: 50%;
     height: 320px;
@@ -141,6 +149,12 @@
   .nav-links.active {
     left: 0;
   }
+
+  .nav-links.home-active { width: 100%; }
+  .nav-links.about-active { width: 60%; }
+  .nav-links.courses-active { width: 80%; }
+  .nav-links.contact-active { width: 50%; }
+  .nav-links.login-active { width: 70%; }
 
   .nav-link {
     font-size: 1.3rem;
