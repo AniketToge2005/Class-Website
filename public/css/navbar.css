@@ -28,7 +28,7 @@
 }
 
 .nav-container {
-  max-width: 1200px;
+  max-width: 100%;
   height: var(--nav-height);
   margin: 0 auto;
   padding: 0 2rem;
