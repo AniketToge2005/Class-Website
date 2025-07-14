@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,13 +12,19 @@
 </head>
 <body>
 
+=======
+>>>>>>> Stashed changes
   <!-- Responsive Sticky Navbar -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <!-- Logo -->
       <div class="logo">
         <a href="/" aria-label="Home">
+<<<<<<< Updated upstream
           <img src="/Aniket2.png" alt="Logo" class="logo-img" style="height: 100%;">
+=======
+          <img src="/Aniket2.png" alt="Logo" class="logo-img">
+>>>>>>> Stashed changes
           <span class="gradient-text">Classes</span>
         </a>
       </div>
@@ -31,6 +38,7 @@
 
       <!-- Navigation Links -->
       <ul class="nav-links" id="nav-links">
+<<<<<<< Updated upstream
         <li><a href="/" class="nav-link" data-page="home">Home</a></li>
         <li><a href="/about" class="nav-link" data-page="about">About</a></li>
         <li><a href="/courses" class="nav-link" data-page="courses">Class & Courses</a></li>
@@ -50,6 +58,22 @@
       window.addEventListener('scroll', function () {
         navbar.classList.toggle('scrolled', window.scrollY > 50);
       });
+=======
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/about" class="nav-link">About</a></li>
+        <li><a href="/courses" class="nav-link">Class & Courses</a></li>
+        <li><a href="/contact" class="nav-link">Contact</a></li>
+        <li class="dropdown">
+          <a href="#" class="nav-link">Login</a>
+          <ul class="dropdown-menu" id="nav-links">
+            <li><a href="/loginstudent" class="dropdown-item">Student</a></li>
+            <li><a href="/loginAdmin" class="dropdown-item">Admin</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+>>>>>>> Stashed changes
 
       // Toggle menu open/close
       menuToggle.addEventListener('click', function () {
@@ -58,6 +82,7 @@
         this.setAttribute('aria-expanded', this.classList.contains('active'));
       });
 
+<<<<<<< Updated upstream
       // Set specific size based on link clicked
       document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function () {
@@ -81,12 +106,52 @@
             menuToggle.setAttribute('aria-expanded', 'false');
           }
         });
+=======
+  <!-- Link your CSS -->
+  <link rel="stylesheet" href="/css/navbar.css">
+
+  <!-- Navbar Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const navbar = document.getElementById('navbar');
+      const menuToggle = document.getElementById('mobile-menu');
+      const navLinks = document.getElementById('nav-links');
+
+      // Sticky navbar effect
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+>>>>>>> Stashed changes
+      });
+
+      // Mobile menu toggle
+      menuToggle.addEventListener('click', function () {
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        this.setAttribute('aria-expanded', this.classList.contains('active'));
+      });
+
+      // Close menu when clicking a link (on mobile)
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function () {
+          if (window.innerWidth <= 768) {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
       });
     });
   </script>
+<<<<<<< Updated upstream
 
 <!-- Bootstrap JS Bundle CDN (with Popper) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-6FjJkSEzz3wLax+U8/vOyXkT6EmXGnFVAIZoszM3sNwSoZTxsA4zZa9Zq6T3bDbY" crossorigin="anonymous"></script>
 
 </body>
 </html>
+=======
+>>>>>>> Stashed changes
