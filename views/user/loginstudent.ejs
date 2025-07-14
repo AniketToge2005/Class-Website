@@ -1,7 +1,21 @@
 <%- include("navbar") %>
 
+<!-- Google Fonts + Font Awesome -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
 <style>
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -25,6 +39,21 @@
     min-height: 100vh;
   }
 
+  .page-banner {
+    background: linear-gradient(to right, #C8102E, #2B2B2B);
+    padding: 40px 0;
+    text-align: center;
+  }
+
+  .page-banner h1 {
+    color: white;
+    font-size: 36px;
+    font-weight: 800;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
   .login-container {
     display: flex;
     border-radius: var(--radius);
@@ -36,40 +65,88 @@
     background: white;
     margin-top: 40px;
     margin-bottom: 40px;
+    animation: fadeInUp 1s ease-out;
   }
 
   .info-panel {
     flex: 1;
     padding: 40px;
-    background: white;
+    background: #f5f5f5;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .info-panel h2 {
-    font-size: 26px;
-    color: var(--primary);
-    margin-bottom: 15px;
+    font-size: 28px;
+    color: #C8102E;
+    margin-bottom: 20px;
+    font-weight: 600;
   }
 
-  .info-panel p,
-  .info-panel ul li {
-    font-size: 15px;
+  .info-panel p {
+    font-size: 16px;
     line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .info-panel ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .info-panel ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 16px;
     margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .info-panel ul li::before {
+    content: "✔";
+    color: #C8102E;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1.2;
   }
 
   .contact-info {
     margin-top: 30px;
     font-size: 14px;
-    color: #444;
+    color: #333;
   }
 
   .contact-info a {
-    color: var(--primary);
+    color: #C8102E;
+    font-weight: bold;
     text-decoration: none;
-    font-weight: 500;
   }
 
   .contact-info a:hover {
+    text-decoration: underline;
+  }
+
+  .contact-icons {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .contact-icons a {
+    font-size: 15px;
+    color: #C8102E;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .contact-icons a:hover {
     text-decoration: underline;
   }
 
@@ -78,6 +155,9 @@
     padding: 40px;
     background: linear-gradient(135deg, var(--primary), var(--dark));
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .login-box h2 {
@@ -141,34 +221,52 @@
 
   @media (max-width: 768px) {
     .login-container {
-      flex-direction: column;
+      flex-direction: column-reverse;
     }
 
     .info-panel,
     .login-box {
       padding: 25px;
     }
+
+    .page-banner h1 {
+      font-size: 28px;
+    }
   }
 </style>
 
+<!-- ===== Banner Heading ===== -->
+<div class="page-banner">
+  <h1>Student Login</h1>
+</div>
+
+<!-- ===== Login Section ===== -->
 <div class="login-container">
-  <!-- Info Panel -->
+  <!-- Left Info Panel -->
   <div class="info-panel">
-    <h2>Welcome to TI Classes</h2>
-    <p>Login to access your personal dashboard, progress reports, and more.</p>
+    <h2>Welcome to <span style="color: #C8102E;">TI Classes</span></h2>
+    <p>We provide expert academic coaching from <strong>5th to 12th Standard</strong>.</p>
     <ul>
-      <li>✔ Trusted by 500+ students</li>
-      <li>✔ Assignments & Results Tracking</li>
-      <li>✔ Instant Support via WhatsApp</li>
+      <li>Experienced Subject Teachers</li>
+      <li>Assignments & Performance Tracking</li>
+      <li>Instant Support via WhatsApp</li>
+      <li>Trusted by 500+ Students</li>
     </ul>
     <div class="contact-info">
       <p><strong>Developed by A2Z IT Hub | © 2025</strong></p>
-      <p>If any query or suggestion, please WhatsApp:</p>
-      <p><a href="https://wa.me/917666168187" target="_blank">7666168187</a></p>
+      <p>Have questions? Reach us:</p>
+      <div class="contact-icons">
+        <a href="https://wa.me/917666168187" target="_blank">
+          <i class="fab fa-whatsapp"></i> 7666168187
+        </a>
+        <a href="tel:7666168187">
+          <i class="fas fa-phone-alt"></i> 7666168187
+        </a>
+      </div>
     </div>
   </div>
 
-  <!-- Login Form -->
+  <!-- Right Login Box -->
   <div class="login-box">
     <h2>Login</h2>
     <form>
@@ -182,7 +280,6 @@
       </div>
       <button type="submit" class="btn">Login</button>
     </form>
-
     <div class="register-link">
       Don't have an account? <a href="/registerStudent">Register Here</a>
     </div>
