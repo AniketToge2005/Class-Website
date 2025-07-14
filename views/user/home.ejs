@@ -1,693 +1,487 @@
 <%- include("navbar") %>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduSync - Class Management Platform</title>
+ 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4cc9f0;
-            --success: #4ade80;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --text: #334155;
-            --bg-gradient: linear-gradient(135deg, #ca465e, #0b0a0ad7);
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--light);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            background: var(--bg-gradient);
-            color: white;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.8rem;
-            font-weight: 700;
-            font-family: 'Rubik', sans-serif;
-        }
-
-        .logo i {
-            color: var(--accent);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            padding: 8px 12px;
-            border-radius: 50px;
-        }
-
-        nav a:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .auth-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-login {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-login:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-signup {
-            background: var(--accent);
-            color: var(--dark);
-        }
-
-        .btn-signup:hover {
-            background: #38b6e0;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(76, 201, 240, 0.4);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: var(--bg-gradient);
-            color: white;
-            padding: 80px 0 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,100 100,0 100,100" fill="rgba(255,255,255,0.05)"/></svg>');
-            background-size: cover;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-text {
-            flex: 1;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            font-family: 'Rubik', sans-serif;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-            opacity: 0.9;
-        }
-
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--dark);
-            font-size: 1.1rem;
-            padding: 14px 36px;
-            box-shadow: 0 6px 15px rgba(76, 201, 240, 0.4);
-        }
-
-        .btn-primary:hover {
-            background: #38b6e0;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(76, 201, 240, 0.6);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 100px 0;
-            background: white;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.8rem;
-            color: var(--secondary);
-            margin-bottom: 15px;
-            font-family: 'Rubik', sans-serif;
-        }
-
-        .section-title p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            color: var(--text);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 20px;
-            padding: 35px 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(67, 97, 238, 0.1);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(67, 97, 238, 0.15);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-background: linear-gradient(135deg, #ca465e, #0b0a0ad7);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            color: white;
-            font-size: 2rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-
-        .feature-card p {
-            color: var(--text);
-        }
-
-        /* Classes Section */
-        .classes {
-            padding: 80px 0;
-            background: #f0f4ff;
-        }
-
-        .classes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .class-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .class-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(67, 97, 238, 0.15);
-        }
-
-        .class-header {
-background: linear-gradient(135deg, #ca465e, #0b0a0ad7);
-            color: white;
-            padding: 25px;
-            text-align: center;
-        }
-
-        .class-header h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .class-header p {
-            opacity: 0.9;
-        }
-
-        .class-content {
-            padding: 25px;
-        }
-
-        .class-content ul {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .class-content li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .class-content li i {
-            color: var(--accent);
-        }
-
-        .class-btn {
-            display: block;
-            text-align: center;
-            background: var(--accent);
-            color: var(--dark);
-            padding: 12px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .class-btn:hover {
-            background: #38b6e0;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(76, 201, 240, 0.4);
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #4361ee, #3a0ca3);
-            color: white;
-            text-align: center;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .stat-item {
-            padding: 30px;
-        }
-
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            font-family: 'Rubik', sans-serif;
-        }
-
-        .stat-text {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 100px 0;
-            background: white;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background: white;
-            border-radius: 20px;
-            padding: 35px 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            position: relative;
-        }
-
-        .testimonial-card::before {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 5rem;
-            color: rgba(67, 97, 238, 0.1);
-            font-family: serif;
-            line-height: 1;
-        }
-
-        .testimonial-text {
-            margin-bottom: 25px;
-            font-style: italic;
-            position: relative;
-            z-index: 2;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #4361ee, #3a0ca3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .author-info h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .author-info p {
-            color: var(--text);
-            opacity: 0.8;
-        }
-
-        /* CTA Section */
-        .cta {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #4361ee, #3a0ca3);
-            color: white;
-            text-align: center;
-        }
-
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .cta h2 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        .btn-light {
-            background: white;
-            color: var(--primary);
-            font-size: 1.1rem;
-            padding: 16px 45px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-decoration: none;
-        }
-
-        .btn-light:hover {
-            background: rgba(255, 255, 255, 0.9);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 70px 0 30px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-col h3 {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-col h3::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 15px;
-        }
-
-        .footer-col ul li a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--accent);
-            transform: translateX(5px);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            background: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .hero-text {
-                margin-bottom: 50px;
-            }
-            
-            .hero-text h1 {
-                font-size: 3rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .auth-buttons {
-                display: none;
-            }
-            
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-            
-            .stat-number {
-                font-size: 3rem;
-            }
-            
-            .cta h2 {
-                font-size: 2.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding: 60px 0 40px;
-            }
-            
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-text p {
-                font-size: 1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .section-title p {
-                font-size: 1rem;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
-            .cta h2 {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+    <style>/* Color palette */
+:root {
+  --accent: #4cc9f0;
+  --accent-dark: #38b6e0;
+  --secondary: #3f37c9;
+  --light-bg: #f8f9fa;
+  --dark-text: #334155;
+  --gradient: linear-gradient(135deg, #ca465e, #0b0a0ad7);
+}
+
+/* Base */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--light-bg);
+  color: var(--dark-text);
+  overflow-x: hidden;
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+a { text-decoration: none; }
+
+/* Header */
+header {
+  background: var(--gradient);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+.logo {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.8rem;
+  color: #fff;
+}
+.logo i { color: var(--accent); }
+nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+}
+nav a {
+  color: #fff;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 50px;
+  transition: background 0.3s;
+}
+nav a:hover { background: rgba(255,255,255,0.15); }
+.auth-buttons { display: flex; gap: 15px; }
+.btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-login {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+.btn-login:hover { background: rgba(255,255,255,0.2); }
+.btn-signup {
+  background: var(--accent);
+  color: #212529;
+}
+.btn-signup:hover {
+  background: var(--accent-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(76,201,240,0.4);
+}
+.mobile-menu-btn {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(76,201,240,0.7); }
+  70%  { box-shadow: 0 0 0 15px rgba(76,201,240,0); }
+  100% { box-shadow: 0 0 0 0 rgba(76,201,240,0); }
+}
+.slide-content h1 {
+  animation: fadeInLeft 1s ease-out;
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+.slide-content p {
+  animation: fadeInRight 1s ease-out;
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+}
+.slide-content .btn { animation: pulse 2s infinite; }
+
+/* Sections */
+section { padding: 80px 0; }
+.features   { background: #fff; }
+.classes    { background: #f0f4ff; }
+.stats      { background: linear-gradient(135deg, #ca465e, #0b0a0ad7);; color: #fff; text-align: center; }
+.testimonials,
+.cta        { background: #fff; text-align: center; }
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-title h2 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 2.8rem;
+  color: var(--secondary);
+}
+.section-title p {
+  max-width: 700px;
+  margin: auto;
+  font-size: 1.2rem;
+}
+
+/* Grids */
+.features-grid,
+.classes-grid,
+.testimonial-grid,
+.stats-grid {
+  display: grid;
+  gap: 30px;
+}
+.features-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.classes-grid  { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.testimonial-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.stats-grid    { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
+/* Cards */
+.feature-card,
+.class-card,
+.testimonial-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.feature-card:hover,
+.class-card:hover,
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(67,97,238,0.15);
+}
+.feature-icon,
+.author-avatar {
+  width: 80px;
+  height: 80px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Class Card */
+.class-header {
+  background: var(--gradient);
+  color: #fff;
+  text-align: center;
+  padding: 25px;
+  border-radius: 15px 15px 0 0;
+  margin: -30px -30px 20px;
+}
+.class-content ul {
+  list-style: none;
+  padding: 0;
+}
+.class-content li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.class-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 28px;
+  background: var(--accent);
+  color: #212529;
+  border-radius: 10px;
+  transition: background 0.3s, transform 0.3s;
+}
+.class-btn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-3px);
+}
+
+/* Stats */
+.stat-item {
+  padding: 30px;
+}
+.stat-number {
+  font-family: 'Rubik', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+.stat-text {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Testimonials */
+.testimonial-text {
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.author-info h4 {
+  margin: 0 0 5px;
+  font-size: 1.2rem;
+}
+.author-info p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--dark-text);
+  opacity: 0.8;
+}
+
+/* CTA */
+.cta {
+  background: var(--gradient);
+  color: #fff;
+}
+.cta h2 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+.btn-light {
+  background: #fff;
+  color: var(--secondary);
+  padding: 14px 36px;
+  position: relative;
+  top: 30px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.btn-light:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+/* Hero Slider */
+/* Hero Slider */
+.hero-slider {
+  position: relative;
+  height: 90vh;
+  max-height: 800px;
+  overflow: hidden;
+  margin-top: -78px;
+}
+
+/* Base slide state: slightly zoomed in & invisible */
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 1s ease, transform 1s ease;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+
+/* Active slide: fully visible & back to normal scale */
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+/* Dark gradient overlay to ensure text legibility */
+.slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+  z-index: -1;
+}
+
+
+/* Slide content will still animate from below */
+.slide-content {
+  max-width: 800px;
+  padding: 40px;
+  color: #fff;
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  transition-delay: 0.3s;
+}
+.slide.active .slide-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Controls & indicators (no change needed) */
+.slider-controls,
+.slider-indicators {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 10;
+}
+ 
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.indicator.active {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul,
+  .auth-buttons { display: none; }
+  .mobile-menu-btn { display: block; }
+  .section-title h2 { font-size: 2.2rem; }
+}
+@media (max-width: 480px) {
+  .section-title h2 { font-size: 1.8rem; }
+  .section-title p  { font-size: 1rem; }
+}
+</style>
 </head>
+
 <body>
-    <!-- Header -->
    
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Empowering Students from Class 5 to 10</h1>
-                    <p>An all-in-one platform for class management, assignments, study materials, and more. Designed specifically for middle and high school students.</p>
-                    <a href="#" class="btn btn-primary">Get Started Today</a>
-                </div>
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Students Learning">
+     <section class="hero">
+        
+       <!-- Hero Section -->
+        <section class="hero-slider">
+            <!-- Slide 1 -->
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                <div class="container">
+                    <div class="slide-content">
+                        <h1>Empowering Students from Class 5 to 10</h1>
+                        <p>An all-in-one platform for class management, assignments, study materials, and more. Designed specifically for middle and high school students.</p>
+                        <button class="btn btn-primary-custom">Get Started Today</button>
+                    </div>
                 </div>
             </div>
-        </div>
+            
+            <!-- Slide 2 -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                <div class="container">
+                    <div class="slide-content">
+                        <h1>Interactive Learning Experience</h1>
+                        <p>Engage with interactive lessons, virtual labs, and collaborative projects that make learning fun and effective.</p>
+                        <button class="btn btn-primary-custom">Explore Features</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                <div class="container">
+                    <div class="slide-content">
+                        <h1>Track Progress & Achievements</h1>
+                        <p>Monitor academic growth with detailed analytics and personalized feedback to help students excel.</p>
+                        <button class="btn btn-primary-custom">View Demo</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4 -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+                <div class="container">
+                    <div class="slide-content">
+                        <h1>Join Our Educational Community</h1>
+                        <p>Connect with teachers, collaborate with classmates, and be part of a vibrant learning community.</p>
+                        <button class="btn btn-primary-custom">Join Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slider Controls -->
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn">
+                </button>
+                <button class="slider-btn next-btn">
+                </button>
+            </div>
+            
+            <!-- Slider Indicators -->
+            <div class="slider-indicators">
+                <div class="indicator active" data-slide="0"></div>
+                <div class="indicator" data-slide="1"></div>
+                <div class="indicator" data-slide="2"></div>
+                <div class="indicator" data-slide="3"></div>
+            </div>
+        </section>
+    
+     
+    
+        <script>
+         document.addEventListener('DOMContentLoaded', () => {
+  const slides = [...document.querySelectorAll('.slide')];
+  const indicators = [...document.querySelectorAll('.indicator')];
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  let current = 0, interval;
+
+  function showSlide(i) {
+    slides.forEach(s => s.classList.remove('active'));
+    indicators.forEach(ind => ind.classList.remove('active'));
+    slides[i].classList.add('active');
+    indicators[i].classList.add('active');
+    current = i;
+  }
+
+  function next() { showSlide((current+1) % slides.length); }
+  function prev() { showSlide((current-1 + slides.length) % slides.length); }
+
+  nextBtn.addEventListener('click', () => { clearInterval(interval); next(); start(); });
+  prevBtn.addEventListener('click', () => { clearInterval(interval); prev(); start(); });
+  indicators.forEach((dot, idx) => {
+    dot.addEventListener('click', () => { clearInterval(interval); showSlide(idx); start(); });
+  });
+
+  const slider = document.querySelector('.hero-slider');
+  slider.addEventListener('mouseenter', () => clearInterval(interval));
+  slider.addEventListener('mouseleave', start);
+
+  function start() { interval = setInterval(next, 5000); }
+
+  start(); // initialize
+});
+
+        </script>
     </section>
 
     <!-- Features Section -->
@@ -809,6 +603,22 @@ background: linear-gradient(135deg, #ca465e, #0b0a0ad7);
                         <a href="#" class="class-btn">Explore Class</a>
                     </div>
                 </div>
+                <div class="class-card">
+                    <div class="class-header">
+                        <h3>Class 11-12</h3>
+                        <p>Preparing for Excellence</p>
+                    </div>
+                    <div class="class-content">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Board Exam Preparation</li>
+                            <li><i class="fas fa-check-circle"></i> Advanced Science Labs</li>
+                            <li><i class="fas fa-check-circle"></i> Mathematics Mastery</li>
+                            <li><i class="fas fa-check-circle"></i> Comprehensive Language</li>
+                            <li><i class="fas fa-check-circle"></i> Career Guidance</li>
+                        </ul>
+                        <a href="#" class="class-btn">Explore Class</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -893,64 +703,7 @@ background: linear-gradient(135deg, #ca465e, #0b0a0ad7);
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="logo">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>EduSync</span>
-                    </div>
-                    <p>Empowering students and teachers with the best class management platform for grades 5-10.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Classes</a></li>
-                        <li><a href="#">Assignments</a></li>
-                        <li><a href="#">Study Materials</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">Math Resources</a></li>
-                        <li><a href="#">Science Projects</a></li>
-                        <li><a href="#">English Guides</a></li>
-                        <li><a href="#">History Notes</a></li>
-                        <li><a href="#">Exam Preparation</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Education Street, Learning City</li>
-                        <li><i class="fas fa-phone"></i> +1 (234) 567-8900</li>
-                        <li><i class="fas fa-envelope"></i> info@edusync.com</li>
-                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 5PM</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 EduSync. All rights reserved. Designed for Class 5 to 10 Students</p>
-            </div>
-        </div>
-    </footer>
-
+    
     <script>
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
