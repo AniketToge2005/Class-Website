@@ -2,12 +2,133 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/home.css">
-</head>
 
-<body>
-   
+<style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    
+
+    /* Popup Overlay */
+    .login-popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .login-popup.hidden {
+      display: none;
+    }
+
+    /* Transparent Form */
+    .login-form {
+      width: 100%;
+      max-width: 400px;
+      padding: 40px 30px;
+      border-radius: 15px;
+
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      position: relative;
+    }
+
+    .login-form h3 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    .login-form input::placeholder {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .login-form button {
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      color: white;
+      padding: 12px;
+      border: none;
+      width: 100%;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .login-form p {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .login-form a {
+      color: #00ffcc;
+      text-decoration: none;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      color: white;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      text-align: center;
+      line-height: 32px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 480px) {
+      .login-form {
+        width: 90%;
+        padding: 30px 20px;
+      }
+    }
+  </style>
+  <!-- Your page content -->
+       
+
+        <!-- Login Popup -->
+        <div id="loginPopup" class="login-popup">
+        <form class="login-form">
+            <span class="close-btn" id="closePopup">×</span>
+            <h3><i class="fas fa-user-graduate"></i> Student Login</h3>
+            <input type="text" placeholder="Enter your email or username" required />
+            <input type="password" placeholder="Enter your password" required />
+            <button type="submit">Student Login</button>
+            <p><a href="#">Forgot Password?</a></p>
+            <p>Don't have an account? <a href="#">Register Here</a></p>
+        </form>
+        </div>
+
      <section class="hero">
-        
        <!-- Hero Section -->
         <section class="hero-slider">
             <!-- Slide 1 -->
@@ -351,6 +472,14 @@
         
          
     </script>
-</body>
-</html>
+<script>
+  window.onload = function () {
+    document.getElementById("loginPopup").classList.remove("hidden");
+
+    // Close button event
+    document.getElementById("closePopup").onclick = function () {
+      document.getElementById("loginPopup").classList.add("hidden");
+    };
+  };
+</script>
 <%- include("footer") %>
