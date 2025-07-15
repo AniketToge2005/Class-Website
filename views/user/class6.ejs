@@ -140,6 +140,45 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ------------------------------------------------- */
+    .class-card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px auto;
+      max-width: 1000px;
+      padding: 0 10px;
+    }
+
+    .class-card {
+      background: #e6f0ff;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      color: #003366;
+      font-size: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+      min-width: 100px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .class-card:hover {
+      background-color: #004080;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .class-card {
+        flex: 1 0 40%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -156,7 +195,7 @@
   <section class="main-section">
     
     <!-- Class Card -->
-    <div class="class-card">
+    <!-- <div class="class-card">
       <h2>Class 6<sup>th</sup></h2>
       <p>Age Group: 11-12 Years</p>
       <p>Session: 2025-2026</p>
@@ -186,17 +225,33 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Course Details -->
+      <h2 style="text-align:center; margin-top: 40px; color:#004080;">🎓 Explore More Classes</h2>
+
+  <div class="class-card-container">
+    <a href="/class5" class="class-card">Class 5th</a>
+    <a href="/class6" class="class-card">Class 6th</a>
+    <a href="/class7" class="class-card">Class 7th</a>
+    <a href="/class8" class="class-card">Class 8th</a>
+    <a href="/class9" class="class-card">Class 9th</a>
+    <a href="/class10" class="class-card">Class 10th</a>
+    <a href="/class11" class="class-card">Class 11th</a>
+    <a href="/class12" class="class-card">Class 12th</a>
+  </div>
+
+
+    <!-- ------------------------- -->
     <div class="course-details">
       <h3>Subjects Covered:</h3>
       <ul>
         <li><strong>Mathematics:</strong> Algebra basics, Geometry, Integers, Data Handling</li>
         <li><strong>Science:</strong> Food components, Materials, Living organisms, Motion</li>
         <li><strong>English:</strong> Advanced Grammar, Creative Writing, Literature</li>
-        <li><strong>Social Studies:</strong> Ancient civilizations, Maps, Government systems</li>
-        <li><strong>Computer:</strong> MS Office applications, Basic programming concepts</li>
+        <li><strong>History:</strong> Ancient India, Continents, Government Basics</li>
+        <li><strong>Marathi:</strong> Basic Study</li>
+        <li><strong>Hindi:</strong> Basic Study</li>
       </ul>
 
       <h3>Key Highlights:</h3>
@@ -251,7 +306,7 @@
       <div class="course-card">
         <img src="https://rukminim2.flixcart.com/image/300/300/ko62xzk0/book/3/9/k/kids-world-standard-mathematics-class-6-original-imag2zsvjzxt7dfp.jpeg" class="course-img rotate-book" alt="Math">
         <h3 style="margin-top: 10px;">🧮 Mathematics</h3>
-        <p>₹550/month</p>
+        <p></p>
       </div>
     </a>
 
@@ -259,7 +314,7 @@
       <div class="course-card">
         <img src="https://online.anyflip.com/zafs/uyke/files/mobile/1.jpg" class="course-img rotate-book" alt="Science">
         <h3 style="margin-top: 10px;">🔬 Science</h3>
-        <p>₹600/month</p>
+        <p></p>
       </div>
     </a>
 
@@ -267,23 +322,31 @@
       <div class="course-card">
         <img src="https://m.media-amazon.com/images/I/71ygS1t7uHL._UF1000,1000_QL80_.jpg" class="course-img rotate-book" alt="English">
         <h3 style="margin-top: 10px;">📘 English</h3>
-        <p>₹500/month</p>
+        <p></p>
       </div>
     </a>
 
     <a href="/courses/social" style="text-decoration: none; color: inherit;">
       <div class="course-card">
         <img src="https://m.media-amazon.com/images/I/811WJ5zveeL._UF1000,1000_QL80_.jpg" class="course-img rotate-book" alt="Social">
-        <h3 style="margin-top: 10px;">🌍 Social Studies</h3>
-        <p>₹450/month</p>
+        <h3 style="margin-top: 10px;">🌍 History</h3>
+        <p></p>
       </div>
     </a>
 
     <a href="/courses/computer" style="text-decoration: none; color: inherit;">
       <div class="course-card">
         <img src="https://mtgpublicwp.mtg.in/wp-content/uploads/2021/05/2023_learning_comp_cl6_9789355551047.jpg" class="course-img rotate-book" alt="Computer">
-        <h3 style="margin-top: 10px;">💻 Computer</h3>
-        <p>₹400/month</p>
+        <h3 style="margin-top: 10px;">Marathi</h3>
+        <p></p>
+      </div>
+    </a>
+
+    <a href="/courses/computer" style="text-decoration: none; color: inherit;">
+      <div class="course-card">
+        <img src="https://online.anyflip.com/acvi/ldxc/files/mobile/1.jpg" class="course-img rotate-book" alt="Computer">
+        <h3 style="margin-top: 10px;">💻 Hindi</h3>
+        <p></p>
       </div>
     </a>
 
@@ -389,6 +452,7 @@
           <li><strong>Time:</strong> 5:00 – 6:00 PM</li>
           <li><strong>Platform:</strong> Zoom</li>
           <li><strong>Includes:</strong> Interactive whiteboard, Recordings</li>
+           <li><strong>📘 Study Material:</strong> <a href="https://svpv.in/wp/pdf/primary/books/std5-bb-evs2.pdf" target="_blank">Open PDF</a></li>
         </ul>
       </div>
     </div>
@@ -416,6 +480,7 @@
           <li><strong>Time:</strong> 6:00 – 7:00 PM</li>
           <li><strong>Platform:</strong> Google Meet</li>
           <li><strong>Includes:</strong> Virtual lab demonstrations</li>
+           <li><strong>📘 Study Material:</strong> <a href="https://svpv.in/wp/pdf/primary/books/std5-bb-evs2.pdf" target="_blank">Open PDF</a></li>
         </ul>
       </div>
     </div>
@@ -443,6 +508,7 @@
           <li><strong>Time:</strong> 7:00 – 8:00 PM</li>
           <li><strong>Platform:</strong> Google Meet</li>
           <li><strong>Includes:</strong> Digital reading materials</li>
+           <li><strong>📘 Study Material:</strong> <a href="https://svpv.in/wp/pdf/primary/books/std5-bb-evs2.pdf" target="_blank">Open PDF</a></li>
         </ul>
       </div>
     </div>
@@ -450,7 +516,7 @@
 
   <!-- Social Studies -->
   <div class="subject-block">
-    <h3 class="subject-heading">🌍 Social Studies</h3>
+    <h3 class="subject-heading">🌍 History</h3>
     <div class="schedule-grid">
       <div class="schedule-card">
         <img src="https://m.media-amazon.com/images/I/811WJ5zveeL._UF1000,1000_QL80_.jpg" alt="Social Book">
@@ -469,6 +535,7 @@
           <li><strong>Time:</strong> 4:00 – 5:00 PM</li>
           <li><strong>Platform:</strong> Zoom</li>
           <li><strong>Includes:</strong> Digital timelines, Interactive quizzes</li>
+           <li><strong>📘 Study Material:</strong> <a href="https://svpv.in/wp/pdf/primary/books/std5-bb-evs2.pdf" target="_blank">Open PDF</a></li>
         </ul>
       </div>
     </div>
@@ -476,10 +543,10 @@
 
   <!-- Computer -->
   <div class="subject-block">
-    <h3 class="subject-heading">💻 Computer</h3>
+    <h3 class="subject-heading">Marathi</h3>
     <div class="schedule-grid">
       <div class="schedule-card">
-        <img src="https://mtgpublicwp.mtg.in/wp-content/uploads/2021/05/2023_learning_comp_cl6_9789355551047.jpg" alt="Computer Book">
+        <img src="https://www.shaalaa.com/images/marathi-sulabhbharati-6-standard-maharashtra-state-board_6:386444f44b004b43aa0b51f80810d7a8.jpg" alt="Computer Book">
         <h3>🏫 Offline</h3>
         <ul>
           <li><strong>Days:</strong> Mon–Fri</li>
@@ -489,13 +556,41 @@
         </ul>
       </div>
       <div class="schedule-card">
-        <img src="https://mtgpublicwp.mtg.in/wp-content/uploads/2021/05/2023_learning_comp_cl6_9789355551047.jpg" alt="Computer Book">
+        <img src="https://www.shaalaa.com/images/marathi-sulabhbharati-6-standard-maharashtra-state-board_6:386444f44b004b43aa0b51f80810d7a8.jpg" alt="Computer Book">
         <h3>💻 Online</h3>
         <ul>
           <li><strong>Days:</strong> Mon–Fri</li>
           <li><strong>Time:</strong> 3:30 – 4:30 PM</li>
           <li><strong>Platform:</strong> Zoom</li>
           <li><strong>Includes:</strong> Screen sharing, Code examples</li>
+           <li><strong>📘 Study Material:</strong> <a href="https://svpv.in/wp/pdf/primary/books/std5-bb-evs2.pdf" target="_blank">Open PDF</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+   <div class="subject-block">
+    <h3 class="subject-heading">Hindi</h3>
+    <div class="schedule-grid">
+      <div class="schedule-card">
+        <img src="https://online.anyflip.com/acvi/ldxc/files/mobile/1.jpg" alt="Computer Book">
+        <h3>🏫 Offline</h3>
+        <ul>
+          <li><strong>Days:</strong> Mon–Fri</li>
+          <li><strong>Time:</strong> 2:00 – 3:00 PM</li>
+          <li><strong>Lab:</strong> Lab B</li>
+          <li><strong>Includes:</strong> Hands-on coding practice</li>
+        </ul>
+      </div>
+      <div class="schedule-card">
+        <img src="https://online.anyflip.com/acvi/ldxc/files/mobile/1.jpg" alt="Computer Book">
+        <h3>💻 Online</h3>
+        <ul>
+          <li><strong>Days:</strong> Mon–Fri</li>
+          <li><strong>Time:</strong> 3:30 – 4:30 PM</li>
+          <li><strong>Platform:</strong> Zoom</li>
+          <li><strong>Includes:</strong> Screen sharing, Code examples</li>
+           <li><strong>📘 Study Material:</strong> <a href="https://svpv.in/wp/pdf/primary/books/std5-bb-evs2.pdf" target="_blank">Open PDF</a></li>
         </ul>
       </div>
     </div>

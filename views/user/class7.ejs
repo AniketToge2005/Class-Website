@@ -140,6 +140,45 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ---------------------------- */
+     .class-card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px auto;
+      max-width: 1000px;
+      padding: 0 10px;
+    }
+
+    .class-card {
+      background: #e6f0ff;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      color: #003366;
+      font-size: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+      min-width: 100px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .class-card:hover {
+      background-color: #004080;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .class-card {
+        flex: 1 0 40%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -155,7 +194,7 @@
 
   <section class="main-section">
     
-    <!-- Class Card -->
+    <!-- Class Card
     <div class="class-card">
       <h2>Class 7<sup>th</sup></h2>
       <p>Age Group: 11-12 Years</p>
@@ -186,9 +225,27 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Course Details -->
+    <h2 style="text-align:center; margin-top: 40px; color:#004080;">🎓 Explore More Classes</h2>
+
+  <div class="class-card-container">
+    <a href="/class5" class="class-card">Class 5th</a>
+    <a href="/class6" class="class-card">Class 6th</a>
+    <a href="/class7" class="class-card">Class 7th</a>
+    <a href="/class8" class="class-card">Class 8th</a>
+    <a href="/class9" class="class-card">Class 9th</a>
+    <a href="/class10" class="class-card">Class 10th</a>
+    <a href="/class11" class="class-card">Class 11th</a>
+    <a href="/class12" class="class-card">Class 12th</a>
+  </div>
+
+
+
+
+
+    <!-- -------------------------- -->
     <div class="course-details">
       <h3>Subjects Covered:</h3>
       <ul>
@@ -251,7 +308,7 @@
       <div class="course-card">
         <img src="https://learnfatafat.com/wp-content/uploads/2021/03/MH-Std-7-Maths-Online.jpeg" class="course-img rotate-book" alt=" Mathematics">
         <h3 style="margin-top: 10px;">🧮 Mathematics</h3>
-        <p>₹550/month</p>
+        <p></p>
       </div>
     </a>
 
@@ -259,7 +316,7 @@
       <div class="course-card">
         <img src="https://www.iftikharbookdepot.com/cdn/shop/files/image00032_1200x1200.jpg?v=1683098896" class="course-img rotate-book" alt="Science">
         <h3 style="margin-top: 10px;">🔬 Science</h3>
-        <p>₹600/month</p>
+        <p></p>
       </div>
     </a>
 
@@ -267,7 +324,7 @@
       <div class="course-card">
         <img src="https://m.media-amazon.com/images/I/61fMOx7qrsL._UF1000,1000_QL80_.jpg" class="course-img rotate-book" alt="English">
         <h3 style="margin-top: 10px;">📘 English</h3>
-        <p>₹500/month</p>
+        <p></p>
       </div>
     </a>
 
@@ -275,7 +332,7 @@
       <div class="course-card">
         <img src="https://www.vivabooksindia.com/media/uploads/product/largeImage/product_1670479154_202ade0c10bbbab77485.webp" class="course-img rotate-book" alt="Social">
         <h3 style="margin-top: 10px;">🌍 Social Studies</h3>
-        <p>₹450/month</p>
+        <p></p>
       </div>
     </a>
 
@@ -283,7 +340,7 @@
       <div class="course-card">
         <img src="https://raajkart.com/media/catalog/product/cache/378cf9a83101843e5b8b1271b991c285/m/a/madhubun_new_log_on_to_computers_revised_for_class_7_1.jpg" class="course-img rotate-book" alt="Computer">
         <h3 style="margin-top: 10px;">💻 Computer</h3>
-        <p>₹400/month</p>
+        <p></p>
       </div>
     </a>
 
