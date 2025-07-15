@@ -356,7 +356,7 @@ section { padding: 80px 0; }
   height: 90vh;
   max-height: 800px;
   overflow: hidden;
-  margin-top:-120px;
+  margin-top:-125px;
 }
 
 /* Base slide state: slightly zoomed in & invisible */

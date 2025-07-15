@@ -20,55 +20,38 @@
 <body>
 
 <!-- ✅ Navbar Start -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm" style="height: 60px;">
-  <div class="container-fluid px-4">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm" style="height: 50px;">
+  <div class="container-fluid px-3">
     <a class="navbar-brand d-flex align-items-center" href="/">
-      <img src="/Aniket2.png" alt="Logo" style="height: 100px;width: 100px; margin-right: 10px;">
-      <span class="fw-bold fs-4 gradient-text">Classes</span>
+      <img src="/Aniket2.png" alt="Logo"/>
+      <span class="fw-bold gradient-text">Classes</span>
     </a>
-
-
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-      <!-- Hamburger Menu -->
-      <div class="menu-toggle d-lg-none" id="mobile-menu" aria-label="Toggle menu" aria-expanded="false">
-        <span class="bar bar1"></span>
-        <span class="bar bar2"></span>
-        <span class="bar bar3"></span>
-      </div>
-
-      <!-- Navigation Links -->
-      <ul class="nav-links list-unstyled d-lg-flex gap-4 mb-0 align-items-center" id="nav-links">
-  <li><a href="/" class="nav-link" data-page="home">Home</a></li>
-  <li><a href="/about" class="nav-link" data-page="about">About</a></li>
-  <li><a href="/courses" class="nav-link" data-page="courses">Class & Courses</a></li>
-  <li><a href="/contact" class="nav-link" data-page="contact">Contact</a></li>
-  <li><a href="/loginstudent" class="nav-link ">Login</a></li>
-</ul>
-
-
     <div class="collapse navbar-collapse" id="navbarMenu">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
         <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
         <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
         <li class="nav-item"><a href="/courses" class="nav-link">Class & Courses</a></li>
         <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-bs-toggle="dropdown">
-            Login
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/loginstudent">Student</a></li>
-            <li><a class="dropdown-item" href="/loginadmin">Admin</a></li>
-          </ul>
-        </li>
+        <li class="nav-item"><a href="/loginstudent" class="nav-link">Login</a></li>
       </ul>
     </div>
   </div>
 </nav>
-<!-- ✅ Navbar End -->
 
 <main class="mt-5 pt-5">
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleButton = document.querySelector('.navbar-toggler');
+    const navCollapse = document.getElementById('navbarMenu');
+
+    toggleButton.addEventListener('click', function () {
+      navCollapse.classList.toggle('show');
+    });
+  });
+</script>
+
   
