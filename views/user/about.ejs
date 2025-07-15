@@ -817,18 +817,17 @@
   });
 
 
-// Dark mode toggle functionality
+
     document.addEventListener('DOMContentLoaded', function() {
       const darkModeToggle = document.getElementById('darkModeToggle');
       const body = document.body;
       
-      // Check for saved user preference
+      
       if (localStorage.getItem('darkMode') === 'enabled') {
         body.classList.add('dark-mode');
         darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
       }
       
-      // Toggle dark mode
       darkModeToggle.addEventListener('click', function() {
         body.classList.toggle('dark-mode');
         
@@ -841,7 +840,6 @@
         }
       });
       
-      // Rest of your existing JavaScript
     });
   
 </script>
