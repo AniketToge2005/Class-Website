@@ -24,8 +24,8 @@ router.get("/courses",function (req, res) {
   res.render("user/class&courses.ejs");
 
 });
-router.get("/teacher",function (req, res) {
-  res.render("user/teacher.ejs");
+router.get("/loginpop",function (req, res) {
+  res.render("user/loginpop.ejs");
 
 });
 router.get("/student",function (req, res) {
