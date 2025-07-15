@@ -1,221 +1,10 @@
-   
-    <!-- JavaScript -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const navbar = document.getElementById('navbar');
-      const menuToggle = document.getElementById('mobile-menu');
-      const navLinks = document.getElementById('nav-links');
+</main>
 
-      // Sticky scroll effect
-      window.addEventListener('scroll', function () {
-        navbar.classList.toggle('scrolled', window.scrollY > 50);
-      });
-
-      // Toggle mobile menu
-      menuToggle.addEventListener('click', function () {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        this.setAttribute('aria-expanded', this.classList.contains('active'));
-      });
-
-      // Mobile link click close menu
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function () {
-          if (window.innerWidth <= 768) {
-            navLinks.classList.remove(
-              'home-active',
-              'about-active',
-              'courses-active',
-              'contact-active',
-              'login-active'
-            );
-
-            const page = this.getAttribute('data-page');
-            if (page) {
-              navLinks.classList.add(`${page}-active`);
-            }
-
-            // Close mobile menu
-            menuToggle.classList.remove('active');
-            navLinks.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          }
-        });
-      });
-    });
-  </script>
-   </div>
-  </main>
-
-  
-  <style>
-  :root {
-    --bg-primary: #2c3e50;
-    --bg-secondary: #3498db;
-    --accent: #e74c3c;
-    --light: #f8f9fa;
-    --dark: #1a252f;
-    --transition: 0.3s ease;
-  }
-
-  .school-footer {
-    background: var(--bg-primary);
-    color: var(--light);
-    padding: 4rem 2rem 1rem;
-    position: relative;
-  }
-
-  .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .footer-section {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .footer-section h4 {
-    font-weight: 600;
-    margin-bottom: 1rem;
-    position: relative;
-    font-size: 1.2rem;
-  }
-
-  .footer-section h4::after {
-    content: '';
-    position: absolute;
-    bottom: -0.5rem;
-    left: 0;
-    width: 3rem;
-    height: 0.2rem;
-    background: var(--bg-secondary);
-    transition: var(--transition);
-  }
-
-  .footer-section h4:hover::after {
-    width: 100%;
-    background: var(--accent);
-  }
-
-  .footer-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .footer-section li {
-    margin-bottom: 0.5rem;
-  }
-
-  .footer-section a {
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    transition: var(--transition);
-    display: inline-block;
-  }
-
-  .footer-section a:hover {
-    color: white;
-    padding-left: 0.5rem;
-  }
-
-  .footer-section p {
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .footer-section i {
-    width: 16px;
-    text-align: center;
-  }
-
-  .social-icons {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-
-  .social-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    transition: var(--transition);
-  }
-
-  .social-icon:hover {
-    background: var(--bg-secondary);
-    transform: translateY(-4px);
-  }
-
-  .footer-bottom {
-    background: rgba(0, 0, 0, 0.2);
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.875rem;
-    margin-top: 2rem;
-  }
-
-  .footer-bottom a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    margin-left: 1rem;
-    transition: var(--transition);
-  }
-
-  .footer-bottom a:hover {
-    color: white;
-  }
-
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .footer-content {
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .footer-section {
-      text-align: center;
-    }
-
-    .footer-section h4::after {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .social-icons {
-      justify-content: center;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .school-footer {
-      padding: 3rem 1rem 1rem;
-    }
-
-    .footer-content {
-      gap: 1.5rem;
-    }
-  }
-</style>
-
-<footer class="school-footer">
-  <div class="footer-container">
-    <div class="footer-content">
-      <div class="footer-section">
+<!-- ✅ Footer Start -->
+<footer class="school-footer mt-5">
+  <div class="footer-container container">
+    <div class="footer-content row">
+      <div class="footer-section col-md-4">
         <h4>Classes</h4>
         <ul>
           <li><a href="/courses">5th Class</a></li>
@@ -227,7 +16,7 @@
         </ul>
       </div>
 
-      <div class="footer-section">
+      <div class="footer-section col-md-4">
         <h4>Quick Links</h4>
         <ul>
           <li><a href="/">Home</a></li>
@@ -237,43 +26,31 @@
         </ul>
       </div>
 
-      <div class="footer-section">
+      <div class="footer-section col-md-4">
         <h4>Contact Us</h4>
-        <p><i class="fas fa-map-marker-alt"></i>123 School Road, Jalna, Maharashtra</p>
-        <p><i class="fas fa-phone-alt"></i><a href="tel:+911234567890">+91 12345 67890</a></p>
-        <p><i class="fas fa-envelope"></i><a href="mailto:shreeclasses@gmail.com">shreeclasses@gmail.com</a></p>
+        <p><i class="fas fa-map-marker-alt"></i> 123 School Road, Jalna, Maharashtra</p>
+        <p><i class="fas fa-phone-alt"></i> <a href="tel:+911234567890">+91 12345 67890</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:shreeclasses@gmail.com">shreeclasses@gmail.com</a></p>
         <div class="social-icons">
-          <a href="" class="social-icon" style="display: flex; justify-content: center;"><i class="fab fa-facebook-f"></i></a>
-          <a href="" class="social-icon" style="display: flex; justify-content: center;"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-icon" style="display: flex; justify-content: center;"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="social-icon" style="display: flex; justify-content: center;"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="social-icon" style="display: flex; justify-content: center;"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
     </div>
 
-    <div class="footer-bottom">
+    <div class="footer-bottom text-center mt-4">
       © 2025 <strong>Shree Classes</strong> – All rights reserved.
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
     </div>
   </div>
 </footer>
+<!-- ✅ Footer End -->
 
-  
-  <!-- Bootstrap JS -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
-
-
-  <!-- < !-- Bootstrap 5 CSS 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  
-
-  <!-- Bootstrap JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-6FjJkSEzz3wLax+U8/vOyXkT6EmXGnFVAIZoszM3sNwSoZTxsA4zZa9Zq6T3bDbY"
-    crossorigin="anonymous"></script>
+<!-- Bootstrap 5 JS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-6FjJkSEzz3wLax+U8/vOyXkT6EmXGnFVAIZoszM3sNwSoZTxsA4zZa9Zq6T3bDbY" crossorigin="anonymous"></script>
 
 </body>
 </html>
