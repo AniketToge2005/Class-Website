@@ -140,6 +140,45 @@
         grid-template-columns: 1fr;
       }
     }
+    /* ----------------------------------- */
+
+    .class-card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px auto;
+      max-width: 1000px;
+      padding: 0 10px;
+    }
+
+    .class-card {
+      background: #e6f0ff;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      color: #003366;
+      font-size: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+      min-width: 100px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .class-card:hover {
+      background-color: #004080;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .class-card {
+        flex: 1 0 40%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -156,7 +195,7 @@
   <section class="main-section">
     
     <!-- Class Card -->
-    <div class="class-card">
+    <!-- <div class="class-card">
       <h2>Class 10<sup>th</sup></h2>
       <p>Age Group: 11-12 Years</p>
       <p>Session: 2025-2026</p>
@@ -186,17 +225,37 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Course Details -->
+    
+       <h2 style="text-align:center; margin-top: 40px; color:#004080;">🎓 Explore More Classes</h2>
+
+  <div class="class-card-container">
+    <a href="/class5" class="class-card">Class 5th</a>
+    <a href="/class6" class="class-card">Class 6th</a>
+    <a href="/class7" class="class-card">Class 7th</a>
+    <a href="/class8" class="class-card">Class 8th</a>
+    <a href="/class9" class="class-card">Class 9th</a>
+    <a href="/class10" class="class-card">Class 10th</a>
+    <a href="/class11" class="class-card">Class 11th</a>
+    <a href="/class12" class="class-card">Class 12th</a>
+  </div>
+
+
+
+
+
+    <!-- --------------------------- -->
     <div class="course-details">
       <h3>Subjects Covered:</h3>
       <ul>
-        <li><strong>Mathematics:</strong> Algebra basics, Geometry, Integers, Data Handling</li>
-        <li><strong>Science:</strong> Food components, Materials, Living organisms, Motion</li>
-        <li><strong>English:</strong> Advanced Grammar, Creative Writing, Literature</li>
-        <li><strong>Social Studies:</strong> Ancient civilizations, Maps, Government systems</li>
-        <li><strong>Computer:</strong> MS Office applications, Basic programming concepts</li>
+        <li><strong>📘 Mathematics:</strong> Algebra basics, Geometry, Integers, Data Handling</li>
+        <li><strong>📘 Science:</strong> Food components, Materials, Living organisms, Motion</li>
+        <li><strong>📘 English:</strong> Advanced Grammar, Creative Writing, Literature</li>
+        <li><strong>📘 History:</strong> Ancient civilizations, Maps, Government systems</li>
+        <li><strong>📘 Marathi:</strong> MS Office applications, Basic programming concepts</li>
+        <li><strong>📘 Hindi:</strong> MS Office applications, Basic programming concepts</li>
       </ul>
 
       <h3>Key Highlights:</h3>
@@ -249,41 +308,49 @@
     
     <a href="/courses/mathematics" style="text-decoration: none; color: inherit;">
       <div class="course-card">
-        <img src="https://raajkart.com/media/catalog/product/cache/378cf9a83101843e5b8b1271b991c285/n/e/new_maths_class_8.jpg" class="course-img rotate-book" alt=" Mathematics">
-        <h3 style="margin-top: 10px;">🧮 Mathematics</h3>
-        <p>₹550/month</p>
+        <img src="https://ashishpublication.in/public/uploads/all/hbPRxgUKR4XrlittrAb1lfCoAyEKprBoQnwGgu3n.jpg" class="course-img rotate-book" alt=" Mathematics">
+        <h3 style="margin-top: 10px;">🧮 Mathematics :- Book</h3>
+        <p></p>
       </div>
     </a>
 
     <a href="/courses/science" style="text-decoration: none; color: inherit;">
       <div class="course-card">
-        <img src="https://online.anyflip.com/acvi/remz/files/mobile/1.jpg" class="course-img rotate-book" alt="Science">
-        <h3 style="margin-top: 10px;">🔬 Science</h3>
-        <p>₹600/month</p>
+        <img src="https://online.anyflip.com/oglsv/vknc/files/thumb/1.jpg?1602137546" class="course-img rotate-book" alt="Science">
+        <h3 style="margin-top: 10px;">🔬 Science :- Book</h3>
+        <p></p>
       </div>
     </a>
 
     <a href="/courses/english" style="text-decoration: none; color: inherit;">
       <div class="course-card">
-        <img src="https://online.fliphtml5.com/fxist/ownv/files/large/1.webp?1592181798&1592181798" class="course-img rotate-book" alt="English">
-        <h3 style="margin-top: 10px;">📘 English</h3>
-        <p>₹500/month</p>
+        <img src="https://schoolbooksarchive.azimpremjiuniversity.edu.in/dspace-mvc/retrieve?bitstreamID=a0a893c9-9d5d-43f4-a85c-40066a956a43" class="course-img rotate-book" alt="English">
+        <h3 style="margin-top: 10px;">📘 English :- Book</h3>
+        <p></p>
       </div>
     </a>
 
     <a href="/courses/social" style="text-decoration: none; color: inherit;">
       <div class="course-card">
-        <img src="https://schoolbooksarchive.azimpremjiuniversity.edu.in/dspace-mvc/retrieve?bitstreamID=bee4709e-435e-49d1-a80f-606e43513caf" class="course-img rotate-book" alt="Social">
-        <h3 style="margin-top: 10px;">🌍 Social Studies</h3>
-        <p>₹450/month</p>
+        <img src="https://online.fliphtml5.com/dxurj/bskk/files/large/72f90c8c913136b6b7000a53778387af.webp?1684480116&1684480116" class="course-img rotate-book" alt="Social">
+        <h3 style="margin-top: 10px;">🌍 Social Studies :- Book</h3>
+        <p></p>
       </div>
     </a>
 
     <a href="/courses/computer" style="text-decoration: none; color: inherit;">
       <div class="course-card">
-        <img src="https://m.media-amazon.com/images/I/81zkNXtPKdL.jpg" class="course-img rotate-book" alt="Computer">
-        <h3 style="margin-top: 10px;">💻 Computer</h3>
-        <p>₹400/month</p>
+        <img src="https://online.fliphtml5.com/pezhn/mxdp/files/large/1.webp?1627222355&1627222355" class="course-img rotate-book" alt="Computer">
+        <h3 style="margin-top: 10px;">📘 Marathi :- Book</h3>
+        <p></p>
+      </div>
+    </a>
+
+      <a href="/courses/computer" style="text-decoration: none; color: inherit;">
+      <div class="course-card">
+        <img src="https://m.media-amazon.com/images/I/51O+hm3UvDL._UF1000,1000_QL80_.jpg" class="course-img rotate-book" alt="Computer">
+        <h3 style="margin-top: 10px;">📘 Hindi :- Book</h3>
+        <p></p>
       </div>
     </a>
 
@@ -369,11 +436,11 @@
 
   <!-- Mathematics -->
   <div class="subject-block">
-    <h3 class="subject-heading">🧮 Mathematics</h3>
+    <h3 class="subject-heading">🧮 Mathematics  :- Classes</h3>
     <div class="schedule-grid">
       <div class="schedule-card">
-        <img src="https://raajkart.com/media/catalog/product/cache/378cf9a83101843e5b8b1271b991c285/n/e/new_maths_class_8.jpg" alt="Math Book">
-        <h3>🏫 Offline</h3>
+        <img src="https://ashishpublication.in/public/uploads/all/hbPRxgUKR4XrlittrAb1lfCoAyEKprBoQnwGgu3n.jpg" alt="Math Book">
+        <h3>🏫 Offline  :- Class</h3>
         <ul>
           <li><strong>Days:</strong> Mon–Sat</li>
           <li><strong>Time:</strong> 9:00 – 10:00 AM</li>
@@ -382,8 +449,8 @@
         </ul>
       </div>
       <div class="schedule-card">
-        <img src="https://raajkart.com/media/catalog/product/cache/378cf9a83101843e5b8b1271b991c285/n/e/new_maths_class_8.jpg" alt="Math Book">
-        <h3>💻 Online</h3>
+        <img src="https://ashishpublication.in/public/uploads/all/hbPRxgUKR4XrlittrAb1lfCoAyEKprBoQnwGgu3n.jpg" alt="Math Book">
+        <h3>💻 Online  :- Class</h3>
         <ul>
           <li><strong>Days:</strong> Mon–Fri</li>
           <li><strong>Time:</strong> 5:00 – 6:00 PM</li>
@@ -396,11 +463,11 @@
 
   <!-- Science -->
   <div class="subject-block">
-    <h3 class="subject-heading">🔬 Science</h3>
+    <h3 class="subject-heading">🔬 Science   :- Classes</h3>
     <div class="schedule-grid">
       <div class="schedule-card">
-        <img src="https://online.anyflip.com/acvi/remz/files/mobile/1.jpg" alt="Science Book">
-        <h3>🏫 Offline</h3>
+        <img src="https://online.anyflip.com/oglsv/vknc/files/thumb/1.jpg?1602137546" alt="Science Book">
+        <h3>🏫 Offline  :- Class</h3>
         <ul>
           <li><strong>Days:</strong> Mon–Sat</li>
           <li><strong>Time:</strong> 10:00 – 11:00 AM</li>
@@ -409,8 +476,8 @@
         </ul>
       </div>
       <div class="schedule-card">
-        <img src="https://online.anyflip.com/acvi/remz/files/mobile/1.jpg" alt="Science Book">
-        <h3>💻 Online</h3>
+        <img src="https://online.anyflip.com/oglsv/vknc/files/thumb/1.jpg?1602137546" alt="Science Book">
+        <h3>💻 Online  :- Class</h3>
         <ul>
           <li><strong>Days:</strong> Mon–Fri</li>
           <li><strong>Time:</strong> 6:00 – 7:00 PM</li>
@@ -423,11 +490,11 @@
 
   <!-- English -->
   <div class="subject-block">
-    <h3 class="subject-heading">📘 English</h3>
+    <h3 class="subject-heading">📘 English   :- Classes</h3>
     <div class="schedule-grid">
       <div class="schedule-card">
-        <img src="https://online.fliphtml5.com/fxist/ownv/files/large/1.webp?1592181798&1592181798" alt="English Book">
-        <h3>🏫 Offline</h3>
+        <img src="https://schoolbooksarchive.azimpremjiuniversity.edu.in/dspace-mvc/retrieve?bitstreamID=a0a893c9-9d5d-43f4-a85c-40066a956a43" alt="English Book">
+        <h3>🏫 Offline  :- Class</h3>
         <ul>
           <li><strong>Days:</strong> Mon–Sat</li>
           <li><strong>Time:</strong> 11:00 – 12:00 PM</li>
@@ -436,8 +503,8 @@
         </ul>
       </div>
       <div class="schedule-card">
-        <img src="https://online.fliphtml5.com/fxist/ownv/files/large/1.webp?1592181798&1592181798" alt="English Book">
-        <h3>💻 Online</h3>
+        <img src="https://schoolbooksarchive.azimpremjiuniversity.edu.in/dspace-mvc/retrieve?bitstreamID=a0a893c9-9d5d-43f4-a85c-40066a956a43" alt="English Book">
+        <h3>💻 Online  :- Class</h3>
         <ul>
           <li><strong>Days:</strong> Mon–Fri</li>
           <li><strong>Time:</strong> 7:00 – 8:00 PM</li>
@@ -450,11 +517,11 @@
 
   <!-- Social Studies -->
   <div class="subject-block">
-    <h3 class="subject-heading">🌍 Social Studies</h3>
+    <h3 class="subject-heading">🌍 Social Studies   :- Classes</h3>
     <div class="schedule-grid">
       <div class="schedule-card">
-        <img src="https://schoolbooksarchive.azimpremjiuniversity.edu.in/dspace-mvc/retrieve?bitstreamID=bee4709e-435e-49d1-a80f-606e43513caf" alt="Social Book">
-        <h3>🏫 Offline</h3>
+        <img src="https://online.fliphtml5.com/dxurj/bskk/files/large/72f90c8c913136b6b7000a53778387af.webp?1684480116&1684480116" alt="Social Book">
+        <h3>🏫 Offline  :- Class</h3>
         <ul>
           <li><strong>Days:</strong> Tue–Sat</li>
           <li><strong>Time:</strong> 12:00 – 1:00 PM</li>
@@ -462,8 +529,8 @@
         </ul>
       </div>
       <div class="schedule-card">
-        <img src="https://schoolbooksarchive.azimpremjiuniversity.edu.in/dspace-mvc/retrieve?bitstreamID=bee4709e-435e-49d1-a80f-606e43513caf" alt="Social Book">
-        <h3>💻 Online</h3>
+        <img src="https://online.fliphtml5.com/dxurj/bskk/files/large/72f90c8c913136b6b7000a53778387af.webp?1684480116&1684480116" alt="Social Book">
+        <h3>💻 Online  :- Class</h3>
         <ul>
           <li><strong>Days:</strong> Mon–Fri</li>
           <li><strong>Time:</strong> 4:00 – 5:00 PM</li>
@@ -476,11 +543,11 @@
 
   <!-- Computer -->
   <div class="subject-block">
-    <h3 class="subject-heading">💻 Computer</h3>
+    <h3 class="subject-heading">📘 Marathi :- Classes</h3>
     <div class="schedule-grid">
       <div class="schedule-card">
-        <img src="https://m.media-amazon.com/images/I/81zkNXtPKdL.jpg" alt="Computer Book">
-        <h3>🏫 Offline</h3>
+        <img src="https://online.fliphtml5.com/pezhn/mxdp/files/large/1.webp?1627222355&1627222355" alt="Computer Book">
+        <h3>🏫 Offline  :- Class</h3>
         <ul>
           <li><strong>Days:</strong> Mon–Fri</li>
           <li><strong>Time:</strong> 2:00 – 3:00 PM</li>
@@ -489,8 +556,34 @@
         </ul>
       </div>
       <div class="schedule-card">
-        <img src="https://m.media-amazon.com/images/I/81zkNXtPKdL.jpg" alt="Computer Book">
-        <h3>💻 Online</h3>
+        <img src="https://online.fliphtml5.com/pezhn/mxdp/files/large/1.webp?1627222355&1627222355" alt="Computer Book">
+        <h3>💻 Online  :- Class</h3>
+        <ul>
+          <li><strong>Days:</strong> Mon–Fri</li>
+          <li><strong>Time:</strong> 3:30 – 4:30 PM</li>
+          <li><strong>Platform:</strong> Zoom</li>
+          <li><strong>Includes:</strong> Screen sharing, Code examples</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="subject-block">
+    <h3 class="subject-heading">📘Hindi :- Classes</h3>
+    <div class="schedule-grid">
+      <div class="schedule-card">
+        <img src="https://m.media-amazon.com/images/I/51O+hm3UvDL._UF1000,1000_QL80_.jpg" alt="Computer Book">
+        <h3>🏫 Offline  :- Class</h3>
+        <ul>
+          <li><strong>Days:</strong> Mon–Fri</li>
+          <li><strong>Time:</strong> 2:00 – 3:00 PM</li>
+          <li><strong>Lab:</strong> Lab B</li>
+          <li><strong>Includes:</strong> Hands-on coding practice</li>
+        </ul>
+      </div>
+      <div class="schedule-card">
+        <img src="https://m.media-amazon.com/images/I/51O+hm3UvDL._UF1000,1000_QL80_.jpg" alt="Computer Book">
+        <h3>💻 Online  :- Class</h3>
         <ul>
           <li><strong>Days:</strong> Mon–Fri</li>
           <li><strong>Time:</strong> 3:30 – 4:30 PM</li>
