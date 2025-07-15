@@ -2,133 +2,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/home.css">
+</head>
 
-<style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    
-
-    /* Popup Overlay */
-    .login-popup {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
-
-    .login-popup.hidden {
-      display: none;
-    }
-
-    /* Transparent Form */
-    .login-form {
-      width: 100%;
-      max-width: 400px;
-      padding: 40px 30px;
-      border-radius: 15px;
-
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: white;
-
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      position: relative;
-    }
-
-    .login-form h3 {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .login-form input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: none;
-      border-radius: 8px;
-      font-size: 14px;
-      background-color: rgba(255, 255, 255, 0.2);
-      color: white;
-    }
-
-    .login-form input::placeholder {
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .login-form button {
-      background: linear-gradient(to right, #ff416c, #ff4b2b);
-      color: white;
-      padding: 12px;
-      border: none;
-      width: 100%;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    .login-form p {
-      text-align: center;
-      font-size: 14px;
-      margin-top: 10px;
-    }
-
-    .login-form a {
-      color: #00ffcc;
-      text-decoration: none;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 22px;
-      color: white;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      text-align: center;
-      line-height: 32px;
-      cursor: pointer;
-    }
-
-    @media (max-width: 480px) {
-      .login-form {
-        width: 90%;
-        padding: 30px 20px;
-      }
-    }
-  </style>
-  <!-- Your page content -->
-       
-
-        <!-- Login Popup -->
-        <div id="loginPopup" class="login-popup">
-        <form class="login-form">
-            <span class="close-btn" id="closePopup">×</span>
-            <h3><i class="fas fa-user-graduate"></i> Student Login</h3>
-            <input type="text" placeholder="Enter your email or username" required />
-            <input type="password" placeholder="Enter your password" required />
-            <button type="submit">Student Login</button>
-            <p><a href="#">Forgot Password?</a></p>
-            <p>Don't have an account? <a href="#">Register Here</a></p>
-        </form>
-        </div>
-
+<body>
+   
      <section class="hero">
+        
        <!-- Hero Section -->
         <section class="hero-slider">
             <!-- Slide 1 -->
@@ -229,6 +108,319 @@
 
         </script>
     </section>
+
+
+
+
+
+    <style>
+        .toppers-section {
+          padding: 60px 20px;
+          background: linear-gradient(to right, #fdfbfb, #ebedee);
+          position: relative;
+        }
+    
+        .section-title {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+    
+        .section-title h2 {
+          font-size: 36px;
+          font-weight: bold;
+          color: #333;
+          position: relative;
+          display: inline-block;
+        }
+    
+        .section-title h2::after {
+          content: '';
+          display: block;
+          width: 60px;
+          height: 4px;
+          background: #007bff;
+          margin: 10px auto 0;
+          border-radius: 2px;
+        }
+    
+        .toppers-carousel-container {
+          position: relative;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+    
+        .toppers-carousel-row {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: center;
+          align-items: stretch;
+          gap: 1.5rem;
+          transition: all 0.4s;
+          min-height: 370px;
+        }
+    
+        .topper-card {
+          flex: 1 1 0;
+          min-width: 220px;
+          max-width: 260px;
+          transition: transform 0.3s, box-shadow 0.3s;
+          border: none;
+          border-radius: 16px;
+          overflow: hidden;
+          background: #fff;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+          display: flex;
+          flex-direction: column;
+          opacity: 1;
+          pointer-events: auto;
+        }
+    
+        .topper-card.hide {
+          display: none !important;
+          opacity: 0;
+          pointer-events: none;
+        }
+    
+        .topper-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+    
+        .topper-card img {
+          width: 100%;
+          
+          object-fit: cover;
+        }
+    
+        .topper-card-body {
+          padding: 20px;
+          text-align: center;
+        }
+    
+        .topper-card-body h5 {
+          font-size: 20px;
+          margin-bottom: 5px;
+          color: #333;
+        }
+    
+        .topper-card-body p {
+          margin: 0;
+          font-size: 16px;
+          color: #555;
+        }
+    
+        .toppers-carousel-btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 2;
+          background: #007bff;
+          color: #fff;
+          border: none;
+          border-radius: 50%;
+          width: 44px;
+          height: 44px;
+          font-size: 1.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: background 0.2s;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+          opacity: 0.85;
+        }
+        .toppers-carousel-btn:active {
+          background: #0056b3;
+        }
+        .toppers-carousel-btn.prev {
+          left: -22px;
+        }
+        .toppers-carousel-btn.next {
+          right: -22px;
+        }
+        @media (max-width: 1200px) {
+          .toppers-carousel-row {
+            gap: 1rem;
+          }
+          .topper-card {
+            min-width: 180px;
+            max-width: 220px;
+          }
+        }
+        @media (max-width: 900px) {
+          .toppers-carousel-row {
+            gap: 0.7rem;
+          }
+          .topper-card {
+            min-width: 150px;
+            max-width: 180px;
+          }
+        }
+        @media (max-width: 768px) {
+          .toppers-carousel-row {
+            gap: 0.5rem;
+          }
+          .topper-card {
+            min-width: 120px;
+            max-width: 150px;
+          }
+        }
+        @media (max-width: 600px) {
+          .toppers-carousel-row {
+            gap: 0.5rem;
+          }
+          .topper-card {
+            min-width: 90vw;
+            max-width: 95vw;
+          }
+          .toppers-carousel-btn.prev {
+            left: 2px;
+          }
+          .toppers-carousel-btn.next {
+            right: 2px;
+          }
+        }
+     </style>
+     <section class="toppers-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Class Toppers</h2>
+        </div>
+        <div class="toppers-carousel-container">
+          <button class="toppers-carousel-btn prev" aria-label="Previous" style="display:none;"><i class="fa fa-chevron-left"></i></button>
+          <div class="toppers-carousel-row">
+            <!-- Topper Card 1 -->
+            <div class="card topper-card">
+              <div class="topper-card-image-wrapper">
+                <img src="https://plus.unsplash.com/premium_photo-1682091992663-2e4f4a5534ba?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Student 1">
+              </div>
+              <div class="topper-card-body">
+                <h5>Aarav Sharma</h5>
+                <p>Class 10th • 97.8%</p>
+              </div>
+            </div>
+            <!-- Topper Card 2 -->
+            <div class="card topper-card">
+              <img src="https://i.pinimg.com/1200x/9c/00/1c/9c001cd4ecec48f795e7ddee62e49973.jpg" width="100%"  alt="Student 2">
+              <div class="topper-card-body">
+                <h5>Saanvi Patel</h5>
+                <p>Class 12th • 96.5%</p>
+              </div>
+            </div>
+            <!-- Topper Card 3 -->
+            <div class="card topper-card">
+              <img src="https://i.pinimg.com/1200x/9c/00/1c/9c001cd4ecec48f795e7ddee62e49973.jpg" width="100%" alt="Student 3">
+              <div class="topper-card-body">
+                <h5>Rohan Verma</h5>
+                <p>Class 8th • 98.2%</p>
+              </div>
+            </div>
+            <!-- Topper Card 4 -->
+            <div class="card topper-card">
+              <img src="https://i.pinimg.com/1200x/0a/0b/90/0a0b908c5b6e999347734af2262d9074.jpg" width="100%"  alt="Student 4">
+              <div class="topper-card-body">
+                <h5>Isha Kulkarni</h5>
+                <p>Class 9th • 97.4%</p>
+              </div>
+            </div>
+            <!-- Topper Card 5 -->
+            <div class="card topper-card">
+              <img src="https://i.pinimg.com/1200x/0a/0b/90/0a0b908c5b6e999347734af2262d9074.jpg" width="100%"  alt="Student 5">
+              <div class="topper-card-body">
+                <h5>Priya Singh</h5>
+                <p>Class 11th • 95.9%</p>
+              </div>
+            </div>
+            <!-- Topper Card 6 -->
+            <div class="card topper-card">
+              <img src="https://i.pinimg.com/1200x/0a/0b/90/0a0b908c5b6e999347734af2262d9074.jpg" width="100%"  alt="Student 6">
+              <div class="topper-card-body">
+                <h5>Aditya Joshi</h5>
+                <p>Class 10th • 97.1%</p>
+              </div>
+            </div>
+            <!-- Add more cards as needed -->
+          </div>
+          <button class="toppers-carousel-btn next" aria-label="Next"><i class="fa fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </section>
+    <script>
+      // Carousel logic for toppers section
+      document.addEventListener('DOMContentLoaded', function() {
+        const cards = Array.from(document.querySelectorAll('.toppers-carousel-row .topper-card'));
+        const prevBtn = document.querySelector('.toppers-carousel-btn.prev');
+        const nextBtn = document.querySelector('.toppers-carousel-btn.next');
+        const visibleCount = 4;
+        let startIdx = 0;
+    
+        function updateCarousel() {
+          cards.forEach((card, idx) => {
+            if (idx >= startIdx && idx < startIdx + visibleCount) {
+              card.classList.remove('hide');
+            } else {
+              card.classList.add('hide');
+            }
+          });
+          // Show/hide prev/next buttons
+          if (cards.length <= visibleCount) {
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+          } else {
+            prevBtn.style.display = '';
+            nextBtn.style.display = '';
+            // Hide prev if at start, hide next if at end (unless looping)
+            // But as per prompt, always round loop, so always show both
+          }
+        }
+    
+        function showPrev() {
+          startIdx = (startIdx - visibleCount + cards.length) % cards.length;
+          updateCarousel();
+        }
+    
+        function showNext() {
+          startIdx = (startIdx + visibleCount) % cards.length;
+          updateCarousel();
+        }
+    
+        prevBtn.addEventListener('click', showPrev);
+        nextBtn.addEventListener('click', showNext);
+    
+        // Responsive: show less cards on small screens
+        function getVisibleCount() {
+          if (window.innerWidth < 600) return 1;
+          if (window.innerWidth < 900) return 2;
+          if (window.innerWidth < 1200) return 3;
+          return 4;
+        }
+    
+        function handleResize() {
+          // recalculate visibleCount and adjust startIdx if needed
+          let newVisible = getVisibleCount();
+          if (visibleCount !== newVisible) {
+            startIdx = 0;
+          }
+          updateCarousel();
+        }
+    
+        // For this implementation, visibleCount is fixed at 4 as per prompt.
+        updateCarousel();
+    
+        // Optionally, enable responsive visibleCount:
+        // window.addEventListener('resize', handleResize);
+      });
+    </script>
+
+
+
+
+
+
+
+
+
+
 
     <!-- Features Section -->
     <section class="features">
@@ -442,7 +634,7 @@
  
 
     <!-- CTA Section -->
-    <section class="cta"style="margin-bottom: -50px;>
+    <section class="cta">
         <div class="container">
             <div class="cta-content">
                 <h2>Ready to Transform Your Learning Experience?</h2>
@@ -472,14 +664,6 @@
         
          
     </script>
-<script>
-  window.onload = function () {
-    document.getElementById("loginPopup").classList.remove("hidden");
-
-    // Close button event
-    document.getElementById("closePopup").onclick = function () {
-      document.getElementById("loginPopup").classList.add("hidden");
-    };
-  };
-</script>
+</body>
+</html>
 <%- include("footer") %>
