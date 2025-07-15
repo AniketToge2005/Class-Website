@@ -5,9 +5,9 @@
   --secondary: #0b0b0b;
   --light-bg: #f8f9fa;
   --dark-text: #334155;
-  --gradient: linear-gradient(135deg, #ca465e, #0b0a0ad7);
+  --gradient: linear-gradient(to right, #C8102E, #2B2B2B);
 }
-
+ /* background: linear-gradient(to right, #C8102E, #2B2B2B); */
 /* Base */
 body {
   margin: 0;
@@ -121,7 +121,7 @@ nav a:hover { background: rgba(255,255,255,0.15); }
 section { padding: 80px 0; }
 .features   { background: #fff; }
 .classes    { background: #f0f4ff; }
-.stats      { background: linear-gradient(135deg, #ca465e, #0b0a0ad7); color: #fff; text-align: center; }
+.stats      { background: linear-gradient(135deg, #C8102E, #2B2B2B); color: #fff; text-align: center; }
 .testimonials,
 .cta        { background: #fff; text-align: center; }
 .section-title {
