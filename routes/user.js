@@ -73,6 +73,9 @@ router.get("/class10",function (req, res) {
 router.get("/class10",function (req, res) {
   res.render("user/class10.ejs");
 })
+router.get("/new_offer",function (req, res) {
+  res.render("user/new_offer.ejs");
+})
 
 
 
