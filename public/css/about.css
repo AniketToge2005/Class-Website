@@ -8,16 +8,8 @@
       --gray: #94a3b8;
     }
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: var(--light);
-      color: var(--dark);
-      line-height: 1.6;
-    }
-
     .container {
+      font-family: sans-serif;
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
@@ -101,10 +93,21 @@
 
     .section-header h2 {
       font-size: 2rem;
+      font-weight: bolder;
       color: var(--darker);
       margin-bottom: 15px;
     }
 
+      hr{
+        border: none;
+        height: 4px;
+         background-color: #0a0a0a;
+        width: 40%;
+        margin: auto;
+        margin-top: 10px;
+        padding-top: 5px;
+        border-radius: 2px;
+      }
     .section-header p {
       color: var(--gray);
       max-width: 700px;
