@@ -16,7 +16,7 @@
                     <div class="slide-content">
                         <h1>Empowering Students from Class 5 to 10</h1>
                         <p>An all-in-one platform for class management, assignments, study materials, and more. Designed specifically for middle and high school students.</p>
-                        <button class="btn btn-primary-custom">Get Started Today</button>
+                        <button class="btn btn-primary-custom bg-danger">Get Started Today</button>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                     <div class="slide-content">
                         <h1>Interactive Learning Experience</h1>
                         <p>Engage with interactive lessons, virtual labs, and collaborative projects that make learning fun and effective.</p>
-                        <button class="btn btn-primary-custom">Explore Features</button>
+                        <button class="btn btn-primary-custom bg-danger">Explore Features</button>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                     <div class="slide-content">
                         <h1>Track Progress & Achievements</h1>
                         <p>Monitor academic growth with detailed analytics and personalized feedback to help students excel.</p>
-                        <button class="btn btn-primary-custom">View Demo</button>
+                        <button class="btn btn-primary-custom bg-danger">View Demo</button>
                     </div>
                 </div>
             </div>
@@ -49,16 +49,18 @@
                     <div class="slide-content">
                         <h1>Join Our Educational Community</h1>
                         <p>Connect with teachers, collaborate with classmates, and be part of a vibrant learning community.</p>
-                        <button class="btn btn-primary-custom">Join Now</button>
+                        <button class="btn btn-primary-custom bg-danger">Join Now</button>
                     </div>
                 </div>
             </div>
             
             <!-- Slider Controls -->
-            <div class="slider-controls">
-                <button class="slider-btn prev-btn" aria-label="Previous Slide"></button>
-                <button class="slider-btn next-btn" aria-label="Next Slide"></button>
-            </div>
+            <button class="slider-btn prev-btn" aria-label="Previous Slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-btn next-btn" aria-label="Next Slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
             
             <!-- Slider Indicators -->
             <div class="slider-indicators">
@@ -69,8 +71,7 @@
             </div>
         </section>
 
-    
-     
+        
     
         <script>
          document.addEventListener('DOMContentLoaded', () => {
@@ -108,318 +109,6 @@
 
         </script>
     </section>
-
-
-
-
-
-    <style>
-        .toppers-section {
-          padding: 60px 20px;
-          background: linear-gradient(to right, #fdfbfb, #ebedee);
-          position: relative;
-        }
-    
-        .section-title {
-          text-align: center;
-          margin-bottom: 50px;
-        }
-    
-        .section-title h2 {
-          font-size: 36px;
-          font-weight: bold;
-          color: #333;
-          position: relative;
-          display: inline-block;
-        }
-    
-        .section-title h2::after {
-          content: '';
-          display: block;
-          width: 60px;
-          height: 4px;
-          background: #007bff;
-          margin: 10px auto 0;
-          border-radius: 2px;
-        }
-    
-        .toppers-carousel-container {
-          position: relative;
-          max-width: 1100px;
-          margin: 0 auto;
-        }
-    
-        .toppers-carousel-row {
-          display: flex;
-          flex-wrap: nowrap;
-          justify-content: center;
-          align-items: stretch;
-          gap: 1.5rem;
-          transition: all 0.4s;
-          min-height: 370px;
-        }
-    
-        .topper-card {
-          flex: 1 1 0;
-          min-width: 220px;
-          max-width: 260px;
-          transition: transform 0.3s, box-shadow 0.3s;
-          border: none;
-          border-radius: 16px;
-          overflow: hidden;
-          background: #fff;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-          display: flex;
-          flex-direction: column;
-          opacity: 1;
-          pointer-events: auto;
-        }
-    
-        .topper-card.hide {
-          display: none !important;
-          opacity: 0;
-          pointer-events: none;
-        }
-    
-        .topper-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-        }
-    
-        .topper-card img {
-          width: 100%;
-          
-          object-fit: cover;
-        }
-    
-        .topper-card-body {
-          padding: 20px;
-          text-align: center;
-        }
-    
-        .topper-card-body h5 {
-          font-size: 20px;
-          margin-bottom: 5px;
-          color: #333;
-        }
-    
-        .topper-card-body p {
-          margin: 0;
-          font-size: 16px;
-          color: #555;
-        }
-    
-        .toppers-carousel-btn {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          z-index: 2;
-          background: #007bff;
-          color: #fff;
-          border: none;
-          border-radius: 50%;
-          width: 44px;
-          height: 44px;
-          font-size: 1.5rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: background 0.2s;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-          opacity: 0.85;
-        }
-        .toppers-carousel-btn:active {
-          background: #0056b3;
-        }
-        .toppers-carousel-btn.prev {
-          left: -22px;
-        }
-        .toppers-carousel-btn.next {
-          right: -22px;
-        }
-        @media (max-width: 1200px) {
-          .toppers-carousel-row {
-            gap: 1rem;
-          }
-          .topper-card {
-            min-width: 180px;
-            max-width: 220px;
-          }
-        }
-        @media (max-width: 900px) {
-          .toppers-carousel-row {
-            gap: 0.7rem;
-          }
-          .topper-card {
-            min-width: 150px;
-            max-width: 180px;
-          }
-        }
-        @media (max-width: 768px) {
-          .toppers-carousel-row {
-            gap: 0.5rem;
-          }
-          .topper-card {
-            min-width: 120px;
-            max-width: 150px;
-          }
-        }
-        @media (max-width: 600px) {
-          .toppers-carousel-row {
-            gap: 0.5rem;
-          }
-          .topper-card {
-            min-width: 90vw;
-            max-width: 95vw;
-          }
-          .toppers-carousel-btn.prev {
-            left: 2px;
-          }
-          .toppers-carousel-btn.next {
-            right: 2px;
-          }
-        }
-     </style>
-     <section class="toppers-section">
-      <div class="container">
-        <div class="section-title">
-          <h2>Our Class Toppers</h2>
-        </div>
-        <div class="toppers-carousel-container">
-          <button class="toppers-carousel-btn prev" aria-label="Previous" style="display:none;"><i class="fa fa-chevron-left"></i></button>
-          <div class="toppers-carousel-row">
-            <!-- Topper Card 1 -->
-            <div class="card topper-card">
-              <div class="topper-card-image-wrapper">
-                <img src="https://plus.unsplash.com/premium_photo-1682091992663-2e4f4a5534ba?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Student 1">
-              </div>
-              <div class="topper-card-body">
-                <h5>Aarav Sharma</h5>
-                <p>Class 10th • 97.8%</p>
-              </div>
-            </div>
-            <!-- Topper Card 2 -->
-            <div class="card topper-card">
-              <img src="https://i.pinimg.com/1200x/9c/00/1c/9c001cd4ecec48f795e7ddee62e49973.jpg" width="100%"  alt="Student 2">
-              <div class="topper-card-body">
-                <h5>Saanvi Patel</h5>
-                <p>Class 12th • 96.5%</p>
-              </div>
-            </div>
-            <!-- Topper Card 3 -->
-            <div class="card topper-card">
-              <img src="https://i.pinimg.com/1200x/9c/00/1c/9c001cd4ecec48f795e7ddee62e49973.jpg" width="100%" alt="Student 3">
-              <div class="topper-card-body">
-                <h5>Rohan Verma</h5>
-                <p>Class 8th • 98.2%</p>
-              </div>
-            </div>
-            <!-- Topper Card 4 -->
-            <div class="card topper-card">
-              <img src="https://i.pinimg.com/1200x/0a/0b/90/0a0b908c5b6e999347734af2262d9074.jpg" width="100%"  alt="Student 4">
-              <div class="topper-card-body">
-                <h5>Isha Kulkarni</h5>
-                <p>Class 9th • 97.4%</p>
-              </div>
-            </div>
-            <!-- Topper Card 5 -->
-            <div class="card topper-card">
-              <img src="https://i.pinimg.com/1200x/0a/0b/90/0a0b908c5b6e999347734af2262d9074.jpg" width="100%"  alt="Student 5">
-              <div class="topper-card-body">
-                <h5>Priya Singh</h5>
-                <p>Class 11th • 95.9%</p>
-              </div>
-            </div>
-            <!-- Topper Card 6 -->
-            <div class="card topper-card">
-              <img src="https://i.pinimg.com/1200x/0a/0b/90/0a0b908c5b6e999347734af2262d9074.jpg" width="100%"  alt="Student 6">
-              <div class="topper-card-body">
-                <h5>Aditya Joshi</h5>
-                <p>Class 10th • 97.1%</p>
-              </div>
-            </div>
-            <!-- Add more cards as needed -->
-          </div>
-          <button class="toppers-carousel-btn next" aria-label="Next"><i class="fa fa-chevron-right"></i></button>
-        </div>
-      </div>
-    </section>
-    <script>
-      // Carousel logic for toppers section
-      document.addEventListener('DOMContentLoaded', function() {
-        const cards = Array.from(document.querySelectorAll('.toppers-carousel-row .topper-card'));
-        const prevBtn = document.querySelector('.toppers-carousel-btn.prev');
-        const nextBtn = document.querySelector('.toppers-carousel-btn.next');
-        const visibleCount = 4;
-        let startIdx = 0;
-    
-        function updateCarousel() {
-          cards.forEach((card, idx) => {
-            if (idx >= startIdx && idx < startIdx + visibleCount) {
-              card.classList.remove('hide');
-            } else {
-              card.classList.add('hide');
-            }
-          });
-          // Show/hide prev/next buttons
-          if (cards.length <= visibleCount) {
-            prevBtn.style.display = 'none';
-            nextBtn.style.display = 'none';
-          } else {
-            prevBtn.style.display = '';
-            nextBtn.style.display = '';
-            // Hide prev if at start, hide next if at end (unless looping)
-            // But as per prompt, always round loop, so always show both
-          }
-        }
-    
-        function showPrev() {
-          startIdx = (startIdx - visibleCount + cards.length) % cards.length;
-          updateCarousel();
-        }
-    
-        function showNext() {
-          startIdx = (startIdx + visibleCount) % cards.length;
-          updateCarousel();
-        }
-    
-        prevBtn.addEventListener('click', showPrev);
-        nextBtn.addEventListener('click', showNext);
-    
-        // Responsive: show less cards on small screens
-        function getVisibleCount() {
-          if (window.innerWidth < 600) return 1;
-          if (window.innerWidth < 900) return 2;
-          if (window.innerWidth < 1200) return 3;
-          return 4;
-        }
-    
-        function handleResize() {
-          // recalculate visibleCount and adjust startIdx if needed
-          let newVisible = getVisibleCount();
-          if (visibleCount !== newVisible) {
-            startIdx = 0;
-          }
-          updateCarousel();
-        }
-    
-        // For this implementation, visibleCount is fixed at 4 as per prompt.
-        updateCarousel();
-    
-        // Optionally, enable responsive visibleCount:
-        // window.addEventListener('resize', handleResize);
-      });
-    </script>
-
-
-
-
-
-
-
-
-
 
 
     <!-- Features Section -->
@@ -580,13 +269,13 @@
                     </div>
                     <div class="class-content">
                         <ul>
-                            <li><i class="fas fa-check-circle"></i> Interactive Math Lessons</li>
-                            <li><i class="fas fa-check-circle"></i> Science Experiments</li>
-                            <li><i class="fas fa-check-circle"></i> English Grammar Basics</li>
-                            <li><i class="fas fa-check-circle"></i> Social Studies Projects</li>
-                            <li><i class="fas fa-check-circle"></i> Creative Writing</li>
+                            <li><i class="fas fa-check-circle text-success"></i> Interactive Math Lessons</li>
+                            <li><i class="fas fa-check-circle text-success"></i> Science Experiments</li>
+                            <li><i class="fas fa-check-circle text-success"></i> English Grammar Basics</li>
+                            <li><i class="fas fa-check-circle text-success"></i> Social Studies Projects</li>
+                            <li><i class="fas fa-check-circle text-success"></i> Creative Writing</li>
                         </ul>
-                        <a href="" class="class-btn">Explore Class</a>
+                        <a href="" class="class-btn bg-primary"">Explore Class</a>
                     </div>
                 </div>
                 
@@ -597,13 +286,13 @@
                     </div>
                     <div class="class-content">
                         <ul>
-                            <li><i class="fas fa-check-circle"></i> Advanced Mathematics</li>
-                            <li><i class="fas fa-check-circle"></i> Physics & Chemistry</li>
-                            <li><i class="fas fa-check-circle"></i> Biology Concepts</li>
-                            <li><i class="fas fa-check-circle"></i> History & Geography</li>
-                            <li><i class="fas fa-check-circle"></i> Language Development</li>
+                            <li><i class="fas fa-check-circle text-success"></i> Advanced Mathematics</li>
+                            <li><i class="fas fa-check-circle text-success"></i> Physics & Chemistry</li>
+                            <li><i class="fas fa-check-circle text-success"></i> Biology Concepts</li>
+                            <li><i class="fas fa-check-circle text-success"></i> History & Geography</li>
+                            <li><i class="fas fa-check-circle text-success"></i> Language Development</li>
                         </ul>
-                        <a href="#" class="class-btn">Explore Class</a>
+                        <a href="#" class="class-btn bg-primary"">Explore Class</a>
                     </div>
                 </div>
                 
@@ -614,13 +303,13 @@
                     </div>
                     <div class="class-content">
                         <ul>
-                            <li><i class="fas fa-check-circle"></i> Board Exam Preparation</li>
-                            <li><i class="fas fa-check-circle"></i> Advanced Science Labs</li>
-                            <li><i class="fas fa-check-circle"></i> Mathematics Mastery</li>
-                            <li><i class="fas fa-check-circle"></i> Comprehensive Language</li>
-                            <li><i class="fas fa-check-circle"></i> Career Guidance</li>
+                            <li><i class="fas fa-check-circle text-success"></i> Board Exam Preparation</li>
+                            <li><i class="fas fa-check-circle text-success"></i> Advanced Science Labs</li>
+                            <li><i class="fas fa-check-circle text-success"></i> Mathematics Mastery</li>
+                            <li><i class="fas fa-check-circle text-success"></i> Comprehensive Language</li>
+                            <li><i class="fas fa-check-circle text-success"></i> Career Guidance</li>
                         </ul>
-                        <a href="#" class="class-btn">Explore Class</a>
+                        <a href="#" class="class-btn bg-primary"">Explore Class</a>
                     </div>
                 </div>
                
@@ -640,11 +329,11 @@
                 <h2>Ready to Transform Your Learning Experience?</h2>
                 <p>Join thousands of students and teachers who are already using EduSync to make education more engaging and effective.</p>
                 <div class="cta-buttons">
-                    <a href="tel:918010431965" class="btn-light cta-btn" id="call-btn">
-                        <i class="fas fa-phone-alt" style="margin-right: 6px;"></i>Enquiry Now
+                    <a href="tel:918010431965" class="btn-light cta-btn text-primary" id="call-btn">
+                        <i class="fas fa-phone-alt  text-primary" style="margin-right: 6px;"></i>Enquiry Now
                     </a>
-                    <a href="https://wa.me/918010431965" class="btn-light cta-btn" target="_blank" id="join-whatsapp-btn">
-                        <i class="fab fa-whatsapp" style="margin-right: 6px;"></i>WhatsApp
+                    <a href="https://wa.me/918010431965" class="btn-light cta-btn text-success" target="_blank" id="join-whatsapp-btn">
+                        <i class="fab fa-whatsapp text-success" style="margin-right: 6px;"></i>WhatsApp
                     </a>
                 </div>
             </div>
