@@ -10,8 +10,8 @@ var admin = require('./routes/admin');
 
 
 var student = require("./routes/student");
-var teacher = require("./routes/teacher");
-var dashboard = require("./routes/dashboard");
+var teacher = require("./routes/admin");
+
 var app = express();
 
 
@@ -30,10 +30,9 @@ app.use(session({
 }))
 
 app.use("/",user);
-app.use("/add",admin);
 app.use("/stu",student);
-app.use("/teach",teacher);
-app.use("/dash",dashboard);
+app.use("/admin",admin);
+
 
 
 
