@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduManage – Teacher & Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+
+<!-- Owl Carousel JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Required for Owl -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <style>
+   .custom-section {
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 30px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+ 
+
+    :root {
+      
+      --primary: #4361ee;
+      --secondary: #3f37c9;
+      --success: #4cc9f0;
+      --danger: #f72585;
+      --warning: #f8961e;
+      --info: #4895ef;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --sidebar: #1e293b;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --teacher: #3b82f6;
+      --admin: #8b5cf6;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f1f5f9;
+      color: var(--text-primary);
+      display: flex; min-height: 100vh;
+    }
+    .sidebar {
+      width: 260px;
+      background: var(--sidebar);
+      color: #fff;
+      padding: 20px 0;
+      position: fixed;
+      height: 100%;
+      overflow-y: auto;
+    }
+    .logo {
+      display: flex; align-items: center;
+      padding: 0 20px 20px;
+      border-bottom: 1px solid #334155;
+      margin-bottom: 20px;
+    }
+    .logo i {
+      font-size: 28px;
+      color: var(--success);
+      margin-right: 12px;
+    }
+    .logo h1 {
+      font-size: 22px;
+      font-weight: 600;
+      background: linear-gradient(90deg, var(--success), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .menu-item {
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: background 0.2s;
+      margin: 5px 0;
+    }
+    .menu-item:hover, .menu-item.active {
+      background: rgba(56,78,117,0.4);
+      color: #fff;
+      border-left: 3px solid var(--primary);
+    }
+    .menu-item i {
+      margin-right: 12px;
+      font-size: 18px;
+      width: 24px;
+      text-align: center;
+    }
+    .menu-divider {
+      padding: 0 20px;
+      margin: 15px 0;
+      color: #64748b;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .main-content {
+      flex: 1;
+      margin-left: 260px;
+      padding: 20px;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      margin-bottom: 25px;
+    }
+    .search-bar {
+      position: relative;
+      width: 350px;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 12px 20px 12px 45px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: var(--light);
+      font-size: 14px;
+      transition: box-shadow 0.3s;
+    }
+    .search-bar input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(66,153,225,0.2);
+      border-color: var(--primary);
+    }
+    .search-bar i {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+    }
+    .top-right { display: flex; align-items: center; }
+    .notification, .user-profile {
+      position: relative;
+      margin-left: 20px;
+      cursor: pointer;
+    }
+    .notification i, .user-profile i {
+      font-size: 20px;
+      color: var(--text-secondary);
+    }
+    .notification-count {
+      position: absolute;
+      top: -5px; right: -5px;
+      background: var(--danger);
+      color: #fff;
+      font-size: 10px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .user-profile img {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+    }
+    .dashboard-title {
+      display: flex; align-items: center;
+      margin-bottom: 25px;
+    }
+    .dashboard-title h2 {
+      font-size: 26px; font-weight: 600;
+    }
+    .role-badge {
+      margin-left: 15px;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #fff;
+    }
+    .role-badge.teacher { background: var(--teacher); }
+    .role-badge.admin   { background: var(--admin); }
+    .stats-container {
+      display: grid;
+      gap: 20px;
+      margin-bottom: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      display: flex;
+      transition: transform 0.3s;
+    }
+    .stat-card:hover { transform: translateY(-5px); }
+    .stat-icon {
+      width: 60px; height: 60px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      font-size: 24px;
+    }
+    .stat-1 .stat-icon { background: rgba(67,97,238,0.15); color: var(--primary); }
+    .stat-2 .stat-icon { background: rgba(76,201,240,0.15); color: var(--success); }
+    .stat-3 .stat-icon { background: rgba(247,37,133,0.15); color: var(--danger); }
+    .stat-4 .stat-icon { background: rgba(248,150,30,0.15); color: var(--warning); }
+    .stat-info h3 { font-size: 24px; font-weight: 600; margin-bottom: 5px; }
+    .stat-info p { color: var(--text-secondary); font-size: 14px; }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+    }
+    .grid-column { display: flex; flex-direction: column; gap: 25px; }
+
+    .card { background: var(--card-bg); border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden; }
+    .card-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-header h3 { font-size: 18px; font-weight: 600; }
+    .card-header a { color: var(--primary); font-size: 14px; text-decoration: none; }
+    .card-body { padding: 20px; }
+
+    .table { width: 100%; border-collapse: collapse; }
+    .table th, .table td { padding: 12px 15px; font-size: 14px; border-bottom: 1px solid var(--border); }
+    .table th { font-weight: 500; color: var(--text-secondary); font-size: 13px; }
+    .status-badge {
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .status-pending  { background: #fef3c7; color: #d97706; }
+    .status-submitted{ background: #dcfce7; color: #15803d; }
+    .status-late     { background: #fee2e2; color: #b91c1c; }
+
+    .activity-list { list-style: none; }
+    .activity-item {
+      display: flex;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-icon {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+    }
+    .activity-icon.teacher { background: rgba(59,130,246,0.15); color: var(--teacher); }
+    .activity-icon.admin   { background: rgba(139,92,246,0.15); color: var(--admin); }
+    .activity-content h4 { font-size: 15px; margin-bottom: 5px; }
+    .activity-content p { font-size: 13px; color: var(--text-secondary); }
+    .activity-time { font-size: 12px; color: #94a3b8; margin-top: 5px; }
+
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 15px;
+    }
+    .quick-btn {
+      background: var(--light);
+      border: none;
+      padding: 15px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .quick-btn i { font-size: 18px; margin-bottom: 8px; }
+
+    @media (max-width: 992px) { .content-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      .sidebar { width: 70px; }
+      .sidebar .logo h1, .sidebar .menu-text, .sidebar .menu-divider { display: inline; }
+      .main-content { margin-left: 70px; }
+      .search-bar { width: 200px; }
+      .stats-container { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 576px) {
+      .top-bar { flex-direction: column; align-items: flex-start; }
+      .search-bar { width: 100%; margin-bottom: 15px; }
+      .top-right { width: 100%; justify-content: space-between; }
+    }
+    .mobile-menu-toggle {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 2001;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: block;
+      }
+      .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 260px;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+        z-index: 2000;
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .main-content {
+        margin-left: 0 !important;
+      }
+    }
+
+
+    .user-profile {
+        position: relative;
+        display: inline-block;
+      }
+      .user-profile img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid #8E54E9;
+        transition: box-shadow 0.2s;
+      }
+      .user-profile img:hover {
+        box-shadow: 0 0 0 3px #4776E6;
+      }
+      .profile-dropdown {
+        position: absolute;
+        right: 0;
+        top: 50px;
+        background: #fff;
+        min-width: 220px;
+        box-shadow: 0 8px 24px rgba(72, 72, 176, 0.15);
+        border-radius: 12px;
+        z-index: 100;
+        padding: 16px 0 8px 0;
+        animation: fadeIn 0.2s;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px);}
+        to { opacity: 1; transform: translateY(0);}
+      }
+      .profile-info {
+        display: flex;
+        align-items: center;
+        padding: 0 16px 12px 16px;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 8px;
+      }
+      .profile-info .profile-pic {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-right: 12px;
+        border: 2px solid #8E54E9;
+      }
+      .profile-details {
+        display: flex;
+        flex-direction: column;
+      }
+      .profile-name {
+        font-weight: 600;
+        color: #333;
+        font-size: 1rem;
+      }
+      .profile-email {
+        font-size: 0.85rem;
+        color: #888;
+      }
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        color: #333;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: background 0.15s;
+      }
+      .dropdown-item i {
+        margin-right: 10px;
+        color: #8E54E9;
+      }
+      .dropdown-item:hover {
+        background: #f5f6fa;
+      }
+      .dropdown-item.logout {
+        color: #e74c3c;
+        font-weight: 500;
+      }
+      .dropdown-item.logout i {
+        color: #e74c3c;
+      }
+  </style>
+</head>
+<body>
+  <!-- Mobile Menu Toggle Button -->
+<button class="mobile-menu-toggle" onclick="toggleSidebar()">
+  <i class="fas fa-bars"></i>
+</button>
+  <div class="sidebar">
+    <div class="logo"><i class="fas fa-graduation-cap"></i><h1>Student Dash</h1></div>
+    <a href="/stu" class="menu-item"><i class="fas fa-home"></i><span class="menu-text">Dashboard</span></a>
+    <div class="menu-divider">Teacher</div>
+    
+    <a href="/stu/my_classes" class="menu-item"><i class="fas fa-users"></i><span class="menu-text">My Classes</span></a>
+    <a href="/stu/assignment" class="menu-item"><i class="fas fa-tasks"></i><span class="menu-text">Assignments</span></a>
+    <a href="/stu/study_material" class="menu-item"><i class="fas fa-book"></i><span class="menu-text">Study Materials</span></a>
+    <a href="/stu/attendance" class="menu-item"><i class="fas fa-calendar-check"></i><span class="menu-text">Attendance</span></a>
+     <div class="menu-divider">General</div>
+    <a href="/stu/announcement" class="menu-item"><i class="fas fa-bullhorn"></i><span class="menu-text">Announcements</span></a>
+    <a href="#" class="menu-item"><i class="fas fa-comments"></i><span class="menu-text">Feedback</span></a>
+  </div>
+  <div class="main-content">
+    <div class="top-bar">
+      <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search…"></div>
+      <div class="top-right">
+        <div class="notification"><i class="fas fa-bell"></i><span class="notification-count">3</span></div>
+        <div class="user-profile" id="userProfileDropdown">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User" onclick="toggleProfileMenu()" style="cursor:pointer;">
+          <div class="profile-dropdown" id="profileDropdownMenu" style="display:none;">
+            <div class="profile-info">
+              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User" class="profile-pic">
+              <div class="profile-details">
+                <span class="profile-name">Student Name</span>
+                <span class="profile-email">student@email.com</span>
+              </div>
+            </div>
+            <a href="/stu/profile" class="dropdown-item"><i class="fas fa-user"></i> My Profile</a>
+            <a href="/logout" class="dropdown-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      function toggleProfileMenu() {
+        const menu = document.getElementById('profileDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+      }
+      // Hide dropdown when clicking outside
+      document.addEventListener('click', function(event) {
+        const profile = document.getElementById('userProfileDropdown');
+        const menu = document.getElementById('profileDropdownMenu');
+        if (profile && !profile.contains(event.target)) {
+          if (menu) menu.style.display = 'none';
+        }
+      });
+    </script>
+    <script>
+      // Highlight active menu item based on current URL
+      const current = window.location.pathname;
+      document.querySelectorAll('.menu-item').forEach(link => {
+        if (link.getAttribute('href') === current) {
+          link.classList.add('active');
+        }
+      });
+
+    
+    </script>
+    
+  <section class="custom-section">
