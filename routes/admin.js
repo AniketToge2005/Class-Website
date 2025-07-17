@@ -1,5 +1,4 @@
 
-
 var express = require("express");
 var router = express.Router();
 var exe = require('./../connection');
@@ -9,6 +8,14 @@ var exe = require('./../connection');
 router.get("/",function(req, res) {
   res.render("admin/home.ejs")
 });
+
+router.get("/about_class",async function(req,res){
+  res.render("admin/about_class.ejs")
+})
+
+
+
+
 
 router.get("/my_classes",function(req,res){
   res.render("admin/my_classes.ejs")

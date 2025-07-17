@@ -23,18 +23,6 @@ router.get("/profile",function (req, res) {
 
 
 
-router.get("/profile",function(req,res){
-  res.render("stu/profile.ejs");
-});
-
-
-router.post("/profile",async function(req,res){
-
-  var d = req.body;
-  var sql = ``
-  var data = await exe(sql);
-  res.send(data);
-});
-
+ 
 
 module.exports = router;

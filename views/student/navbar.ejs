@@ -20,14 +20,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Required for Owl -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
-<!-- ck editor  -->
-
-<script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-
   <style>
    .custom-section {
   background-color: #fff;
@@ -358,35 +350,89 @@
       .main-content {
         margin-left: 0 !important;
       }
-      
     }
-  </style>
 
-  <style>
-        .banner {
-  width: 100%;
-  height: 50px;
-  background: linear-gradient(to right, #4b3f92, #4b3f92, white);
-  position: relative;
-  overflow: hidden;
-}
 
-.stripes {
-  position: absolute;
-  top: 0;
-  left: 70%;
-  width: 50px;
-  height: 100%;
-  background: repeating-linear-gradient(
-    -45deg,
-    #fbb034,
-    #fbb034 20px,
-    #f15a24 20px,
-    #f15a24 40px
-  );
-  transform: skewX(-20deg);
-  opacity: 0.9;
-}
+    .user-profile {
+        position: relative;
+        display: inline-block;
+      }
+      .user-profile img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid #8E54E9;
+        transition: box-shadow 0.2s;
+      }
+      .user-profile img:hover {
+        box-shadow: 0 0 0 3px #4776E6;
+      }
+      .profile-dropdown {
+        position: absolute;
+        right: 0;
+        top: 50px;
+        background: #fff;
+        min-width: 220px;
+        box-shadow: 0 8px 24px rgba(72, 72, 176, 0.15);
+        border-radius: 12px;
+        z-index: 100;
+        padding: 16px 0 8px 0;
+        animation: fadeIn 0.2s;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px);}
+        to { opacity: 1; transform: translateY(0);}
+      }
+      .profile-info {
+        display: flex;
+        align-items: center;
+        padding: 0 16px 12px 16px;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 8px;
+      }
+      .profile-info .profile-pic {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        margin-right: 12px;
+        border: 2px solid #8E54E9;
+      }
+      .profile-details {
+        display: flex;
+        flex-direction: column;
+      }
+      .profile-name {
+        font-weight: 600;
+        color: #333;
+        font-size: 1rem;
+      }
+      .profile-email {
+        font-size: 0.85rem;
+        color: #888;
+      }
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        color: #333;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: background 0.15s;
+      }
+      .dropdown-item i {
+        margin-right: 10px;
+        color: #8E54E9;
+      }
+      .dropdown-item:hover {
+        background: #f5f6fa;
+      }
+      .dropdown-item.logout {
+        color: #e74c3c;
+        font-weight: 500;
+      }
+      .dropdown-item.logout i {
+        color: #e74c3c;
+      }
   </style>
 </head>
 <body>
@@ -395,14 +441,16 @@
   <i class="fas fa-bars"></i>
 </button>
   <div class="sidebar">
-    <div class="logo"><i class="fas fa-graduation-cap"></i><h1>EduManage</h1></div>
-    <a href="/admin" class="menu-item"><i class="fas fa-home"></i><span class="menu-text">Dashboard</span></a>
+    <div class="logo"><i class="fas fa-graduation-cap"></i><h1>Student Dash</h1></div>
+    <a href="/stu" class="menu-item"><i class="fas fa-home"></i><span class="menu-text">Dashboard</span></a>
+    <div class="menu-divider">Teacher</div>
     
-    <a href="/admin/about_class" class="menu-item"><i class="fa-solid fa-address-card"></i><span class="menu-text">About class</span></a>
-    <a href="/admin/assignment" class="menu-item"><i class="fas fa-tasks"></i><span class="menu-text">Assignments</span></a>
-    <a href="/admin/study_material" class="menu-item"><i class="fas fa-book"></i><span class="menu-text">Study Materials</span></a>
-    <a href="/admin/attendance" class="menu-item"><i class="fas fa-calendar-check"></i><span class="menu-text">Attendance</span></a>
-    <a href="/admin/announcement" class="menu-item"><i class="fas fa-bullhorn"></i><span class="menu-text">Announcements</span></a>
+    <a href="/stu/my_classes" class="menu-item"><i class="fas fa-users"></i><span class="menu-text">My Classes</span></a>
+    <a href="/stu/assignment" class="menu-item"><i class="fas fa-tasks"></i><span class="menu-text">Assignments</span></a>
+    <a href="/stu/study_material" class="menu-item"><i class="fas fa-book"></i><span class="menu-text">Study Materials</span></a>
+    <a href="/stu/attendance" class="menu-item"><i class="fas fa-calendar-check"></i><span class="menu-text">Attendance</span></a>
+     <div class="menu-divider">General</div>
+    <a href="/stu/announcement" class="menu-item"><i class="fas fa-bullhorn"></i><span class="menu-text">Announcements</span></a>
     <a href="#" class="menu-item"><i class="fas fa-comments"></i><span class="menu-text">Feedback</span></a>
   </div>
   <div class="main-content">
@@ -410,10 +458,37 @@
       <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search…"></div>
       <div class="top-right">
         <div class="notification"><i class="fas fa-bell"></i><span class="notification-count">3</span></div>
-        <div class="user-profile"><img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User"></div>
+        <div class="user-profile" id="userProfileDropdown">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User" onclick="toggleProfileMenu()" style="cursor:pointer;">
+          <div class="profile-dropdown" id="profileDropdownMenu" style="display:none;">
+            <div class="profile-info">
+              <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User" class="profile-pic">
+              <div class="profile-details">
+                <span class="profile-name">Student Name</span>
+                <span class="profile-email">student@email.com</span>
+              </div>
+            </div>
+            <a href="/stu/profile" class="dropdown-item"><i class="fas fa-user"></i> My Profile</a>
+            <a href="/logout" class="dropdown-item logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </div>
       </div>
     </div>
     
+    <script>
+      function toggleProfileMenu() {
+        const menu = document.getElementById('profileDropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+      }
+      // Hide dropdown when clicking outside
+      document.addEventListener('click', function(event) {
+        const profile = document.getElementById('userProfileDropdown');
+        const menu = document.getElementById('profileDropdownMenu');
+        if (profile && !profile.contains(event.target)) {
+          if (menu) menu.style.display = 'none';
+        }
+      });
+    </script>
     <script>
       // Highlight active menu item based on current URL
       const current = window.location.pathname;
