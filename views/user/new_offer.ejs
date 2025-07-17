@@ -3,358 +3,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>New Offers | Shree Classes</title>
-
-  <!-- Bootstrap CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduLearn - Online Courses for All Classes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Animate.css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <style>
     :root {
-      --primary: #4a6bff;
-      --primary-light: #6a85ff;
-      --secondary: #ff6b6b;
-      --dark: #2c3e50;
-      --light: #f8f9fa;
-      --success: #28a745;
-      --warning: #ffc107;
+      --primary-color: #4361ee;
+      --secondary-color: #3f37c9;
+      --accent-color: #4cc9f0;
+      --success-color: #4ad66d;
+      --danger-color: #f72585;
+      --warning-color: #f8961e;
+      --light-color: #f8f9fa;
+      --dark-color: #212529;
+      --text-color: #2b2d42;
+      --text-light: #8d99ae;
+      --border-radius: 10px;
+      --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
     }
-    
+
     body {
-      background: #f5f7ff;
       font-family: 'Poppins', sans-serif;
-      color: var(--dark);
+      background-color: #f8f9fa;
+      color: var(--text-color);
+      line-height: 1.6;
     }
-    
-    /* Header Styles */
-    .page-header {
-      position: relative;
-      padding: 4rem 0;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      margin-bottom: 2rem;
-      overflow: hidden;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .page-header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
-      opacity: 0.15;
-    }
-    
-    .page-header h1 {
+
+    /* Navbar Styles */
+    .navbar-brand {
       font-weight: 700;
-      position: relative;
-      font-size: 2.8rem;
-    }
-    
-    .page-header p {
-      font-weight: 300;
-      position: relative;
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    /* Offer Card Styles */
-    .offer-card {
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-      margin-bottom: 30px;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      overflow: hidden;
-      border: none;
-      position: relative;
-    }
-    
-    .offer-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-    }
-    
-    .offer-card-img {
-      height: 200px;
-      object-fit: cover;
-      width: 100%;
-      transition: transform 0.5s ease;
-    }
-    
-    .offer-card:hover .offer-card-img {
-      transform: scale(1.08);
-    }
-    
-    .badge-custom {
-      background: var(--primary);
-      font-size: 0.75rem;
-      margin-bottom: 12px;
-      padding: 6px 12px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      border-radius: 20px;
-    }
-    
-    .price {
       font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--secondary);
-      margin-bottom: 5px;
+      color: var(--primary-color);
     }
-    
-    .old-price {
-      text-decoration: line-through;
-      color: #adb5bd;
-      font-size: 1rem;
+
+    .navbar-brand span {
+      color: var(--danger-color);
     }
-    
-    .discount-badge {
-      background: var(--secondary);
-      color: white;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      margin-left: 10px;
-      font-weight: 600;
-    }
-    
-    /* Batch Navigation */
-    .batch-navbar {
-      background-color: white;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      padding: 1.2rem;
-      border-radius: 50px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      margin: 2.5rem auto;
-      max-width: 90%;
-      flex-wrap: wrap;
-    }
-    
-    .batch-link {
-      color: #555;
+
+    .nav-link {
       font-weight: 500;
-      text-decoration: none;
-      padding: 8px 18px;
-      transition: all 0.3s ease;
-      border-radius: 30px;
+      padding: 0.5rem 1rem;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+      color: white;
+      padding: 4rem 0;
+      border-radius: 0 0 20px 20px;
+      margin-bottom: 3rem;
       position: relative;
       overflow: hidden;
-      cursor: pointer;
-      font-size: 0.95rem;
-      border: 1px solid #e0e0e0;
     }
-    
-    .batch-link::before {
+
+    .hero-section::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: -1;
+      background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      opacity: 0.1;
     }
-    
-    .batch-link:hover {
-      color: white;
-      border-color: transparent;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(74, 107, 255, 0.2);
+
+    .hero-title {
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
     }
-    
-    .batch-link:hover::before {
-      opacity: 1;
+
+    .hero-subtitle {
+      font-weight: 400;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
     }
-    
-    .batch-link.active {
-      color: white;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      box-shadow: 0 6px 18px rgba(74, 107, 255, 0.3);
-      border-color: transparent;
-      transform: translateY(-2px);
+
+    .search-bar {
+      max-width: 600px;
+      margin: 0 auto;
     }
-    
-    /* Buttons */
-    .btn-explore {
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      font-weight: 600;
-      border-radius: 30px;
-      padding: 8px 22px;
-      transition: all 0.3s ease;
-      letter-spacing: 0.5px;
+
+    /* Filter Navbar */
+    .filter-navbar {
+      background-color: white;
+      box-shadow: var(--box-shadow);
+      border-radius: var(--border-radius);
+      padding: 1rem;
+      margin-bottom: 2rem;
     }
-    
-    .btn-explore:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(74, 107, 255, 0.3);
-    }
-    
-    .btn-buy {
-      background: var(--success);
-      color: white;
-      font-weight: 600;
-      border-radius: 30px;
-      padding: 8px 22px;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 18px rgba(40, 167, 69, 0.25);
-      letter-spacing: 0.5px;
-      border: 2px solid transparent;
-    }
-    
-    .btn-buy:hover {
-      background: #218838;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 22px rgba(40, 167, 69, 0.35);
-      border-color: transparent;
-    }
-    
-    .load-more-btn {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-      color: white;
-      padding: 14px 36px;
+
+    .filter-navbar .nav-link {
+      color: var(--text-light);
       border-radius: 50px;
-      font-weight: 600;
-      border: none;
-      transition: all 0.4s ease;
-      box-shadow: 0 8px 20px rgba(74, 107, 255, 0.3);
-      position: relative;
-      overflow: hidden;
-      letter-spacing: 0.5px;
-      font-size: 1.05rem;
-      margin-top: 1rem;
+      padding: 0.5rem 1.25rem;
+      margin: 0 0.25rem;
+      transition: var(--transition);
     }
-    
-    .load-more-btn:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 12px 25px rgba(74, 107, 255, 0.4);
-    }
-    
-    .load-more-btn:active {
-      transform: translateY(1px);
-    }
-    
-    /* Animations */
-    .animate-pop-in {
-      animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    }
-    
-    @keyframes popIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.8) translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
-      }
-      70% {
-        transform: scale(1.02);
-        box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
-      }
-    }
-    
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-      .batch-navbar {
-        gap: 8px;
-        border-radius: 25px;
-        padding: 1rem;
-      }
-      
-      .batch-link {
-        padding: 6px 14px;
-        font-size: 0.85rem;
-      }
-      
-      .offer-card {
-        margin-bottom: 25px;
-      }
-      
-      .page-header h1 {
-        font-size: 2.2rem;
-      }
-      
-      .page-header p {
-        font-size: 1rem;
-      }
-    }
-    
-    /* Offer Highlights */
-    .offer-highlight {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: var(--secondary);
+
+    .filter-navbar .nav-link:hover,
+    .filter-navbar .nav-link.active {
+      background-color: var(--primary-color);
       color: white;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      z-index: 2;
-      animation: pulse 2s infinite;
-      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
     }
-    
-    /* Countdown Timer */
-    .countdown-timer {
-      background: rgba(0,0,0,0.8);
-      color: white;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      margin-top: 12px;
-      display: inline-block;
-      font-weight: 500;
-    }
-    
-    /* Section Headers */
+
+    /* Section Header */
     .section-header {
       position: relative;
-      padding-bottom: 12px;
-      margin-bottom: 30px;
+      padding-bottom: 0.75rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      color: var(--text-color);
     }
-    
+
     .section-header::after {
       content: '';
       position: absolute;
@@ -362,103 +128,491 @@
       left: 0;
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      background-color: var(--primary-color);
       border-radius: 2px;
     }
-    
-    /* No Results Message */
-    .no-results {
-      text-align: center;
-      padding: 40px;
+
+    .section-header i {
+      color: var(--primary-color);
+      margin-right: 0.5rem;
+    }
+
+    /* Offer Card */
+    .offer-card-container {
+      transition: transform 0.3s ease;
+    }
+
+    .offer-card-container:hover {
+      transform: translateY(-5px);
+    }
+
+    .offer-card {
       background: white;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      margin: 30px 0;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      border: none;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
-    
-    .no-results i {
-      font-size: 3rem;
-      color: var(--primary);
-      margin-bottom: 20px;
+
+    .offer-card:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
     }
-    
-    /* Loading Animation */
+
+    .offer-card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .offer-highlight {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: var(--danger-color);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .offer-card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .badge-custom {
+      background-color: var(--accent-color);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      text-transform: uppercase;
+      align-self: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .offer-card-title {
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: var(--text-color);
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+
+    .offer-card-text {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .price-container {
+      margin: 1rem 0;
+    }
+
+    .current-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--danger-color);
+    }
+
+    .original-price {
+      font-size: 1rem;
+      text-decoration: line-through;
+      color: var(--text-light);
+      margin-left: 0.5rem;
+    }
+
+    .discount-badge {
+      background-color: #ffebee;
+      color: var(--danger-color);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+    }
+
+    .card-actions {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-explore {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50px;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+      border: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .btn-explore:hover {
+      background-color: var(--secondary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .btn-explore i {
+      margin-left: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    .btn-buy {
+      background-color: var(--success-color);
+      color: white;
+      border-radius: 50px;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+      border: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .btn-buy:hover {
+      background-color: #3a9d4e;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .btn-buy i {
+      margin-left: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    .countdown-timer {
+      font-size: 0.8rem;
+      color: var(--danger-color);
+      font-weight: 600;
+      text-align: center;
+      background-color: #ffebee;
+      padding: 0.5rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+    }
+
+    /* Features Section */
+    .features-section {
+      background-color: white;
+      padding: 3rem 0;
+      margin-top: 3rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+
+    .feature-item {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-weight: 600;
+      color: var(--text-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-text {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* Testimonials */
+    .testimonial-section {
+      padding: 3rem 0;
+    }
+
+    .testimonial-card {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      box-shadow: var(--box-shadow);
+      margin: 0.5rem;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: var(--text-color);
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+
+    .testimonial-author-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+    }
+
+    .author-name {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .author-title {
+      color: var(--text-light);
+      font-size: 0.8rem;
+    }
+
+   
+    .copyright {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+      margin-top: 2rem;
+      text-align: center;
+      color: #adb5bd;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .offer-card-img {
+        height: 150px;
+      }
+      
+      .current-price {
+        font-size: 1.3rem;
+      }
+      
+      .btn-explore, .btn-buy {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .section-header {
+        font-size: 1.3rem;
+      }
+      
+      .offer-card-title {
+        font-size: 1rem;
+      }
+      
+      .current-price {
+        font-size: 1.2rem;
+      }
+      
+      .countdown-timer {
+        font-size: 0.7rem;
+      }
+      
+      .filter-navbar .nav-link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+        margin: 0.1rem;
+      }
+    }
+
+    /* Animation Classes */
+    .animate__animated {
+      animation-duration: 0.5s;
+    }
+
+    /* Loading Spinner */
     .loading-spinner {
       display: none;
       text-align: center;
-      margin: 30px 0;
+      padding: 3rem 0;
     }
-    
-    .spinner {
-      width: 50px;
-      height: 50px;
-      border: 5px solid rgba(74, 107, 255, 0.2);
-      border-radius: 50%;
-      border-top-color: var(--primary);
-      animation: spin 1s ease-in-out infinite;
-      margin: 0 auto;
+
+    /* No Results Message */
+    .no-results {
+      text-align: center;
+      padding: 3rem 0;
+      color: var(--text-light);
     }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+
+    .no-results i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #dee2e6;
     }
   </style>
 </head>
 
 <body>
+  <!-- Navbar is included via EJS include -->
+
   <!-- Hero Section -->
-  <div class="page-header text-center animate__animated animate__fadeIn">
-    <div class="container">
-      <h1 class="display-4">🎉 Exclusive Course Offers</h1>
-      <p class="lead">Limited-time discounts on our premium courses. Enroll now before offers expire!</p>
+  <section class="hero-section">
+    <div class="container text-center">
+      <h1 class="hero-title animate__animated animate__fadeInDown">Unlock Your Learning Potential</h1>
+      <p class="hero-subtitle animate__animated animate__fadeIn animate__delay-1s">Discover the best courses for all classes and competitive exams</p>
+      
+      <div class="search-bar animate__animated animate__fadeIn animate__delay-2s">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control form-control-lg" placeholder="Search for courses..." id="course-search">
+          <button class="btn btn-primary" type="button" id="search-button">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
+      </div>
     </div>
+  </section>
+<!-- navbar container -->
+  <div class="container">
+    <nav class="navbar navbar-expand-lg filter-navbar">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#filterNavbar">
+          <i class="fas fa-filter"></i> Filters
+        </button>
+        <div class="collapse navbar-collapse" id="filterNavbar">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" data-filter="all">All Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-filter="5">Class 5</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-filter="6">Class 6</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-filter="7">Class 7</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-filter="8">Class 8</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-filter="9">Class 9</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-filter="10">Class 10</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-filter="11">Class 11</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-filter="12">Class 12</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-filter="competitive">Competitive</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-filter="dropper">Dropper Batch</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
 
-  <!-- Filter Navbar -->
-  <div class="container animate__animated animate__fadeIn animate__delay-1s">
-    <div class="batch-navbar">
-      <a class="batch-link active" data-class="all">All Batches</a>
-      <a class="batch-link" data-class="5">Class 5</a>
-      <a class="batch-link" data-class="6">Class 6</a>
-      <a class="batch-link" data-class="7">Class 7</a>
-      <a class="batch-link" data-class="8">Class 8</a>
-      <a class="batch-link" data-class="9">Class 9</a>
-      <a class="batch-link" data-class="10">Class 10</a>
-      <a class="batch-link" data-class="11">Class 11</a>
-      <a class="batch-link" data-class="12">Class 12</a>
-      <a class="batch-link" data-class="dropper">Dropper</a>
-      <a class="batch-link" data-class="competitive">Competitive</a>
-    </div>
-  </div>
-    
+  <!-- Main Content -->
   <div class="container py-4">
-    <div class="row">
-      <!-- Class 5-8 Offers -->
-      <div class="col-12 mb-5">
-        <h3 class="section-header"><i class="fas fa-school me-2"></i> Foundation Classes (5-8)</h3>
-        <div class="row" id="foundation-offers">
-          <% const foundationOffers = [
-            { title: 'Math Mastery', class: '5', price: 2999, oldPrice: 4999, image: '/images/math.jpg', tag: 'Math', highlight: 'New' },
-            { title: 'Science Explorer', class: '6', price: 3499, oldPrice: 5999, image: '/images/science.jpg', tag: 'Science', highlight: 'Popular' },
-            { title: 'English Excellence', class: '7-8', price: 2599, oldPrice: 4499, image: '/images/english.jpg', tag: 'English' }
+    <!-- No Results Message (Hidden by default) -->
+    <div class="no-results d-none" id="no-results">
+      <i class="fas fa-book-open"></i>
+      <h3>No courses found</h3>
+      <p>Try adjusting your search or filters</p>
+    </div>
+
+    <!-- Loading Spinner (Hidden by default) -->
+    <div class="loading-spinner d-none" id="loading-spinner">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-3">Loading courses...</p>
+    </div>
+
+    <!-- Courses Grid -->
+    <div id="courses-container">
+      <!-- Class 5 Offers -->
+      <div class="col-12 mb-5" id="class5-section">
+        <h3 class="section-header"><i class="fas fa-school me-2"></i> Class 5</h3>
+        <div class="row" id="class5-offers">
+          <% const class5Offers = [
+            { 
+              title: 'Math Mastery', 
+              class: '5', 
+              price: 2999, 
+              oldPrice: 4999, 
+              image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Math', 
+              highlight: 'New',
+              description: 'Comprehensive math course covering all Class 5 topics with interactive exercises'
+            },
+            { 
+              title: 'English Basics', 
+              class: '5', 
+              price: 2499, 
+              oldPrice: 3999, 
+              image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'English',
+              description: 'Build strong English foundation with grammar, vocabulary and comprehension'
+            },
+            { 
+              title: 'Science Explorer', 
+              class: '5', 
+              price: 2799, 
+              oldPrice: 4499, 
+              image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Science',
+              description: 'Discover the wonders of science with fun experiments and activities'
+            }
           ]; %>
           
-          <% foundationOffers.forEach(offer => { %>
-            <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="<%= offer.class.includes('-') ? offer.class.split('-').join(',') : offer.class %>">
+          <% class5Offers.forEach(offer => { %>
+            <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="5" data-tag="<%= offer.tag.toLowerCase() %>">
               <div class="offer-card h-100">
                 <% if (offer.highlight) { %>
                   <span class="offer-highlight"><%= offer.highlight %></span>
                 <% } %>
                 <img src="<%= offer.image %>" alt="<%= offer.title %>" class="offer-card-img">
-                <div class="p-4">
-                  <span class="badge badge-custom"><%= offer.tag %></span>
-                  <h5 class="mt-2"><%= offer.title %> (Class <%= offer.class %>)</h5>
-                  <p class="price">₹<%= offer.price.toLocaleString() %> <span class="old-price">₹<%= offer.oldPrice.toLocaleString() %></span></p>
-                  <div class="d-flex justify-content-between mt-4">
-                    <a href="#" class="btn btn-explore">Explore <i class="fas fa-chevron-right ms-1"></i></a>
-                    <a href="#" class="btn btn-buy">Buy Now <i class="fas fa-shopping-cart ms-1"></i></a>
+                <div class="offer-card-body">
+                  <span class="badge-custom"><%= offer.tag %></span>
+                  <h5 class="offer-card-title"><%= offer.title %> (Class <%= offer.class %>)</h5>
+                  <p class="offer-card-text"><%= offer.description %></p>
+                  
+                  <div class="price-container">
+                    <span class="current-price">₹<%= offer.price.toLocaleString() %></span>
+                    <span class="original-price">₹<%= offer.oldPrice.toLocaleString() %></span>
+                    <span class="discount-badge"><%= Math.round((offer.oldPrice - offer.price)/offer.oldPrice * 100) %>% OFF</span>
                   </div>
-                  <div class="countdown-timer mt-3">Offer ends in: 2d 14h 30m</div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="btn btn-explore">Explore <i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="btn btn-buy">Buy Now <i class="fas fa-shopping-cart"></i></a>
+                  </div>
+                  
+                  <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
                 </div>
               </div>
             </div>
@@ -466,32 +620,65 @@
         </div>
       </div>
       
-      <!-- Class 9-10 Offers -->
-      <div class="col-12 mb-5">
-        <h3 class="section-header"><i class="fas fa-graduation-cap me-2"></i> Secondary Classes (9-10)</h3>
-        <div class="row" id="secondary-offers">
-          <% const secondaryOffers = [
-            { title: 'CBSE Complete', class: '9', price: 5999, oldPrice: 9999, image: '/images/cbse.jpg', tag: 'CBSE', highlight: 'Bestseller' },
-            { title: 'ICSE Mastery', class: '10', price: 6499, oldPrice: 10999, image: '/images/icse.jpg', tag: 'ICSE' },
-            { title: 'Board Crash Course', class: '10', price: 4999, oldPrice: 8999, image: '/images/board.jpg', tag: 'Crash Course', highlight: 'Limited' }
+      <!-- Class 6 Offers -->
+      <div class="col-12 mb-5" id="class6-section">
+        <h3 class="section-header"><i class="fas fa-school me-2"></i> Class 6</h3>
+        <div class="row" id="class6-offers">
+          <% const class6Offers = [
+            { 
+              title: 'Advanced Mathematics', 
+              class: '6', 
+              price: 3499, 
+              oldPrice: 5499, 
+              image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Math', 
+              highlight: 'Popular',
+              description: 'Master Class 6 math concepts with advanced problem-solving techniques'
+            },
+            { 
+              title: 'English Grammar', 
+              class: '6', 
+              price: 2699, 
+              oldPrice: 4299, 
+              image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'English',
+              description: 'Comprehensive grammar course with writing and speaking practice'
+            },
+            { 
+              title: 'Science Fundamentals', 
+              class: '6', 
+              price: 3299, 
+              oldPrice: 4999, 
+              image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Science',
+              description: 'Build strong science foundation with practical examples'
+            }
           ]; %>
           
-          <% secondaryOffers.forEach(offer => { %>
-            <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="<%= offer.class %>">
+          <% class6Offers.forEach(offer => { %>
+            <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="6" data-tag="<%= offer.tag.toLowerCase() %>">
               <div class="offer-card h-100">
                 <% if (offer.highlight) { %>
                   <span class="offer-highlight"><%= offer.highlight %></span>
                 <% } %>
                 <img src="<%= offer.image %>" alt="<%= offer.title %>" class="offer-card-img">
-                <div class="p-4">
-                  <span class="badge badge-custom"><%= offer.tag %></span>
-                  <h5 class="mt-2"><%= offer.title %> (Class <%= offer.class %>)</h5>
-                  <p class="price">₹<%= offer.price.toLocaleString() %> <span class="old-price">₹<%= offer.oldPrice.toLocaleString() %></span></p>
-                  <div class="d-flex justify-content-between mt-4">
-                    <a href="#" class="btn btn-explore">Explore <i class="fas fa-chevron-right ms-1"></i></a>
-                    <a href="#" class="btn btn-buy">Buy Now <i class="fas fa-shopping-cart ms-1"></i></a>
+                <div class="offer-card-body">
+                  <span class="badge-custom"><%= offer.tag %></span>
+                  <h5 class="offer-card-title"><%= offer.title %> (Class <%= offer.class %>)</h5>
+                  <p class="offer-card-text"><%= offer.description %></p>
+                  
+                  <div class="price-container">
+                    <span class="current-price">₹<%= offer.price.toLocaleString() %></span>
+                    <span class="original-price">₹<%= offer.oldPrice.toLocaleString() %></span>
+                    <span class="discount-badge"><%= Math.round((offer.oldPrice - offer.price)/offer.oldPrice * 100) %>% OFF</span>
                   </div>
-                  <div class="countdown-timer mt-3">Offer ends in: 1d 8h 15m</div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="btn btn-explore">Explore <i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="btn btn-buy">Buy Now <i class="fas fa-shopping-cart"></i></a>
+                  </div>
+                  
+                  <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
                 </div>
               </div>
             </div>
@@ -499,32 +686,462 @@
         </div>
       </div>
       
-      <!-- Class 11-12 Offers -->
-      <div class="col-12 mb-5">
-        <h3 class="section-header"><i class="fas fa-flask me-2"></i> Senior Secondary (11-12)</h3>
-        <div class="row" id="senior-offers">
-          <% const seniorOffers = [
-            { title: 'Science Stream', class: '11', price: 8999, oldPrice: 14999, image: '/images/science-stream.jpg', tag: 'PCM/PCB', highlight: 'Popular' },
-            { title: 'Commerce Master', class: '12', price: 7999, oldPrice: 12999, image: '/images/commerce.jpg', tag: 'Commerce' },
-            { title: 'Humanities Pro', class: '11-12', price: 7499, oldPrice: 11999, image: '/images/humanities.jpg', tag: 'Humanities' }
+      <!-- Class 7 Offers -->
+      <div class="col-12 mb-5" id="class7-section">
+        <h3 class="section-header"><i class="fas fa-school me-2"></i> Class 7</h3>
+        <div class="row" id="class7-offers">
+          <% const class7Offers = [
+            { 
+              title: 'Algebra Basics', 
+              class: '7', 
+              price: 3799, 
+              oldPrice: 5999, 
+              image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Math',
+              description: 'Introduction to algebraic concepts with practical applications'
+            },
+            { 
+              title: 'English Literature', 
+              class: '7', 
+              price: 2899, 
+              oldPrice: 4599, 
+              image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'English', 
+              highlight: 'New',
+              description: 'Explore classic literature and develop critical analysis skills'
+            },
+            { 
+              title: 'Physics Introduction', 
+              class: '7', 
+              price: 3499, 
+              oldPrice: 5299, 
+              image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Science',
+              description: 'Basic physics concepts explained with real-world examples'
+            }
           ]; %>
           
-          <% seniorOffers.forEach(offer => { %>
-            <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="<%= offer.class.includes('-') ? offer.class.split('-').join(',') : offer.class %>">
+          <% class7Offers.forEach(offer => { %>
+            <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="7" data-tag="<%= offer.tag.toLowerCase() %>">
               <div class="offer-card h-100">
                 <% if (offer.highlight) { %>
                   <span class="offer-highlight"><%= offer.highlight %></span>
                 <% } %>
                 <img src="<%= offer.image %>" alt="<%= offer.title %>" class="offer-card-img">
-                <div class="p-4">
-                  <span class="badge badge-custom"><%= offer.tag %></span>
-                  <h5 class="mt-2"><%= offer.title %> (Class <%= offer.class %>)</h5>
-                  <p class="price">₹<%= offer.price.toLocaleString() %> <span class="old-price">₹<%= offer.oldPrice.toLocaleString() %></span></p>
-                  <div class="d-flex justify-content-between mt-4">
-                    <a href="#" class="btn btn-explore">Explore <i class="fas fa-chevron-right ms-1"></i></a>
-                    <a href="#" class="btn btn-buy">Buy Now <i class="fas fa-shopping-cart ms-1"></i></a>
+                <div class="offer-card-body">
+                  <span class="badge-custom"><%= offer.tag %></span>
+                  <h5 class="offer-card-title"><%= offer.title %> (Class <%= offer.class %>)</h5>
+                  <p class="offer-card-text"><%= offer.description %></p>
+                  
+                  <div class="price-container">
+                    <span class="current-price">₹<%= offer.price.toLocaleString() %></span>
+                    <span class="original-price">₹<%= offer.oldPrice.toLocaleString() %></span>
+                    <span class="discount-badge"><%= Math.round((offer.oldPrice - offer.price)/offer.oldPrice * 100) %>% OFF</span>
                   </div>
-                  <div class="countdown-timer mt-3">Offer ends in: 3d 6h 45m</div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="btn btn-explore">Explore <i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="btn btn-buy">Buy Now <i class="fas fa-shopping-cart"></i></a>
+                  </div>
+                  
+                  <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+      
+      <!-- Class 8 Offers -->
+      <div class="col-12 mb-5" id="class8-section">
+        <h3 class="section-header"><i class="fas fa-school me-2"></i> Class 8</h3>
+        <div class="row" id="class8-offers">
+          <% const class8Offers = [
+            { 
+              title: 'Geometry Mastery', 
+              class: '8', 
+              price: 3999, 
+              oldPrice: 6499, 
+              image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Math', 
+              highlight: 'Popular',
+              description: 'Master geometric concepts with visual learning techniques'
+            },
+            { 
+              title: 'Advanced English', 
+              class: '8', 
+              price: 3199, 
+              oldPrice: 4999, 
+              image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'English',
+              description: 'Advanced English skills for academic excellence'
+            },
+            { 
+              title: 'Chemistry Basics', 
+              class: '8', 
+              price: 3699, 
+              oldPrice: 5799, 
+              image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Science',
+              description: 'Introduction to chemistry with fun experiments'
+            }
+          ]; %>
+          
+          <% class8Offers.forEach(offer => { %>
+            <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="8" data-tag="<%= offer.tag.toLowerCase() %>">
+              <div class="offer-card h-100">
+                <% if (offer.highlight) { %>
+                  <span class="offer-highlight"><%= offer.highlight %></span>
+                <% } %>
+                <img src="<%= offer.image %>" alt="<%= offer.title %>" class="offer-card-img">
+                <div class="offer-card-body">
+                  <span class="badge-custom"><%= offer.tag %></span>
+                  <h5 class="offer-card-title"><%= offer.title %> (Class <%= offer.class %>)</h5>
+                  <p class="offer-card-text"><%= offer.description %></p>
+                  
+                  <div class="price-container">
+                    <span class="current-price">₹<%= offer.price.toLocaleString() %></span>
+                    <span class="original-price">₹<%= offer.oldPrice.toLocaleString() %></span>
+                    <span class="discount-badge"><%= Math.round((offer.oldPrice - offer.price)/offer.oldPrice * 100) %>% OFF</span>
+                  </div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="btn btn-explore">Explore <i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="btn btn-buy">Buy Now <i class="fas fa-shopping-cart"></i></a>
+                  </div>
+                  
+                  <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+      
+      <!-- Class 9 Offers -->
+      <div class="col-12 mb-5" id="class9-section">
+        <h3 class="section-header"><i class="fas fa-graduation-cap me-2"></i> Class 9</h3>
+        <div class="row" id="class9-offers">
+          <% const class9Offers = [
+            { 
+              title: 'CBSE Mathematics', 
+              class: '9', 
+              price: 4999, 
+              oldPrice: 7999, 
+              image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Math', 
+              highlight: 'Bestseller',
+              description: 'Complete CBSE syllabus coverage with NCERT solutions'
+            },
+            { 
+              title: 'English Core', 
+              class: '9', 
+              price: 4299, 
+              oldPrice: 6499, 
+              image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'English',
+              description: 'CBSE English core curriculum with writing and literature'
+            },
+            { 
+              title: 'Science (PCB)', 
+              class: '9', 
+              price: 5499, 
+              oldPrice: 8999, 
+              image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Science',
+              description: 'Physics, Chemistry, and Biology complete course'
+            }
+          ]; %>
+          
+          <% class9Offers.forEach(offer => { %>
+            <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="9" data-tag="<%= offer.tag.toLowerCase() %>">
+              <div class="offer-card h-100">
+                <% if (offer.highlight) { %>
+                  <span class="offer-highlight"><%= offer.highlight %></span>
+                <% } %>
+                <img src="<%= offer.image %>" alt="<%= offer.title %>" class="offer-card-img">
+                <div class="offer-card-body">
+                  <span class="badge-custom"><%= offer.tag %></span>
+                  <h5 class="offer-card-title"><%= offer.title %> (Class <%= offer.class %>)</h5>
+                  <p class="offer-card-text"><%= offer.description %></p>
+                  
+                  <div class="price-container">
+                    <span class="current-price">₹<%= offer.price.toLocaleString() %></span>
+                    <span class="original-price">₹<%= offer.oldPrice.toLocaleString() %></span>
+                    <span class="discount-badge"><%= Math.round((offer.oldPrice - offer.price)/offer.oldPrice * 100) %>% OFF</span>
+                  </div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="btn btn-explore">Explore <i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="btn btn-buy">Buy Now <i class="fas fa-shopping-cart"></i></a>
+                  </div>
+                  
+                  <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+      
+      <!-- Class 10 Offers -->
+      <div class="col-12 mb-5" id="class10-section">
+        <h3 class="section-header"><i class="fas fa-graduation-cap me-2"></i> Class 10</h3>
+        <div class="row" id="class10-offers">
+          <% const class10Offers = [
+            { 
+              title: 'Board Exam Mathematics', 
+              class: '10', 
+              price: 5999, 
+              oldPrice: 9999, 
+              image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Math', 
+              highlight: 'Limited',
+              description: 'Complete board exam preparation with sample papers'
+            },
+            { 
+              title: 'English Literature', 
+              class: '10', 
+              price: 4799, 
+              oldPrice: 7499, 
+              image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'English',
+              description: 'Literature analysis and writing skills for board exams'
+            },
+            { 
+              title: 'Science Complete', 
+              class: '10', 
+              price: 6499, 
+              oldPrice: 10999, 
+              image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Science', 
+              highlight: 'Popular',
+              description: 'Full science syllabus with practical exam preparation'
+            }
+          ]; %>
+          
+          <% class10Offers.forEach(offer => { %>
+            <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="10" data-tag="<%= offer.tag.toLowerCase() %>">
+              <div class="offer-card h-100">
+                <% if (offer.highlight) { %>
+                  <span class="offer-highlight"><%= offer.highlight %></span>
+                <% } %>
+                <img src="<%= offer.image %>" alt="<%= offer.title %>" class="offer-card-img">
+                <div class="offer-card-body">
+                  <span class="badge-custom"><%= offer.tag %></span>
+                  <h5 class="offer-card-title"><%= offer.title %> (Class <%= offer.class %>)</h5>
+                  <p class="offer-card-text"><%= offer.description %></p>
+                  
+                  <div class="price-container">
+                    <span class="current-price">₹<%= offer.price.toLocaleString() %></span>
+                    <span class="original-price">₹<%= offer.oldPrice.toLocaleString() %></span>
+                    <span class="discount-badge"><%= Math.round((offer.oldPrice - offer.price)/offer.oldPrice * 100) %>% OFF</span>
+                  </div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="btn btn-explore">Explore <i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="btn btn-buy">Buy Now <i class="fas fa-shopping-cart"></i></a>
+                  </div>
+                  
+                  <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+      
+      <!-- Class 11 Offers -->
+      <div class="col-12 mb-5" id="class11-section">
+        <h3 class="section-header"><i class="fas fa-flask me-2"></i> Class 11</h3>
+        <div class="row" id="class11-offers">
+          <% const class11Offers = [
+            { 
+              title: 'PCM Complete', 
+              class: '11', 
+              price: 8999, 
+              oldPrice: 14999, 
+              image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'PCM', 
+              highlight: 'Popular',
+              description: 'Physics, Chemistry, Mathematics complete package'
+            },
+            { 
+              title: 'Commerce Foundation', 
+              class: '11', 
+              price: 7999, 
+              oldPrice: 12999, 
+              image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Commerce',
+              description: 'Accountancy, Business Studies and Economics'
+            },
+            { 
+              title: 'Humanities Program', 
+              class: '11', 
+              price: 7499, 
+              oldPrice: 11999, 
+              image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Humanities',
+              description: 'History, Geography, Political Science and more'
+            }
+          ]; %>
+          
+          <% class11Offers.forEach(offer => { %>
+            <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="11" data-tag="<%= offer.tag.toLowerCase() %>">
+              <div class="offer-card h-100">
+                <% if (offer.highlight) { %>
+                  <span class="offer-highlight"><%= offer.highlight %></span>
+                <% } %>
+                <img src="<%= offer.image %>" alt="<%= offer.title %>" class="offer-card-img">
+                <div class="offer-card-body">
+                  <span class="badge-custom"><%= offer.tag %></span>
+                  <h5 class="offer-card-title"><%= offer.title %> (Class <%= offer.class %>)</h5>
+                  <p class="offer-card-text"><%= offer.description %></p>
+                  
+                  <div class="price-container">
+                    <span class="current-price">₹<%= offer.price.toLocaleString() %></span>
+                    <span class="original-price">₹<%= offer.oldPrice.toLocaleString() %></span>
+                    <span class="discount-badge"><%= Math.round((offer.oldPrice - offer.price)/offer.oldPrice * 100) %>% OFF</span>
+                  </div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="btn btn-explore">Explore <i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="btn btn-buy">Buy Now <i class="fas fa-shopping-cart"></i></a>
+                  </div>
+                  
+                  <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+      
+      <!-- Class 12 Offers -->
+      <div class="col-12 mb-5" id="class12-section">
+        <h3 class="section-header"><i class="fas fa-flask me-2"></i> Class 12</h3>
+        <div class="row" id="class12-offers">
+          <% const class12Offers = [
+            { 
+              title: 'PCM Advanced', 
+              class: '12', 
+              price: 9999, 
+              oldPrice: 16999, 
+              image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'PCM', 
+              highlight: 'Bestseller',
+              description: 'Advanced concepts for board and competitive exams'
+            },
+            { 
+              title: 'Commerce Professional', 
+              class: '12', 
+              price: 8499, 
+              oldPrice: 13999, 
+              image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Commerce',
+              description: 'Complete commerce syllabus with case studies'
+            },
+            { 
+              title: 'Humanities Advanced', 
+              class: '12', 
+              price: 7999, 
+              oldPrice: 12999, 
+              image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Humanities',
+              description: 'In-depth humanities subjects with project work'
+            }
+          ]; %>
+          
+          <% class12Offers.forEach(offer => { %>
+            <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="12" data-tag="<%= offer.tag.toLowerCase() %>">
+              <div class="offer-card h-100">
+                <% if (offer.highlight) { %>
+                  <span class="offer-highlight"><%= offer.highlight %></span>
+                <% } %>
+                <img src="<%= offer.image %>" alt="<%= offer.title %>" class="offer-card-img">
+                <div class="offer-card-body">
+                  <span class="badge-custom"><%= offer.tag %></span>
+                  <h5 class="offer-card-title"><%= offer.title %> (Class <%= offer.class %>)</h5>
+                  <p class="offer-card-text"><%= offer.description %></p>
+                  
+                  <div class="price-container">
+                    <span class="current-price">₹<%= offer.price.toLocaleString() %></span>
+                    <span class="original-price">₹<%= offer.oldPrice.toLocaleString() %></span>
+                    <span class="discount-badge"><%= Math.round((offer.oldPrice - offer.price)/offer.oldPrice * 100) %>% OFF</span>
+                  </div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="btn btn-explore">Explore <i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="btn btn-buy">Buy Now <i class="fas fa-shopping-cart"></i></a>
+                  </div>
+                  
+                  <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+      
+      <!-- Dropper Batch Offers -->
+      <div class="col-12 mb-5" id="dropper-section">
+        <h3 class="section-header"><i class="fas fa-trophy me-2"></i> Dropper Batch</h3>
+        <div class="row" id="dropper-offers">
+          <% const dropperOffers = [
+            { 
+              title: 'NEET Complete', 
+              class: 'dropper', 
+              price: 12999, 
+              oldPrice: 19999, 
+              image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Medical', 
+              highlight: 'Bestseller',
+              description: 'Complete NEET preparation with mock tests'
+            },
+            { 
+              title: 'JEE Main & Advanced', 
+              class: 'dropper', 
+              price: 14999, 
+              oldPrice: 22999, 
+              image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Engineering',
+              description: 'JEE preparation with previous year papers'
+            },
+            { 
+              title: 'Commerce Dropper', 
+              class: 'dropper', 
+              price: 10999, 
+              oldPrice: 17999, 
+              image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Commerce',
+              description: 'CA/CS foundation and other commerce exams'
+            }
+          ]; %>
+          
+          <% dropperOffers.forEach(offer => { %>
+            <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="dropper" data-tag="<%= offer.tag.toLowerCase() %>">
+              <div class="offer-card h-100">
+                <% if (offer.highlight) { %>
+                  <span class="offer-highlight"><%= offer.highlight %></span>
+                <% } %>
+                <img src="<%= offer.image %>" alt="<%= offer.title %>" class="offer-card-img">
+                <div class="offer-card-body">
+                  <span class="badge-custom"><%= offer.tag %></span>
+                  <h5 class="offer-card-title"><%= offer.title %> (Dropper Batch)</h5>
+                  <p class="offer-card-text"><%= offer.description %></p>
+                  
+                  <div class="price-container">
+                    <span class="current-price">₹<%= offer.price.toLocaleString() %></span>
+                    <span class="original-price">₹<%= offer.oldPrice.toLocaleString() %></span>
+                    <span class="discount-badge"><%= Math.round((offer.oldPrice - offer.price)/offer.oldPrice * 100) %>% OFF</span>
+                  </div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="btn btn-explore">Explore <i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="btn btn-buy">Buy Now <i class="fas fa-shopping-cart"></i></a>
+                  </div>
+                  
+                  <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
                 </div>
               </div>
             </div>
@@ -533,32 +1150,64 @@
       </div>
       
       <!-- Competitive Exams -->
-      <div class="col-12 mb-5">
+      <div class="col-12 mb-5" id="competitive-section">
         <h3 class="section-header"><i class="fas fa-trophy me-2"></i> Competitive Exams</h3>
         <div class="row" id="competitive-offers">
           <% const competitiveOffers = [
-            { title: 'NEET Complete', class: 'dropper', price: 12999, oldPrice: 19999, image: '/images/neet.jpg', tag: 'Medical', highlight: 'Bestseller' },
-            { title: 'JEE Main & Advanced', class: '11-12', price: 14999, oldPrice: 22999, image: '/images/jee.jpg', tag: 'Engineering' },
-            { title: 'Foundation (NTSE/Olympiad)', class: '9-10', price: 5999, oldPrice: 9999, image: '/images/olympiad.jpg', tag: 'Scholarship', highlight: 'New' }
+            { 
+              title: 'NTSE Complete', 
+              class: 'competitive', 
+              price: 5999, 
+              oldPrice: 9999, 
+              image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Scholarship', 
+              highlight: 'New',
+              description: 'Complete preparation for NTSE stage 1 and 2'
+            },
+            { 
+              title: 'Olympiad Foundation', 
+              class: 'competitive', 
+              price: 4999, 
+              oldPrice: 7999, 
+              image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Olympiad',
+              description: 'Science and Math olympiad preparation'
+            },
+            { 
+              title: 'KVPY Preparation', 
+              class: 'competitive', 
+              price: 8999, 
+              oldPrice: 13999, 
+              image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80', 
+              tag: 'Scholarship',
+              description: 'Kishore Vaigyanik Protsahan Yojana complete course'
+            }
           ]; %>
           
           <% competitiveOffers.forEach(offer => { %>
-            <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="<%= offer.class.includes('-') ? offer.class.split('-').join(',') : offer.class %>">
+            <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="competitive" data-tag="<%= offer.tag.toLowerCase() %>">
               <div class="offer-card h-100">
                 <% if (offer.highlight) { %>
                   <span class="offer-highlight"><%= offer.highlight %></span>
                 <% } %>
                 <img src="<%= offer.image %>" alt="<%= offer.title %>" class="offer-card-img">
-                <div class="p-4">
-                  <span class="badge badge-custom"><%= offer.tag %></span>
-                  <h5><%= offer.title %></h5>
-                  <p class="mb-2 text-muted"><%= offer.class %></p>
-                  <p class="price">₹<%= offer.price.toLocaleString() %> <span class="old-price">₹<%= offer.oldPrice.toLocaleString() %></span></p>
-                  <div class="d-flex justify-content-between mt-4">
-                    <a href="#" class="btn btn-explore">Explore <i class="fas fa-chevron-right ms-1"></i></a>
-                    <a href="#" class="btn btn-buy">Buy Now <i class="fas fa-shopping-cart ms-1"></i></a>
+                <div class="offer-card-body">
+                  <span class="badge-custom"><%= offer.tag %></span>
+                  <h5 class="offer-card-title"><%= offer.title %></h5>
+                  <p class="offer-card-text"><%= offer.description %></p>
+                  
+                  <div class="price-container">
+                    <span class="current-price">₹<%= offer.price.toLocaleString() %></span>
+                    <span class="original-price">₹<%= offer.oldPrice.toLocaleString() %></span>
+                    <span class="discount-badge"><%= Math.round((offer.oldPrice - offer.price)/offer.oldPrice * 100) %>% OFF</span>
                   </div>
-                  <div class="countdown-timer mt-3">Offer ends in: 5d 2h 10m</div>
+                  
+                  <div class="card-actions">
+                    <a href="#" class="btn btn-explore">Explore <i class="fas fa-chevron-right"></i></a>
+                    <a href="#" class="btn btn-buy">Buy Now <i class="fas fa-shopping-cart"></i></a>
+                  </div>
+                  
+                  <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
                 </div>
               </div>
             </div>
@@ -567,221 +1216,324 @@
       </div>
     </div>
 
-    <!-- No Results Message (Hidden by default) -->
-    <div id="no-results" class="no-results animate__animated animate__fadeIn" style="display: none;">
-      <i class="fas fa-search"></i>
-      <h4>No Offers Found</h4>
-      <p>We couldn't find any offers matching your selection. Please try a different class or category.</p>
-      <button class="btn btn-explore mt-3" onclick="resetFilters()">Show All Offers</button>
-    </div>
+    <!-- Features Section -->
+    <section class="features-section">
+      <div class="container">
+        <h2 class="text-center mb-5">Why Choose EduLearn?</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-chalkboard-teacher"></i>
+              </div>
+              <h4 class="feature-title">Expert Instructors</h4>
+              <p class="feature-text">Learn from the best teachers with years of experience in their fields.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h4 class="feature-title">Interactive Learning</h4>
+              <p class="feature-text">Engaging video lessons, quizzes, and interactive exercises.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-certificate"></i>
+              </div>
+              <h4 class="feature-title">Certification</h4>
+              <p class="feature-text">Get certified upon course completion to showcase your skills.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="loading-spinner" id="loading-spinner">
-      <div class="spinner"></div>
-      <p class="mt-3">Loading offers...</p>
-    </div>
-
-    <div class="text-center mt-4">
-      <button class="load-more-btn animate__animated animate__pulse animate__infinite">Load More Offers <i class="fas fa-arrow-down ms-2"></i></button>
-    </div>
-    
-    <!-- Offer Benefits Section -->
-    <div class="row mt-5 py-5 bg-white rounded-4 shadow-sm animate__animated animate__fadeIn">
-      <div class="col-12 text-center mb-4">
-        <h3 class="section-header text-center"><i class="fas fa-star text-warning me-2"></i> Why Choose Our Courses?</h3>
-      </div>
-      <div class="col-md-3 text-center">
-        <div class="p-3 h-100 animate__animated animate__fadeInUp">
-          <div class="bg-light p-3 rounded-circle d-inline-block mb-3">
-            <i class="fas fa-chalkboard-teacher text-primary fa-2x"></i>
+    <!-- Testimonials Section -->
+    <section class="testimonial-section">
+      <div class="container">
+        <h2 class="text-center mb-5">What Our Students Say</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <p class="testimonial-text">"The Class 10 Science course helped me score 95% in my board exams. The teachers explain concepts so clearly!"</p>
+              <div class="testimonial-author">
+                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Riya Sharma" class="testimonial-author-img">
+                <div>
+                  <h5 class="author-name">Riya Sharma</h5>
+                  <p class="author-title">Class 10 Student</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <h5>Expert Faculty</h5>
-          <p class="text-muted">Learn from IIT/NIT alumni with 10+ years experience</p>
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <p class="testimonial-text">"The JEE dropper batch was a game-changer for me. The structured approach helped me crack JEE Advanced."</p>
+              <div class="testimonial-author">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Aryan Patel" class="testimonial-author-img">
+                <div>
+                  <h5 class="author-name">Aryan Patel</h5>
+                  <p class="author-title">JEE Aspirant</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="testimonial-card">
+              <p class="testimonial-text">"My daughter improved her math scores significantly after joining the Class 8 course. Highly recommended!"</p>
+              <div class="testimonial-author">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Gupta" class="testimonial-author-img">
+                <div>
+                  <h5 class="author-name">Priya Gupta</h5>
+                  <p class="author-title">Parent</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-md-3 text-center">
-        <div class="p-3 h-100 animate__animated animate__fadeInUp animate__delay-1s">
-          <div class="bg-light p-3 rounded-circle d-inline-block mb-3">
-            <i class="fas fa-video text-primary fa-2x"></i>
-          </div>
-          <h5>Recorded Lectures</h5>
-          <p class="text-muted">Access anytime, anywhere with lifetime validity</p>
-        </div>
-      </div>
-      <div class="col-md-3 text-center">
-        <div class="p-3 h-100 animate__animated animate__fadeInUp animate__delay-2s">
-          <div class="bg-light p-3 rounded-circle d-inline-block mb-3">
-            <i class="fas fa-book-open text-primary fa-2x"></i>
-          </div>
-          <h5>Study Material</h5>
-          <p class="text-muted">Comprehensive notes and practice questions</p>
-        </div>
-      </div>
-      <div class="col-md-3 text-center">
-        <div class="p-3 h-100 animate__animated animate__fadeInUp animate__delay-3s">
-          <div class="bg-light p-3 rounded-circle d-inline-block mb-3">
-            <i class="fas fa-headset text-primary fa-2x"></i>
-          </div>
-          <h5>Doubt Support</h5>
-          <p class="text-muted">24/7 doubt solving with subject experts</p>
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Filter functionality
-      const batchLinks = document.querySelectorAll('.batch-link');
-      const offerCards = document.querySelectorAll('.offer-card-container');
-      const noResults = document.getElementById('no-results');
-      const loadingSpinner = document.getElementById('loading-spinner');
-      
-      batchLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          // Show loading spinner
-          loadingSpinner.style.display = 'block';
-          noResults.style.display = 'none';
-          
-          // Update active state with animation
-          batchLinks.forEach(l => {
-            l.classList.remove('active');
-            l.style.transform = 'translateY(0)';
-          });
-          
-          this.classList.add('active');
-          this.style.transform = 'translateY(-3px)';
-          
-          const selectedClass = this.getAttribute('data-class');
-          
-          // Simulate loading delay for better UX
-          setTimeout(() => {
-            filterOffers(selectedClass);
-            loadingSpinner.style.display = 'none';
-          }, 500);
-        });
-      });
-      
-      function filterOffers(selectedClass) {
-        let hasResults = false;
-        
-        if (selectedClass === 'all') {
-          // Show all cards with animation
-          offerCards.forEach(card => {
-            card.style.display = 'block';
-            card.classList.add('animate__fadeIn');
-          });
-          noResults.style.display = 'none';
-          return;
-        }
-        
-        // Filter cards based on selected class
-        offerCards.forEach(card => {
-          const cardClasses = card.getAttribute('data-class').split(',');
-          
-          // Check if the card's classes include the selected class
-          const shouldShow = cardClasses.some(c => {
-            // Handle range classes like "5-8"
-            if (c.includes('-')) {
-              const [start, end] = c.split('-').map(Number);
-              if (!isNaN(start) && !isNaN(end)) {
-                return selectedClass >= start && selectedClass <= end;
-              }
-            }
-            return c === selectedClass;
-          });
-          
-          if (shouldShow) {
-            hasResults = true;
-            card.style.display = 'block';
-            card.classList.add('animate__fadeIn');
-          } else {
-            card.style.display = 'none';
-          }
-        });
-        
-        // Show no results message if no cards match
-        if (!hasResults) {
-          noResults.style.display = 'block';
-          noResults.classList.add('animate__fadeIn');
-        } else {
-          noResults.style.display = 'none';
-        }
-      }
-      
-      // Initial animation for cards
-      const animateCards = () => {
-        const cards = document.querySelectorAll('.offer-card-container');
-        cards.forEach((card, index) => {
-          setTimeout(() => {
-            card.classList.add('animate__fadeIn');
-          }, index * 100);
-        });
-      };
-      
-      // Initialize animations
-      setTimeout(animateCards, 300);
-      
-      // Add ripple effect to buttons
-      document.querySelectorAll('.btn-buy, .load-more-btn, .btn-explore').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          // Create ripple element
-          const ripple = document.createElement('span');
-          ripple.classList.add('ripple-effect');
-          
-          // Position ripple
-          const rect = this.getBoundingClientRect();
-          const size = Math.max(rect.width, rect.height);
-          ripple.style.width = ripple.style.height = `${size}px`;
-          ripple.style.left = `${e.clientX - rect.left - size/2}px`;
-          ripple.style.top = `${e.clientY - rect.top - size/2}px`;
-          
-          // Add ripple to button
-          this.appendChild(ripple);
-          
-          // Remove ripple after animation
-          setTimeout(() => {
-            ripple.remove();
-          }, 600);
-        });
-      });
-    });
-    
-    // Reset filters function
-    function resetFilters() {
-      const allLink = document.querySelector('.batch-link[data-class="all"]');
-      allLink.click();
-      document.getElementById('no-results').style.display = 'none';
-    }
-  </script>
+ 
 
-  <style>
-    /* Ripple effect style */
-    .ripple-effect {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.4);
-      transform: scale(0);
-      animation: ripple 0.6s linear;
-      pointer-events: none;
-    }
-    
-    @keyframes ripple {
-      to {
-        transform: scale(2.5);
-        opacity: 0;
+  <!-- Scripts -->
+<script>
+    $(document).ready(function() {
+      // Filter functionality
+      $('.filter-navbar .nav-link').click(function(e) {
+        e.preventDefault();
+        $('.filter-navbar .nav-link').removeClass('active');
+        $(this).addClass('active');
+        
+        const filter = $(this).data('filter');
+        $('#loading-spinner').removeClass('d-none');
+        
+        setTimeout(function() {
+          if (filter === 'all') {
+            // Show all courses
+            $('.offer-card-container').parent().parent().parent().show();
+            $('.offer-card-container').show();
+            $('#no-results').addClass('d-none');
+          } 
+          else if (filter === '5-10') {
+            // Show classes 5-10
+            $('.offer-card-container').parent().parent().parent().hide();
+            $('.offer-card-container').hide();
+            $('[data-class="5"], [data-class="6"], [data-class="7"], [data-class="8"], [data-class="9"], [data-class="10"]').parent().parent().parent().show();
+            $('[data-class="5"], [data-class="6"], [data-class="7"], [data-class="8"], [data-class="9"], [data-class="10"]').show();
+            
+            if ($('[data-class="5"], [data-class="6"], [data-class="7"], [data-class="8"], [data-class="9"], [data-class="10"]:visible').length === 0) {
+              $('#no-results').removeClass('d-none');
+            } else {
+              $('#no-results').addClass('d-none');
+            }
+          } 
+          else if (filter === '11-12') {
+            // Show classes 11-12
+            $('.offer-card-container').parent().parent().parent().hide();
+            $('.offer-card-container').hide();
+            $('[data-class="11"], [data-class="12"]').parent().parent().parent().show();
+            $('[data-class="11"], [data-class="12"]').show();
+            
+            if ($('[data-class="11"], [data-class="12"]:visible').length === 0) {
+              $('#no-results').removeClass('d-none');
+            } else {
+              $('#no-results').addClass('d-none');
+            }
+          }
+          else if (filter === '5') {
+            // Show only class 5
+            $('.offer-card-container').parent().parent().parent().hide();
+            $('.offer-card-container').hide();
+            $('[data-class="5"]').parent().parent().parent().show();
+            $('[data-class="5"]').show();
+            
+            if ($('[data-class="5"]:visible').length === 0) {
+              $('#no-results').removeClass('d-none');
+            } else {
+              $('#no-results').addClass('d-none');
+            }
+          }
+          else if (filter === '6') {
+            // Show only class 6
+            $('.offer-card-container').parent().parent().parent().hide();
+            $('.offer-card-container').hide();
+            $('[data-class="6"]').parent().parent().parent().show();
+            $('[data-class="6"]').show();
+            
+            if ($('[data-class="6"]:visible').length === 0) {
+              $('#no-results').removeClass('d-none');
+            } else {
+              $('#no-results').addClass('d-none');
+            }
+          }
+          else if (filter === '7') {
+            // Show only class 7
+            $('.offer-card-container').parent().parent().parent().hide();
+            $('.offer-card-container').hide();
+            $('[data-class="7"]').parent().parent().parent().show();
+            $('[data-class="7"]').show();
+            
+            if ($('[data-class="7"]:visible').length === 0) {
+              $('#no-results').removeClass('d-none');
+            } else {
+              $('#no-results').addClass('d-none');
+            }
+          }
+          else if (filter === '8') {
+            // Show only class 8
+            $('.offer-card-container').parent().parent().parent().hide();
+            $('.offer-card-container').hide();
+            $('[data-class="8"]').parent().parent().parent().show();
+            $('[data-class="8"]').show();
+            
+            if ($('[data-class="8"]:visible').length === 0) {
+              $('#no-results').removeClass('d-none');
+            } else {
+              $('#no-results').addClass('d-none');
+            }
+          }
+          else if (filter === '9') {
+            // Show only class 9
+            $('.offer-card-container').parent().parent().parent().hide();
+            $('.offer-card-container').hide();
+            $('[data-class="9"]').parent().parent().parent().show();
+            $('[data-class="9"]').show();
+            
+            if ($('[data-class="9"]:visible').length === 0) {
+              $('#no-results').removeClass('d-none');
+            } else {
+              $('#no-results').addClass('d-none');
+            }
+          }
+          else if (filter === '10') {
+            // Show only class 10
+            $('.offer-card-container').parent().parent().parent().hide();
+            $('.offer-card-container').hide();
+            $('[data-class="10"]').parent().parent().parent().show();
+            $('[data-class="10"]').show();
+            
+            if ($('[data-class="10"]:visible').length === 0) {
+              $('#no-results').removeClass('d-none');
+            } else {
+              $('#no-results').addClass('d-none');
+            }
+          }
+          else if (filter === '11') {
+            // Show only class 11
+            $('.offer-card-container').parent().parent().parent().hide();
+            $('.offer-card-container').hide();
+            $('[data-class="11"]').parent().parent().parent().show();
+            $('[data-class="11"]').show();
+            
+            if ($('[data-class="11"]:visible').length === 0) {
+              $('#no-results').removeClass('d-none');
+            } else {
+              $('#no-results').addClass('d-none');
+            }
+          }
+          else if (filter === '12') {
+            // Show only class 12
+            $('.offer-card-container').parent().parent().parent().hide();
+            $('.offer-card-container').hide();
+            $('[data-class="12"]').parent().parent().parent().show();
+            $('[data-class="12"]').show();
+            
+            if ($('[data-class="12"]:visible').length === 0) {
+              $('#no-results').removeClass('d-none');
+            } else {
+              $('#no-results').addClass('d-none');
+            }
+          }
+          else if (filter === 'competitive') {
+            // Show competitive courses
+            $('.offer-card-container').parent().parent().parent().hide();
+            $('.offer-card-container').hide();
+            $('[data-class="competitive"]').parent().parent().parent().show();
+            $('[data-class="competitive"]').show();
+            
+            if ($('[data-class="competitive"]:visible').length === 0) {
+              $('#no-results').removeClass('d-none');
+            } else {
+              $('#no-results').addClass('d-none');
+            }
+          }
+          else if (filter === 'dropper') {
+            // Show dropper batch courses
+            $('.offer-card-container').parent().parent().parent().hide();
+            $('.offer-card-container').hide();
+            $('[data-class="dropper"]').parent().parent().parent().show();
+            $('[data-class="dropper"]').show();
+            
+            if ($('[data-class="dropper"]:visible').length === 0) {
+              $('#no-results').removeClass('d-none');
+            } else {
+              $('#no-results').addClass('d-none');
+            }
+          }
+          
+          $('#loading-spinner').addClass('d-none');
+        }, 500);
+      });
+
+      // Search functionality
+      $('#search-button').click(function() {
+        const searchTerm = $('#course-search').val().toLowerCase();
+        if (searchTerm.trim() === '') return;
+        
+        $('#loading-spinner').removeClass('d-none');
+        
+        setTimeout(function() {
+          $('.offer-card-container').each(function() {
+            const title = $(this).find('.offer-card-title').text().toLowerCase();
+            const description = $(this).find('.offer-card-text').text().toLowerCase();
+            
+            if (title.includes(searchTerm) || description.includes(searchTerm)) {
+              $(this).parent().parent().parent().show();
+              $(this).show();
+            } else {
+              $(this).hide();
+            }
+          });
+          
+          if ($('.offer-card-container:visible').length === 0) {
+            $('#no-results').removeClass('d-none');
+          } else {
+            $('#no-results').addClass('d-none');
+          }
+          
+          $('#loading-spinner').addClass('d-none');
+        }, 500);
+      });
+
+      // Countdown timer
+      function updateCountdowns() {
+        $('.countdown').each(function() {
+          const endDate = new Date($(this).data('end')).getTime();
+          const now = new Date().getTime();
+          const distance = endDate - now;
+          
+          if (distance < 0) {
+            $(this).text('Offer expired');
+            return;
+          }
+          
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          
+          $(this).text(`${days}d ${hours}h ${minutes}m`);
+        });
       }
-    }
-    
-    /* Button hover effects */
-    .btn-explore, .btn-buy, .load-more-btn {
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-  </style>
+      
+      updateCountdowns();
+      setInterval(updateCountdowns, 60000);
+    });
+  </script>
 </body>
 </html>
+<%- include("footer") %>
