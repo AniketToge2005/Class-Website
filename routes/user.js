@@ -4,82 +4,120 @@ var exe = require('./../connection');
 
 
 
-router.get("/",function (req, res) {
-  res.render("user/home.ejs");
+router.get("/",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/home.ejs",obj);
 
 });
-router.get("/services",function (req, res) {
-  res.render("user/services.ejs");
+router.get("/services",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/services.ejs",obj);
 
 });
-router.get("/contact",function (req, res) {
-  res.render("user/contact.ejs");
+router.get("/contact",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/contact.ejs",obj);
 
 });
-router.get("/about",function (req, res) {
-  res.render("user/about.ejs");
+router.get("/about",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/about.ejs",obj);
 
 });
-router.get("/courses",function (req, res) {
-  res.render("user/class&courses.ejs");
+router.get("/courses",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/class&courses.ejs",obj);
 
 });
-router.get("/loginpop",function (req, res) {
-  res.render("user/loginpop.ejs");
+router.get("/loginpop",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/loginpop.ejs",obj);
 
 });
-router.get("/student",function (req, res) {
-  res.render("user/student.ejs");
+router.get("/student",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/student.ejs",obj);
 
 });
-router.get("/loginstudent",function (req, res) {
-  res.render("user/loginstudent.ejs");
+router.get("/loginstudent",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/loginstudent.ejs",obj);
 
 });
 
-router.get("/loginadmin",function (req, res) {
-  res.render("user/loginadmin.ejs");
+router.get("/loginadmin",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/loginadmin.ejs",obj);
 
 });
 
-router.get("/profile",function (req, res) {
-  res.render("user/profile.ejs");
+router.get("/profile",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/profile.ejs",obj);
 })
 
-router.get("/class5",function (req, res) {
-  res.render("user/class5.ejs");
+router.get("/class5",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/class5.ejs",obj);
 })
 
-router.get("/class6",function (req, res) {
-  res.render("user/class6.ejs");
+router.get("/class6",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/class6.ejs",obj);
 })
 
-router.get("/class7",function (req, res) {
-  res.render("user/class7.ejs");
+router.get("/class7",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/class7.ejs",obj);
 })
 
-router.get("/class8",function (req, res) {
-  res.render("user/class8.ejs");
+router.get("/class8",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/class8.ejs",obj);
 })
 
-router.get("/class9",function (req, res) {
-  res.render("user/class9.ejs");
+router.get("/class9",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/class9.ejs",obj);
 })
 
-router.get("/class10",function (req, res) {
-  res.render("user/class10.ejs");
+router.get("/class10",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/class10.ejs",obj);
 })
 
-router.get("/class11",function (req, res) {
-  res.render("user/class11.ejs");
+router.get("/class11",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/class11.ejs",obj);
 })
 
-router.get("/class12",function (req, res) {
-  res.render("user/class12.ejs");
+router.get("/class12",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/class12.ejs",obj);
 })
 
-router.get("/new_offer",function (req, res) {
-  res.render("user/new_offer.ejs");
+router.get("/new_offer",async function (req, res) {
+  var contact_info=await exe(`SELECT * FROM contact_info`)
+  var obj={"contact_info":contact_info[0]}
+  res.render("user/new_offer.ejs",obj);
 })
 
 
