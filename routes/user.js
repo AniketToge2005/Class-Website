@@ -73,6 +73,11 @@ router.get("/class10",function (req, res) {
 router.get("/class11",function (req, res) {
   res.render("user/class11.ejs");
 })
+
+router.get("/class12",function (req, res) {
+  res.render("user/class12.ejs");
+})
+
 router.get("/new_offer",function (req, res) {
   res.render("user/new_offer.ejs");
 })
