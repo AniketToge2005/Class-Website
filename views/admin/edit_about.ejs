@@ -1,0 +1,50 @@
+<%- include("Navbar.ejs") %>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10 border rounded p-4 shadow">
+     
+
+      <form action="/admin/update_about/<%=about.id%>" method="POST" enctype="multipart/form-data">
+        
+        <!-- Title -->
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Enter main title" value="<%=about.title%>" required>
+        </div>
+
+        <!-- Subtitle -->
+        <div class="mb-3">
+          <label for="subtitle" class="form-label">Subtitle</label>
+          <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Enter subtitle" value="<%=about.subtitle%>" required>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter detailed description" required><%=about.description%></textarea>
+        </div>
+
+        <!-- Image Upload -->
+        <div class="mb-3">
+          <label for="image" class="form-label">Upload Image</label>
+          <input type="file" class="form-control" id="image" name="image" accept="image/*" <%= about.id === 'new' ? 'required' : '' %>>
+          <% if (about.image && about.id !== 'new') { %>
+            <div class="mt-2">
+              <small class="text-muted">Current image:</small><br>
+              <img src="/uplaod/<%=about.image%>" width="100" height="60" class="mt-1" />
+            </div>
+          <% } %>
+        </div>
+
+        <!-- Submit -->
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary px-4"><%= about.id === 'new' ? 'Save Information' : 'Update Information' %></button>
+          <a href="/admin/about" class="btn btn-secondary px-4 ms-2">Back to About</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</form>
+<%- include("footer.ejs") %>

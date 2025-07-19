@@ -76,7 +76,137 @@ router.get("/announcement",function(req,res){
 })
 
 
- 
+
+
+
+// CREATE TABLE about (
+//     id INT PRIMARY KEY AUTO_INCREMENT,
+//     title VARCHAR(255),                     
+//     subtitle VARCHAR(255),                 
+//     description TEXT,                     
+//     image VARCHAR(255),               
+   
+//    );
+
+
+
+//about 
+
+// about page ver form ghenyasathi
+
+
+router.get("/about", async function(req,res){
+
+  var data = await exe('SELECT* FROM about');
+  var obj = {"about":data};
+
+  res.render("admin/about.ejs",obj);
+});
+
+
+
+// about edit page
+router.get("/edit_about/:id", async function(req, res) {
+  var id = req.params.id;
+  
+  if (id === 'new') {
+    // For new entry, create empty object
+    var obj = {
+      "about": {
+        id: 'new',
+        title: '',
+        subtitle: '',
+        description: '',
+        image: null
+      }
+    };
+    res.render("admin/edit_about.ejs", obj);
+  } else {
+    // For existing entry, fetch from database
+    var sql = "SELECT * FROM about WHERE id = ?";
+    var data = await exe(sql, [id]);
+    var obj = {"about":data[0]};
+    res.render("admin/edit_about.ejs", obj);
+  }
+});
+
+router.post("/save_about",async function(req,res){
+  var d = req.body;
+  
+  if(req.files && req.files.image){
+    var image = new Date().getTime()+req.files.image.name;
+    req.files.image.mv("public/uplaod/"+image);
+
+    var sql =`INSERT INTO about (title,subtitle, description, image ) VALUES ('${d.title}','${d.subtitle}','${d.description}','${image}');`
+    var data = await exe(sql);
+  } else {
+    var sql =`INSERT INTO about (title,subtitle, description, image ) VALUES ('${d.title}','${d.subtitle}','${d.description}',NULL);`
+    var data = await exe(sql);
+  }
+  
+  res.redirect("/admin/about")
+});
+
+
+
+// Update about entry
+router.post("/update_about/:id", async function(req, res) {
+  var id = req.params.id;
+  var d = req.body;
+  
+  if (id === 'new') {
+    // Handle new entry
+    if(req.files && req.files.image){
+      var image = new Date().getTime()+req.files.image.name;
+      req.files.image.mv("public/uplaod/"+image);
+
+      var sql = `INSERT INTO about (title, subtitle, description, image) VALUES (?, ?, ?, ?)`;
+      var data = await exe(sql, [d.title, d.subtitle, d.description, image]);
+    } else {
+      var sql = `INSERT INTO about (title, subtitle, description) VALUES (?, ?, ?)`;
+      var data = await exe(sql, [d.title, d.subtitle, d.description]);
+    }
+  } else {
+    // Handle update
+    if(req.files && req.files.image){
+      var image = new Date().getTime()+req.files.image.name;
+      req.files.image.mv("public/uplaod/"+image);
+
+      var sql = `UPDATE about SET title = ?, subtitle = ?, description = ?, image = ? WHERE id = ?`;
+      var data = await exe(sql, [d.title, d.subtitle, d.description, image, id]);
+    } else {
+      var sql = `UPDATE about SET title = ?, subtitle = ?, description = ? WHERE id = ?`;
+      var data = await exe(sql, [d.title, d.subtitle, d.description, id]);
+    }
+  }
+  
+  res.redirect("/admin/about");
+});
+
+// Delete assignment
+
+// Delete about entry
+router.get("/delete_about/:id", async function(req, res) {
+  var id = req.params.id;
+  
+  // First get the image filename to delete the file
+  var getImageSql = "SELECT image FROM about WHERE id = ?";
+  var imageData = await exe(getImageSql, [id]);
+  
+  if (imageData.length > 0 && imageData[0].image) {
+    // Delete the image file from uploads folder
+    const fs = require('fs');
+    const imagePath = `public/uplaod/${imageData[0].image}`;
+    if (fs.existsSync(imagePath)) {
+      fs.unlinkSync(imagePath);
+    }
+  }
+  
+  // Delete from database
+  var sql = "DELETE FROM about WHERE id = ?";
+  var data = await exe(sql, [id]);
+  res.redirect("/admin/about");
+});
 
 
 
