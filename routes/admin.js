@@ -8,13 +8,13 @@ var exe = require('./../connection');
 router.get("/",function(req, res) {
   res.render("admin/home.ejs")
 });
-
+//select contact info
 router.get("/about_class",async function(req,res){
    var contact_info=await exe(`SELECT * FROM contact_info`)
    var obj={"contact_info":contact_info[0]}
   res.render("admin/about_class.ejs",obj)
 })
-
+// Update contact info
 router.post("/about_class",async function(req,res){
   var d=req.body;
 
