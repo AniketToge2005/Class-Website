@@ -1,0 +1,224 @@
+<%-include("navbar")%>
+<!-- Banner -->
+<div class="container my-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="banner d-flex align-items-center bg-primary text-white rounded-3 overflow-hidden">
+        <div class="stripes me-3"></div>
+        <h3 class="m-0 px-3">Add New Students</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .banner {
+    height: 50px;
+  }
+  .banner .stripes {
+    width: 16px;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.3) 0,
+      rgba(255,255,255,0.3) 4px,
+      transparent 4px,
+      transparent 8px
+    );
+  }
+  
+   
+  @media (max-width: 576px) {
+    .banner {
+      height: 60px;
+    }
+    .banner h3 {
+      font-size: 1.1rem;
+    }
+  }
+
+  /* Responsive Table Styles */
+  @media (max-width: 991.98px) {
+    .responsive-student-table thead {
+      display: none;
+    }
+    .responsive-student-table, .responsive-student-table tbody, .responsive-student-table tr, .responsive-student-table td {
+      display: block;
+      width: 100%;
+    }
+    .responsive-student-table tr {
+      margin-bottom: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      background: #fff;
+      padding: 1rem 0.5rem;
+    }
+    .responsive-student-table td {
+      text-align: left;
+      padding: 0.5rem 1rem;
+      position: relative;
+      border: none;
+      border-bottom: 1px solid #f1f1f1;
+    }
+    .responsive-student-table td:last-child {
+      border-bottom: none;
+    }
+    .responsive-student-table td[data-label]::before {
+      content: attr(data-label) ": ";
+      font-weight: 600;
+      color: #4361ee;
+      display: inline-block;
+      min-width: 110px;
+    }
+     
+  }
+
+  /* Force thead background blue and white text */
+  .responsive-student-table thead tr,
+  .responsive-student-table thead th {
+    background-color: #007bff !important;
+    color: #fff !important;
+  }
+
+  /* Search form styling */
+  .input-group .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+  }
+  
+  @media (max-width: 768px) {
+    .input-group {
+      flex-direction: column;
+    }
+    .input-group .form-control,
+    .input-group .btn {
+      border-radius: 0.375rem !important;
+      margin-bottom: 0.5rem;
+    }
+  }
+</style>
+
+<section class="bg-light py-2">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="text-center mb-2">
+      <h1 class="fw-bold text-primary">Registered Students</h1>
+      <p class="text-muted">View all students registered in the system</p>
+      <% if (search) { %>
+        <div class="alert alert-info d-inline-block">
+          <i class="fas fa-search me-1"></i>
+          Search results for "<strong><%= search %></strong>" - Found <strong><%= students.length %></strong> student(s)
+        </div>
+      <% } %>
+    </div>
+
+    <!-- Search and Add Button Row -->
+    <div class="row mb-3">
+      <div class="col-md-8">
+        <form method="GET" action="/admin/view_students" class="d-flex">
+          <div class="input-group">
+            <input type="text" 
+                   class="form-control" 
+                   name="search" 
+                   placeholder="Search by name, phone, email, school, class, or address..." 
+                   value="<%= search %>">
+            <button class="btn btn-outline-primary" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+            <% if (search) { %>
+              <a href="/admin/view_students" class="btn btn-outline-secondary">
+                <i class="fas fa-times"></i> Clear
+              </a>
+            <% } %>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-4 text-end">
+        <a href="/admin/add_std" class="btn btn-success">
+          <i class="fas fa-plus me-1"></i> Add New Student
+        </a>
+      </div>
+    </div>
+
+    <% if (students.length > 0) { %>
+      <!-- Responsive Table -->
+      <div class="table-responsive shadow-sm rounded">
+        <table class="table table-hover align-middle mb-0 responsive-student-table">
+          <thead>
+            <tr>
+              <th scope="col">SR.No</th>
+              <th scope="col">Photo</th>
+              <th scope="col">Name</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Email</th>
+              <th scope="col">School</th>
+              <th scope="col">Class</th>
+              <th scope="col">DOB</th>
+              <th scope="col">Address</th>
+              <th scope="col">Registered On</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% students.forEach((std, i) => { %>
+            <tr>
+              <td data-label="SR.No"><%= i+1 %></td>
+              <td data-label="Photo">
+                <% if (std.std_photo) { %>
+                  <img src="/uplaod/<%= std.std_photo %>"
+                       alt="<%= std.std_name %>"
+                       class="rounded-circle"
+                       width="50" height="50"
+                       style="object-fit:cover;">
+                <% } else { %>
+                  <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center"
+                       style="width:50px;height:50px;">
+                    <i class="fas fa-user"></i>
+                  </div>
+                <% } %>
+              </td>
+              <td data-label="Name" class="fw-semibold"><%- std.std_name %></td>
+              <td data-label="Phone"><%= std.std_phone %></td>
+              <td data-label="Email"><%= std.std_email %></td>
+              <td data-label="School"><%= std.std_sc_name %></td>
+              <td data-label="Class"><%= std.std_class %></td>
+              <td data-label="DOB"><%= new Date(std.std_dob).toLocaleDateString() %></td>
+              <td data-label="Address"><%= std.std_address %></td>
+              <td data-label="Registered On"><%= new Date(std.created_at).toLocaleDateString() %></td>
+              <td data-label="Action">
+                <a href="/admin/delete_std/<%= std.std_id %>" 
+                   class="btn btn-sm btn-danger">
+                  <i class="fas fa-trash"></i>
+                </a>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    <% } else { %>
+      <!-- Empty State -->
+      <div class="d-flex flex-column align-items-center justify-content-center py-5 text-muted">
+        <% if (search) { %>
+          <i class="fas fa-search fa-3x mb-3"></i>
+          <h4>No Students Found</h4>
+          <p class="mb-0">No students match your search "<strong><%= search %></strong>". Try different keywords or <a href="/admin/view_students" class="text-primary">view all students</a>.</p>
+        <% } else { %>
+          <i class="fas fa-users fa-3x mb-3"></i>
+          <h4>No Students Registered Yet</h4>
+          <p class="mb-0">Start by adding your first student using the button above.</p>
+        <% } %>
+      </div>
+    <% } %>
+
+  </div>
+</section>
+
+<%-include("footer")%> 

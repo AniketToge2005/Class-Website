@@ -77,4 +77,55 @@ router.get("/announcement",function(req,res){
 
  
 
+
+
+// add student
+router.get("/add_std",async function(req,res){
+  res.render("admin/add_student.ejs")
+})
+
+
+router.post("/save_student",async function(req,res){
+
+    var std_photo=new Date().getTime()+".jpg";
+    req.files.std_photo.mv("public/uplaod/"+std_photo);
+
+
+  var d=req.body;
+  var sql="INSERT INTO students (std_name,std_phone,std_email,std_sc_name	,std_photo,std_dob,std_class,std_address) VALUES (?,?,?,?,?,?,?,?)";
+  var data=await exe(sql,[d.std_name,d.std_phone,d.std_email,d.std_sc,std_photo,d.std_dob,d.std_class,d.std_address]);
+  res.redirect("/admin/add_std")
+  // res.send(data);
+})
+
+router.get("/view_students",async function(req,res){
+  var search = req.query.search || '';
+  var sql;
+  var params = [];
+  
+  if (search) {
+    sql = `SELECT * FROM students WHERE 
+           std_name LIKE ? OR 
+           std_phone LIKE ? OR 
+           std_email LIKE ? OR 
+           std_sc_name LIKE ? OR 
+           std_class LIKE ? OR 
+           std_address LIKE ?`;
+    var searchPattern = `%${search}%`;
+    params = [searchPattern, searchPattern, searchPattern, searchPattern, searchPattern, searchPattern];
+  } else {
+    sql = `SELECT * FROM students`;
+  }
+  
+  var data = await exe(sql, params);
+  var obj = {"students": data, "search": search}
+  res.render("admin/view_students.ejs",obj)
+})
+router.get("/delete_std/:id",async function(req,res){
+  var id=req.params.id;
+  var sql = `DELETE FROM students WHERE std_id = ${id}`;
+  var data = await exe(sql);
+  res.redirect("/admin/view_students")
+})
+
 module.exports = router;
