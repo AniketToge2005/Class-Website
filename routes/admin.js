@@ -33,9 +33,10 @@ router.post("/about_class",async function(req,res){
     twitter = ?,
     facebook = ?,
     linkedin = ?,
+    work_time=?,
     address = ? WHERE id = 1`;
 
-    var data = await exe(sql,[d.Phone,d.email,d.whatsapp,d.instagram,d.twitter,d.facebook,d.Linkedin,d.address])
+    var data = await exe(sql,[d.Phone,d.email,d.whatsapp,d.instagram,d.twitter,d.facebook,d.Linkedin,d.work_time,d.address])
   res.redirect("/admin/about_class")
 })
 
