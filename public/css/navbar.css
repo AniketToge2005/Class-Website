@@ -25,8 +25,8 @@
     }
 
     .navbar-brand img {
-      height: 100%;
-      width:50%;
+      height: 50px;
+      width:50px;
       object-fit: contain;
       margin-right: 10px;
       margin-top: 0;
