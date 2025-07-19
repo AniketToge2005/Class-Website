@@ -8,9 +8,35 @@ var exe = require('./../connection');
 router.get("/",function(req, res) {
   res.render("admin/home.ejs")
 });
-
+//select contact info
 router.get("/about_class",async function(req,res){
-  res.render("admin/about_class.ejs")
+   var contact_info=await exe(`SELECT * FROM contact_info`)
+   var obj={"contact_info":contact_info[0]}
+  res.render("admin/about_class.ejs",obj)
+})
+// Update contact info
+router.post("/about_class",async function(req,res){
+  var d=req.body;
+
+        if(req.files && req.files.logo_image){
+        var logo_image=new Date().getTime()+".jpg";
+        req.files.logo_image.mv("public/uplaod/"+logo_image);
+        console.log(logo_image)
+        var data1 = await exe(`UPDATE contact_info SET logo = '${logo_image}' WHERE id = 1`);
+
+    }
+  var sql=`UPDATE contact_info SET
+    phone = ?,
+    email = ?,
+    whatsapp = ?,
+    instagram = ?,
+    twitter = ?,
+    facebook = ?,
+    linkedin = ?,
+    address = ? WHERE id = 1`;
+
+    var data = await exe(sql,[d.Phone,d.email,d.whatsapp,d.instagram,d.twitter,d.facebook,d.Linkedin,d.address])
+  res.redirect("/admin/about_class")
 })
 
 

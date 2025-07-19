@@ -1,6 +1,6 @@
 <%-include("Navbar.ejs")%>
 
-<div class="container">
+<div class="container p-5">
     <div class="row border rounded-3 p-3">
         <div class="col-md-12">
             <div class="banner d-flex align-items-center rounded-3">
@@ -9,44 +9,47 @@
            </div>
         </div>
     </div>
-    <form action="">
+    <form action="/admin/about_class" method="post" enctype="multipart/form-data">
     <div class="row border rounded-3 p-4 mt-4">
+        <div class="col-md-4">
+            <img style="height: 100px;" class="w-70" src="/uplaod/<%-contact_info.logo%>" alt="">
+        </div>
         <div class="col-md-4 mt-4">
             Enter Class logo
-            <input class="form-control mt-2" type="file"  name="" id="">
+            <input class="form-control mt-2" type="file"  name="logo_image" id="">
         </div>
         <div class="col-md-4 mt-4">
             Class Phone 
-            <input class="form-control mt-2" type="number"  name="" id="">
+            <input class="form-control mt-2" type="number" value="<%-contact_info.phone%>"  name="Phone" id="">
         </div>
         <div class="col-md-4 mt-4">
             Enter Class Email
-            <input class="form-control mt-2" type="email"  name="" id="">
+            <input class="form-control mt-2" type="email" value="<%-contact_info.email%>" name="email" id="">
         </div>
          <div class="col-md-4 mt-4">
             Enter WhatsApp
-            <input class="form-control mt-2" type="number"  name="" id="">
+            <input class="form-control mt-2" type="number" value="<%-contact_info.whatsapp%>"  name="whatsapp" id="">
         </div>
         <div class="col-md-4 mt-4">
-            Enter instagram Link
-            <input class="form-control mt-2" type="number"  name="" id="">
+            Enter Instagram Link
+            <input class="form-control mt-2" type="text" value="<%-contact_info.instagram%>"  name="instagram" id="">
         </div>
         <div class="col-md-4 mt-4">
-            Enter twitter Link
-            <input class="form-control mt-2" type="number"  name="" id="">
+            Enter Twitter Link
+            <input class="form-control mt-2" type="text" value="<%-contact_info.twitter%>"  name="twitter" id="">
         </div>
          <div class="col-md-4 mt-4">
-            Enter facebook Link
-            <input class="form-control mt-2" type="number"  name="" id="">
+            Enter Facebook Link
+            <input class="form-control mt-2" type="text" value="<%-contact_info.facebook%>"  name="facebook" id="">
         </div>
         <div class="col-md-4 mt-4">
             Enter Linkedin Link
-            <input class="form-control mt-2" type="number"  name="" id="">
+            <input class="form-control mt-2" type="text" value="<%-contact_info.linkedin%>"  name="Linkedin" id="">
         </div>
 
         <div class="col-md-12 mt-4">
              Class Address
-            <textarea class="form-control mt-2 editor" type="file"  name="" id=""></textarea>
+            <textarea class="form-control mt-2" type="text"  name="address" id=""><%-contact_info.address%></textarea>
         </div>
         <div class="col-md-12 text-center mt-4">
             <button class="btn btn-primary">Save Information</button>
@@ -54,5 +57,6 @@
     </div>
     </form>
 </div>
+
 
 <%-include("Footer.ejs")%>

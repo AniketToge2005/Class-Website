@@ -222,29 +222,28 @@
     <p>Reach out to us with any questions or feedback.</p>
 </div>
 
-<div class="contact-container">
+<div class="contact-container mb-4">
     <div class="contact-area">
         <div class="card">
             <h2 class="section-title">Get In Touch</h2>
             <div class="info-item">
                 <i class="fas fa-map-marker-alt"></i>
                 <div>
-                    <p>Room 305, 123 University Ave</p>
+                    <p><%-contact_info.address%></p>
                     <p>Boston, MA 02115</p>
                 </div>
             </div>
             <div class="info-item">
                 <i class="fas fa-phone-alt"></i>
                 <div>
-                    <p>Main: (617) 555-0123</p>
-                    <p>Support: (617) 555-0456</p>
+                    <p>Main: (+91) <%-contact_info.phone%></p>
+                    <p>Support: (+91) 7249329153</p>
                 </div>
             </div>
             <div class="info-item">
                 <i class="fas fa-envelope"></i>
                 <div>
-                    <p>info@classportal.edu</p>
-                    <p>support@classportal.edu</p>
+                    <p><%-contact_info.email%></p>
                 </div>
             </div>
             <div class="info-item">
@@ -255,10 +254,10 @@
                 </div>
             </div>
             <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="<%-contact_info.facebook%>"><i class="fab fa-facebook-f"></i></a>
+                <a href="<%-contact_info.twitter%>"><i class="fab fa-twitter"></i></a>
+                <a href="<%-contact_info.instagram%>"><i class="fab fa-instagram"></i></a>
+                <a href="<%-contact_info.Linkedin%>"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
 

@@ -1,13 +1,439 @@
 
-<%- include("footer") %>
+
+<%- include("navbar") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 11th Stream Selection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="/css/class12.css">
+    <style>
+        
+
+    </style>
+</head>
+<body>
+    <div class="header animate__animated animate__fadeIn">
+        <div class="container">
+            <h1>📖 Class 12<sup>th</sup>  :- Choose Your Class Stream</h1>
+            <br>
+            <br>
+            <p class="lead">Select the path that aligns with your interests and career aspirations</p>
+        </div>
+    </div>
+    <!-- ------------------------------ -->
+      
+
+    
+   <h2 style="text-align:center; margin-top: 40px; color:#004080;">🎓 Explore More Classes</h2>
+
+  <div class="class-card-container">
+    <a href="/class5" class="class-card">Class 5<sup>th</sup></a>
+    <a href="/class6" class="class-card">Class 6<sup>th</sup></a>
+    <a href="/class7" class="class-card">Class 7<sup>th</sup></a>
+    <a href="/class8" class="class-card">Class 8<sup>th</sup></a>
+    <a href="/class9" class="class-card">Class 9<sup>th</sup></a>
+    <a href="/class10" class="class-card">Class 10<sup>th</sup></a>
+    <a href="/class11" class="class-card">Class 11<sup>th</sup></a>
+    <a href="/class12" class="class-card">Class 12<sup>th</sup></a>
+  </div>
+
+
+  <br>
+  <br>  
+    <!-- -------------- -->
+    
+    <div class="container">
+        <div class="row">
+            <!-- Science Stream -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card stream-card science animate__animated animate__fadeInUp" data-wow-delay="0.1s">
+                    <div class="card-header">
+                        <i class="fas fa-atom stream-icon"></i>
+                        <h3>Science Stream</h3>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Core Subjects</h5>
+                        <div class="mb-3">
+                            <span class="badge science-badge subject-badge">Physics</span>
+                            <span class="badge science-badge subject-badge">Chemistry</span>
+                            <span class="badge science-badge subject-badge">Mathematics</span>
+                            <span class="badge science-badge subject-badge">Biology (Optional)</span>
+                        </div>
+                        
+                        <h5 class="card-title">Elective Options</h5>
+                        <p class="card-text">
+                            <span class="badge bg-secondary subject-badge">Computer Science</span>
+                            <span class="badge bg-secondary subject-badge">Electronics</span>
+                            <span class="badge bg-secondary subject-badge">Physical Education</span>
+                        </p>
+                        
+                        <div class="hidden-content" id="science-more">
+                            <h5 class="card-title mt-3">Career Paths</h5>
+                            <p class="career-path">Engineering</p>
+                            <p class="career-path">Medical Sciences</p>
+                            <p class="career-path">Research & Development</p>
+                            <p class="career-path">Data Science</p>
+                            <p class="career-path">Space Technology</p>
+                            
+                            <div class="alert alert-info mt-3">
+                                <strong>Did you know?</strong> Science stream opens doors to cutting-edge careers in AI, Biotechnology, and Quantum Computing.
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-explore" onclick="toggleContent('science-more', this)">
+                            Explore Science
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Commerce Stream -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card stream-card commerce animate__animated animate__fadeInUp" data-wow-delay="0.2s">
+                    <div class="card-header">
+                        <i class="fas fa-chart-line stream-icon"></i>
+                        <h3>Commerce Stream</h3>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Core Subjects</h5>
+                        <div class="mb-3">
+                            <span class="badge commerce-badge subject-badge">Accountancy</span>
+                            <span class="badge commerce-badge subject-badge">Business Studies</span>
+                            <span class="badge commerce-badge subject-badge">Economics</span>
+                            <span class="badge commerce-badge subject-badge">Mathematics (Optional)</span>
+                        </div>
+                        <br>
+                        <h5 class="card-title">Elective Options</h5>
+                        <p class="card-text">
+                            <span class="badge bg-secondary subject-badge">Entrepreneurship</span>
+                            <span class="badge bg-secondary subject-badge">Financial Markets</span>
+                            <span class="badge bg-secondary subject-badge">Informatics Practices</span>
+                        </p>
+                        
+                        <div class="hidden-content" id="commerce-more">
+                            <h5 class="card-title mt-3">Career Paths</h5>
+                            <p class="career-path">Chartered Accountancy</p>
+                            <p class="career-path">Business Management</p>
+                            <p class="career-path">Investment Banking</p>
+                            <p class="career-path">Financial Analysis</p>
+                            <p class="career-path">Digital Marketing</p>
+                            
+                            <div class="alert alert-info mt-3">
+                                <strong>Did you know?</strong> Commerce graduates can pursue prestigious certifications like CA, CFA, and CS alongside degrees.
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-explore" onclick="toggleContent('commerce-more', this)">
+                            Explore Commerce
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Arts Stream -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card stream-card arts animate__animated animate__fadeInUp" data-wow-delay="0.3s">
+                    <div class="card-header">
+                        <i class="fas fa-palette stream-icon"></i>
+                        <h3>Arts/Humanities</h3>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Core Subjects</h5>
+                        <div class="mb-3">
+                            <span class="badge arts-badge subject-badge">History</span>
+                            <span class="badge arts-badge subject-badge">Political Science</span>
+                            <span class="badge arts-badge subject-badge">Geography</span>
+                            <span class="badge arts-badge subject-badge">Psychology</span>
+                        </div>
+                        <br>
+                    
+                        <h5 class="card-title">Elective Options</h5>
+                        <p class="card-text">
+                            <span class="badge bg-secondary subject-badge">Fine Arts</span>
+                            <span class="badge bg-secondary subject-badge">Sociology</span>
+                            <span class="badge bg-secondary subject-badge">Music</span>
+                            <span class="badge bg-secondary subject-badge">Physical Education</span>
+                        </p>
+                        
+                        <div class="hidden-content" id="arts-more">
+                            <h5 class="card-title mt-3">Career Paths</h5>
+                            <p class="career-path">Law & Judiciary</p>
+                            <p class="career-path">Civil Services</p>
+                            <p class="career-path">Journalism & Media</p>
+                            <p class="career-path">Social Work</p>
+                            <p class="career-path">Design & Creative Arts</p>
+                            
+                            <div class="alert alert-info mt-3">
+                                <strong>Did you know?</strong> Humanities develop critical thinking skills valued in emerging fields like UX design and content strategy.
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-explore" onclick="toggleContent('arts-more', this)">
+                            Explore Arts
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <br>
+    <br>
+    <!-- ------------------------------------------------------------ -->
+ <div class="book-section">
+  <h1 style="color: #03403f;">📚 Class 12<sup>th</sup>  Arts  :- Book Library</h1>
+  <br>
+  <br>
+  <div class="book-container ">
+    
+    <!-- Physics -->
+    <div class="book-card">
+      <img src="https://online.fliphtml5.com/pezhn/epha/files/large/1.webp?1627222726&1627222726" alt="Physics Book">
+      <h3 style="color: #03403f;">मराठी </h3>
+                        👉
+      <a href="" target="_blank">📖  Open Book</a>
+    </div>
+
+    <!-- Chemistry -->
+    <div class="book-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-2jJ8Q25sSQfqutBmTcPJMKvK4x7J2BcL2Q&s" alt="Chemistry Book">
+      <h3 style="color: #03403f;">हिंदी </h3>
+                        👉
+      <a href="" target="_blank">📖  Open Book</a>
+    </div>
+
+    <!-- Math -->
+    <div class="book-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-gEyIV2Sx1Hmts-WZ7ygBxpEL7K7-EI3dww&s" alt="Math Book">
+      <h3 style="color: #03403f;">इंग्रजी </h3>
+                        👉
+      <a href="https://books.ebalbharati.in/pdfs/1203040026.pdf" target="_blank">📖  Open Book</a>
+    </div>
+
+    <!-- English -->
+    <div class="book-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgtM0c81vizK09wZa1PwaaJDYmAbBrviHjNg&s" alt="English Book">
+      <h3 style="color: #03403f;">इतिहास</h3>
+                        👉
+      <a href="" target="_blank">📖  Open Book</a>
+    </div>
+
+    <!-- History -->
+    <div class="book-card">
+      <img src="https://m.media-amazon.com/images/I/61eGvyRJXsL._UF1000,1000_QL80_.jpg" alt="History Book">
+      <h3 style="color: #03403f;">भूगोल</h3>
+                        👉
+      <a href="" target="_blank">📖  Open Book</a>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+    <!-- ----------------------------------------------------------------- -->
+ <br>
+ <br>
+
+
+
+<div class="book-section">
+  <h1 style="color: #03403f;">📚 Class 12<sup>th</sup> Commerce :- Book Library</h1>
+  <br><br>
+  <div class="book-container">
+
+    <!-- Marathi -->
+    <div class="book-card">
+      <img src="https://online.fliphtml5.com/pezhn/epha/files/large/1.webp?1627222726&1627222726" alt="Marathi Book">
+      <h3 style="color: #03403f;">मराठी(Marathi)</h3>
+      👉 <a href="" target="_blank">📖 Open Book</a>
+      <br><br>
+      <table border="1" style="width: 100%; text-align: center;">
+        <tr><th colspan="2">📅 Marathi Lectures</th></tr>
+        <tr><td>Offline</td><td>Mon-Wed-Fri: 9:00 AM</td></tr>
+        <tr><td>Online</td><td>Tue-Thu: 5:00 PM</td></tr>
+      </table>
+      <br>
+    </div>
+
+    <!-- Mathematics -->
+    <div class="book-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYNd34mWh6xudR7oo9rP8OREboGoF4sbj-qw&s" alt="Hindi Book">
+      <h3 style="color: #03403f;">गणित(Mathematics)</h3>
+      👉 <a href="" target="_blank">📖 Open Book</a>
+      <br><br>
+      <table border="1" style="width: 100%; text-align: center;">
+        <tr><th colspan="2">📅 Math Lectures</th></tr>
+        <tr><td>Offline</td><td>Mon-Wed: 11:00 AM</td></tr>
+        <tr><td>Online</td><td>Thu-Sat: 4:30 PM</td></tr>
+      </table>
+      <br>
+        </div>
+
+    <!-- English -->
+    <div class="book-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-gEyIV2Sx1Hmts-WZ7ygBxpEL7K7-EI3dww&s" alt="English Book">
+      <h3 style="color: #03403f;">इंग्रजी(English)</h3>
+      👉 <a href="https://books.ebalbharati.in/pdfs/1203040026.pdf" target="_blank">📖 Open Book</a>
+      <br><br>
+      <table border="1" style="width: 100%; text-align: center;">
+        <tr><th colspan="2">📅 English Lectures</th></tr>
+        <tr><td>Offline</td><td>Tue-Thu: 10:30 AM</td></tr>
+        <tr><td>Online</td><td>Fri-Sun: 6:00 PM</td></tr>
+      </table>
+      <br>
+    </div>
+
+    <!-- Economics -->
+    <div class="book-card">
+      <img src="https://m.media-amazon.com/images/I/61y3VD3QrKL.jpg" alt="Economics Book">
+      <h3 style="color: #03403f;">अर्थशास्त्र(Economics)</h3>
+      👉 <a href="" target="_blank">📖 Open Book</a>
+      <br><br>
+      <table border="1" style="width: 100%; text-align: center;">
+        <tr><th colspan="2">📅 Economics Lectures</th></tr>
+        <tr><td>Offline</td><td>Mon-Fri: 12:00 PM</td></tr>
+        <tr><td>Online</td><td>Wed-Sat: 5:30 PM</td></tr>
+      </table>
+      <br>
+    </div>
+
+    <!-- Mathematics & Statistics -->
+    <div class="book-card">
+      <img src="https://m.media-amazon.com/images/I/815udmy+75L.jpg" alt="Math Book">
+      <h3 style="color: #03403f;">गणित व संख्याशास्त्र</h3>
+      👉 <a href="" target="_blank">📖 Open Book</a>
+      <br><br>
+      <table border="1" style="width: 100%; text-align: center;">
+        <tr><th colspan="2">📅 Math & Stats Lectures</th></tr>
+        <tr><td>Offline</td><td>Tue-Thu: 1:30 PM</td></tr>
+        <tr><td>Online</td><td>Mon-Wed: 6:30 PM</td></tr>
+      </table>
+      <br>
+  </div>
+</div>
+<br>
+<br>
+
+<a href="/contact" class="contact-btn">
+  <span class="btn-icon">📞</span>
+  <span class="btn-text">Contact Us</span>
+</a>
+
+<style>
+  
+</style>
+
+<br>
+<br>
+
+  
+ <!------------------------------------ Science Subjects --------------------------------------->
+
+   <div class="book-section">
+  <h1 style="color: #03403f;">📚 Class 12<sup>th</sup> Science :- Book Library</h1>
+  <br><br>
+  <div class="book-container">
+<div class="book-card">
+  <img src="https://online.fliphtml5.com/pezhn/epha/files/large/1.webp?1627222726&1627222726" alt="Physics Book">
+  <h3 style="color: #03403f;">मराठी(Marathi)</h3>
+                    👉
+  <a href="" target="_blank">📖 Open Book</a>
+</div>
+
+<div class="book-card">
+  <img src="https://content.jdmagicbox.com/quickquotes/images_main/sp-chemistry-part-2-for-class-12th-by-l-l-agarwal-ramakant-sharma-basis-on-ncert-science-publication-345041835-aq447.jpg" alt="Chemistry Book">
+  <h3 style="color: #03403f;">रसायनशास्त्र (Chemistry)</h3>
+                    👉
+  <a href="" target="_blank">📖 Open Book</a>
+</div>
+
+<div class="book-card">
+  <img src="https://m.media-amazon.com/images/I/61yVN3eX3YL._UF1000,1000_QL80_.jpg" alt="Biology Book">
+  <h3 style="color: #03403f;">जीवशास्त्र (Biology)</h3>
+                    👉
+  <a href="" target="_blank">📖 Open Book</a>
+</div>
+
+<div class="book-card">
+  <img src="https://lsmedia.linker-cdn.net/268042/2020/4570902.jpg?width=442&height=590" alt="Math Book">
+  <h3 style="color: #03403f;">गणित (Mathematics)</h3>
+                    👉
+  <a href="" target="_blank">📖 Open Book</a>
+</div>
+
+<div class="book-card">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-gEyIV2Sx1Hmts-WZ7ygBxpEL7K7-EI3dww&s" alt="English Book">
+  <h3 style="color: #03403f;">इंग्रजी (English)</h3>
+                    👉
+  <a href="https://books.ebalbharati.in/pdfs/1203040026.pdf" target="_blank">📖 Open Book</a>
+</div>
+<br>
+<br>
 
 
 
 
 
 
+    <!-- ------------------------------------------------------------------ -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p>© 2025 Stream Guide Class 11<sup>th</sup>  :- Contact : 👉  Shree-Classes.</p>
+        </div>
+    </footer>
 
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        function toggleContent(id, button) {
+            const content = document.getElementById(id);
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+                button.textContent = 'Show Less';
+                // Add animation
+                content.classList.add('animate__animated', 'animate__fadeIn');
+            } else {
+                content.style.display = 'none';
+                button.textContent = button.textContent.replace('Less', 'More');
+            }
+        }
+        
+        function startQuiz() {
+            alert('Stream selection quiz will start now! This would connect to a quiz page in a real implementation.');
+            // In a real implementation, this would redirect to a quiz page
+        }
+        
+        // Animate cards when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.stream-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
 
 <%- include("footer") %>

@@ -1,23 +1,76 @@
 
 
-
-</section>
-<script>
-      function toggleSidebar() {
-        document.querySelector('.sidebar').classList.toggle('open');
-      }
-      // Optional: close sidebar when clicking outside
-      document.addEventListener('click', function(event) {
-        const sidebar = document.querySelector('.sidebar');
-        const toggle = document.querySelector('.mobile-menu-toggle');
-        if (window.innerWidth <= 768) {
-          if (!sidebar.contains(event.target) && !toggle.contains(event.target)) {
-            sidebar.classList.remove('open');
-          }
-        }
-      });
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script>
   
+
+
+
+
+<script>
+  document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const submenu = toggle.nextElementSibling;
+      const icon = toggle.querySelector('.toggle-icon');
+
+      // Close all other submenus
+      document.querySelectorAll('.submenu').forEach(s => {
+        if (s !== submenu) s.classList.remove('show');
+      });
+      document.querySelectorAll('.toggle-icon').forEach(i => {
+        if (i !== icon) i.classList.remove('rotate');
+      });
+
+      // Toggle current
+      submenu.classList.toggle('show');
+      icon.classList.toggle('rotate');
+    });
+  });
 </script>
+
+
+
+  <script>
+    // Initialize AOS animations
+    AOS.init();
+    
+    // Toggle sidebar
+    document.getElementById('toggleSidebar').addEventListener('click', function() {
+      document.getElementById('sidebar').classList.toggle('sidebar-collapsed');
+      document.getElementById('mainContent').classList.toggle('main-content-collapsed');
+    });
+    
+    // Toggle user dropdown
+    document.getElementById('userProfile').addEventListener('click', function() {
+      document.getElementById('userDropdown').classList.toggle('show');
+    });
+    
+    // Close dropdown when clicking outside
+    window.addEventListener('click', function(event) {
+      if (!event.target.matches('#userProfile') && !event.target.closest('#userProfile')) {
+        var dropdown = document.getElementById('userDropdown');
+        if (dropdown.classList.contains('show')) {
+          dropdown.classList.remove('show');
+        }
+      }
+    });
+    
+    // Responsive sidebar for mobile
+    function handleResponsiveSidebar() {
+      if (window.innerWidth < 992) {
+        document.getElementById('sidebar').classList.remove('sidebar-collapsed');
+        document.getElementById('mainContent').classList.remove('main-content-collapsed');
+      }
+    }
+
+
+    
+    window.addEventListener('resize', handleResponsiveSidebar);
+    handleResponsiveSidebar();
+  </script>
+
 
 <script id="rendered-js" type="module">
     let ckeditor;
@@ -32,6 +85,8 @@
       console.error(error);
     });
      </script>
-  
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </body>
 </html>
