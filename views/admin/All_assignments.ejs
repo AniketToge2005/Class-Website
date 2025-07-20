@@ -71,11 +71,20 @@
 
       <!-- Pagination controls will go here -->
       <nav>
-        <ul id="pagination-controls" class="pagination justify-content-end"></ul>
+        <ul  id="pagination-controls" class="pagination justify-content-end"></ul>
       </nav>
     </div>
   </div>
 </div>
+<style>
+/* Active page background and border */
+.pagination .page-item.active .page-link {
+  background-color: #4b3f91;
+  border-color: #4b3f91;
+  color: white;
+}
+</style>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -150,72 +159,6 @@ document.addEventListener('DOMContentLoaded', function () {
     renderPage(1);
   });
 
-  renderPage(1);
-});
-</script>
-
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const table       = document.getElementById('assignment-table');
-  const tbody       = table.querySelector('tbody');
-  const rows        = Array.from(tbody.querySelectorAll('tr'));
-  const controls    = document.getElementById('pagination-controls');
-  const rowsPerPage = 10;  // change as needed
-  const pageCount   = Math.ceil(rows.length / rowsPerPage);
-  let currentPage   = 1;
-
-  function renderPage(page) {
-    // clamp page
-    currentPage = Math.max(1, Math.min(pageCount, page));
-    const start = (currentPage - 1) * rowsPerPage;
-    const end   = start + rowsPerPage;
-
-    // show/hide rows
-    rows.forEach((row, idx) => {
-      row.style.display = (idx >= start && idx < end) ? '' : 'none';
-    });
-
-    renderControls();
-  }
-
-  function renderControls() {
-    controls.innerHTML = '';
-
-    // Previous button
-    const prevLi = document.createElement('li');
-    prevLi.className = 'page-item ' + (currentPage === 1 ? 'disabled' : '');
-    prevLi.innerHTML = `<a class="page-link" href="#">Prev</a>`;
-    prevLi.addEventListener('click', e => {
-      e.preventDefault();
-      if (currentPage > 1) renderPage(currentPage - 1);
-    });
-    controls.appendChild(prevLi);
-
-    // Page numbers
-    for (let p = 1; p <= pageCount; p++) {
-      const li = document.createElement('li');
-      li.className = 'page-item ' + (p === currentPage ? 'active' : '');
-      li.innerHTML = `<a class="page-link" href="#">${p}</a>`;
-      li.addEventListener('click', e => {
-        e.preventDefault();
-        renderPage(p);
-      });
-      controls.appendChild(li);
-    }
-
-    // Next button
-    const nextLi = document.createElement('li');
-    nextLi.className = 'page-item ' + (currentPage === pageCount ? 'disabled' : '');
-    nextLi.innerHTML = `<a class="page-link" href="#">Next</a>`;
-    nextLi.addEventListener('click', e => {
-      e.preventDefault();
-      if (currentPage < pageCount) renderPage(currentPage + 1);
-    });
-    controls.appendChild(nextLi);
-  }
-
-  // initialize
   renderPage(1);
 });
 </script>
