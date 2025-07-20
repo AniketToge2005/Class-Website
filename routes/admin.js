@@ -68,11 +68,8 @@ router.get("/all_assignments",async function(req,res){
   res.render("admin/All_assignments.ejs",obj)
 })
 
-router.post("/search_assignments",async function(req,res){
-  var d=req.body;
-  res.send(d)
-})
 
+// add study  material
 
 router.get("/study_material",function(req,res){
   res.render("admin/study_material.ejs")
