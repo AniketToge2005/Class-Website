@@ -40,7 +40,7 @@ router.post("/about_class",async function(req,res){
   res.redirect("/admin/about_class")
 })
 
-
+//   add   assignments
 
 router.get("/add_assignments",async function(req,res){
   res.render("admin/Add_assignments.ejs")
@@ -55,10 +55,22 @@ router.post("/save_assignments",async function(req,res){
     console.log(pdf)
   }
 
-var  sql = `INSERT INTO assignments(std_class_id, title, date, subject,pdf) VALUES (?, ?, ?, ?, ?)`;
-var  data = await exe(sql,[d.class,d.title,d.date,d.subject,pdf]);
+var  sql = `INSERT INTO assignments(std_class_id, title, date, subject,pdf,status) VALUES (?, ?, ?, ?, ?,?)`;
+var  data = await exe(sql,[d.class,d.title,d.date,d.subject,pdf,d.status]);
   res.redirect("/admin/add_assignments")
-  // res.send(sql)
+})
+
+//   add list assignments
+
+router.get("/all_assignments",async function(req,res){
+  var data = await exe(`SELECT * FROM assignments`);
+  var obj={"assignments":data}
+  res.render("admin/All_assignments.ejs",obj)
+})
+
+router.post("/search_assignments",async function(req,res){
+  var d=req.body;
+  res.send(d)
 })
 
 

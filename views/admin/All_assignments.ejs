@@ -1,0 +1,224 @@
+<%- include("navbar") %>
+
+<div class="container p-5">
+      <div class="row border rounded-3 p-3">
+        <div class="col-md-12">
+            <div class="banner d-flex align-items-center rounded-3">
+            <h3 class="text-white px-3">All Assignments</h3>
+            <div class="stripes"></div>
+           </div>
+        </div>
+    </div>
+    <div class="row border rounded-3 p-4 mt-5">
+<div class="col-md-4">
+  <select class="form-control" name="class" id="class-filter" required>
+    <option value="">Select All class</option>
+    <option value="5">5 <sup>th</sup></option>
+    <option value="6">6  <sup>th</sup></option>
+    <option value="7">7  <sup>th</sup></option>
+    <option value="8">8 <sup>th</sup></option>
+    <option value="9">9 <sup>th</sup></option>
+    <option value="10">10 <sup>th</sup></option>
+    <option value="11">11 <sup>th</sup></option>
+    <option value="12">12 <sup>th</sup></option>
+  </select> 
+</div>
+<div class="col-md-2">
+  <button style="background-color: #4b3f91;" class="btn text-white" id="search-btn" type="button">Search</button>
+</div>
+
+  <div class="row  rounded-3 p-4 mt-3">
+    <div class="col-md-12">
+      <div id="assignment-table-wrapper">
+        <table id="assignment-table" class="table table-striped text-center">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Class</th>
+              <th>Assignment Title</th>
+              <th>Last Date</th>
+              <th>Assignment PDF</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% assignments.forEach(function(col, i){ %>
+              <tr>
+                <td><%= i + 1 %></td>
+                <td><%= col.std_class_id %><sup>th</sup></td>
+                <td><%= col.title %></td>
+                <td><%= col.date %></td>
+                <td>
+                  <button style="background-color: #4b3f91;" class="btn">
+                    <a class="text-white text-decoration-none" href="/uplaod/<%-col.pdf %>">
+                      View PDF
+                    </a>
+                  </button>
+                </td>
+                <td>
+                    <a href="">
+                        <button  class="btn btn-warning"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                    </a>
+                    <a href="">
+                        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                    </a>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination controls will go here -->
+      <nav>
+        <ul id="pagination-controls" class="pagination justify-content-end"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const table       = document.getElementById('assignment-table');
+  const tbody       = table.querySelector('tbody');
+  const allRows     = Array.from(tbody.querySelectorAll('tr'));
+  const controls    = document.getElementById('pagination-controls');
+  const rowsPerPage = 10;
+  let filteredRows  = [...allRows];
+  let currentPage   = 1;
+
+  const classFilter = document.getElementById('class-filter');
+  const searchBtn   = document.getElementById('search-btn');
+
+  function renderPage(page) {
+    currentPage = Math.max(1, Math.min(Math.ceil(filteredRows.length / rowsPerPage), page));
+    const start = (currentPage - 1) * rowsPerPage;
+    const end   = start + rowsPerPage;
+
+    allRows.forEach(row => row.style.display = 'none');
+    filteredRows.slice(start, end).forEach(row => row.style.display = '');
+
+    renderControls();
+  }
+
+  function renderControls() {
+    controls.innerHTML = '';
+    const pageCount = Math.ceil(filteredRows.length / rowsPerPage);
+
+    const prevLi = document.createElement('li');
+    prevLi.className = 'page-item ' + (currentPage === 1 ? 'disabled' : '');
+    prevLi.innerHTML = `<a class="page-link" href="#">Prev</a>`;
+    prevLi.addEventListener('click', e => {
+      e.preventDefault();
+      if (currentPage > 1) renderPage(currentPage - 1);
+    });
+    controls.appendChild(prevLi);
+
+    for (let p = 1; p <= pageCount; p++) {
+      const li = document.createElement('li');
+      li.className = 'page-item ' + (p === currentPage ? 'active' : '');
+      li.innerHTML = `<a class="page-link" href="#">${p}</a>`;
+      li.addEventListener('click', e => {
+        e.preventDefault();
+        renderPage(p);
+      });
+      controls.appendChild(li);
+    }
+
+    const nextLi = document.createElement('li');
+    nextLi.className = 'page-item ' + (currentPage === pageCount ? 'disabled' : '');
+    nextLi.innerHTML = `<a class="page-link" href="#">Next</a>`;
+    nextLi.addEventListener('click', e => {
+      e.preventDefault();
+      if (currentPage < pageCount) renderPage(currentPage + 1);
+    });
+    controls.appendChild(nextLi);
+  }
+
+  searchBtn.addEventListener('click', function () {
+    const selectedClass = classFilter.value;
+
+    if (selectedClass === "") {
+      filteredRows = [...allRows];
+    } else {
+      filteredRows = allRows.filter(row => {
+        const classCell = row.querySelectorAll('td')[1];
+        return classCell.textContent.trim().startsWith(selectedClass);
+      });
+    }
+
+    renderPage(1);
+  });
+
+  renderPage(1);
+});
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const table       = document.getElementById('assignment-table');
+  const tbody       = table.querySelector('tbody');
+  const rows        = Array.from(tbody.querySelectorAll('tr'));
+  const controls    = document.getElementById('pagination-controls');
+  const rowsPerPage = 10;  // change as needed
+  const pageCount   = Math.ceil(rows.length / rowsPerPage);
+  let currentPage   = 1;
+
+  function renderPage(page) {
+    // clamp page
+    currentPage = Math.max(1, Math.min(pageCount, page));
+    const start = (currentPage - 1) * rowsPerPage;
+    const end   = start + rowsPerPage;
+
+    // show/hide rows
+    rows.forEach((row, idx) => {
+      row.style.display = (idx >= start && idx < end) ? '' : 'none';
+    });
+
+    renderControls();
+  }
+
+  function renderControls() {
+    controls.innerHTML = '';
+
+    // Previous button
+    const prevLi = document.createElement('li');
+    prevLi.className = 'page-item ' + (currentPage === 1 ? 'disabled' : '');
+    prevLi.innerHTML = `<a class="page-link" href="#">Prev</a>`;
+    prevLi.addEventListener('click', e => {
+      e.preventDefault();
+      if (currentPage > 1) renderPage(currentPage - 1);
+    });
+    controls.appendChild(prevLi);
+
+    // Page numbers
+    for (let p = 1; p <= pageCount; p++) {
+      const li = document.createElement('li');
+      li.className = 'page-item ' + (p === currentPage ? 'active' : '');
+      li.innerHTML = `<a class="page-link" href="#">${p}</a>`;
+      li.addEventListener('click', e => {
+        e.preventDefault();
+        renderPage(p);
+      });
+      controls.appendChild(li);
+    }
+
+    // Next button
+    const nextLi = document.createElement('li');
+    nextLi.className = 'page-item ' + (currentPage === pageCount ? 'disabled' : '');
+    nextLi.innerHTML = `<a class="page-link" href="#">Next</a>`;
+    nextLi.addEventListener('click', e => {
+      e.preventDefault();
+      if (currentPage < pageCount) renderPage(currentPage + 1);
+    });
+    controls.appendChild(nextLi);
+  }
+
+  // initialize
+  renderPage(1);
+});
+</script>
+
+
+<%- include("footer") %>
