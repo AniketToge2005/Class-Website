@@ -64,7 +64,7 @@ router.post('/save_student', async function (req, res) {
 // std list 
 
 router.get("/view_students",async function(req,res){
-  var data = await exe(`SELECT * FROM students WHERE status='active'`);
+  var data = await exe(`SELECT * FROM students WHERE status = 'active' ORDER BY std_id DESC`);
   var obj={"students":data}
   res.render("admin/view_students.ejs",obj)
 })
@@ -98,7 +98,7 @@ var  data = await exe(sql,[d.class,d.title,d.date,d.subject,pdf,d.status]);
 //   add list assignments
 
 router.get("/all_assignments",async function(req,res){
-  var data = await exe(`SELECT * FROM assignments WHERE status='active'`);
+  var data = await exe(`SELECT * FROM assignments WHERE status='active' ORDER BY assignments_id DESC`);
   var obj={"assignments":data}
   res.render("admin/All_assignments.ejs",obj)
 })
