@@ -57,6 +57,22 @@ router.get("/loginstudent",async function (req, res) {
 
 });
 
+router.post("/save_login",async function(req,res){
+  var d = req.body;
+  var sql = `SELECT * FROM students WHERE std_email = ? AND std_phone = ?`
+  var data = await exe(sql,[d.email,d.password]);
+  
+  if(data.length > 0){
+    
+    req.session.user = data[0];
+    res.redirect("/stu");
+  }
+  else{
+    res.send("login Failed")
+  }
+})
+
+
 router.get("/loginadmin",async function (req, res) {
   var contact_info=await exe(`SELECT * FROM contact_info`)
   var obj={"contact_info":contact_info[0]}
@@ -69,6 +85,7 @@ router.get("/profile",async function (req, res) {
   var obj={"contact_info":contact_info[0]}
   res.render("user/profile.ejs",obj);
 })
+
 
 router.get("/class5",async function (req, res) {
   var contact_info=await exe(`SELECT * FROM contact_info`)

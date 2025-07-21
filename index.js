@@ -21,6 +21,7 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(express.json());
 
 
+
 app.use(upload());
 app.use(express.static("public/"))
 app.use(session({
@@ -28,6 +29,12 @@ app.use(session({
     saveUninitialized:"true",
     resave:"true"
 }))
+
+app.use((req,res,next) => {
+    res.locals.user = req.session.user;
+    next();
+});
+
 
 app.use("/",user);
 app.use("/stu",student);

@@ -245,7 +245,8 @@
         <h1>My Profile</h1>
         <p>Manage your account information</p>
         <div class="profile-pic">
-            <i class="fas fa-user"></i>
+            <!-- <input type="file" name="std_photo" value="<%=user.std_photo%>"> -->
+             <img src="/uplaod/<%=user.std_photo%>" width="100px" height="100px">
         </div>
     </div>
     
@@ -254,14 +255,19 @@
             <h2 class="section-title">
                 <i class="fas fa-user-circle"></i> Personal Information
             </h2>
-            
-            <div class="info-card">
+        
+            <form action="/stu/update_profile" method="post" enctype="multipart/form-data">
+          
+          <input type="text" name="std_id" value="<%=user.std_id%>">
+                <div class="info-card">
                 <div class="info-icon">
                     <i class="fas fa-user"></i>
                 </div>
                 <div class="info-content">
                     <div class="info-label">Username</div>
-                    <div class="info-value">Rajesh Aghav</div>
+                         <div class="info-value">
+                            <input type="text" name="std_name" value="<%=user.std_name%>" class="form-control">
+                         </div>
                 </div>
             </div>
             
@@ -271,7 +277,9 @@
                 </div>
                 <div class="info-content">
                     <div class="info-label">Email Address</div>
-                    <div class="info-value">rajeshaghav@gmail.com</div>
+                    <div class="info-value">
+                         <input type="text" name="std_email" value="<%=user.std_email%>" class="form-control">
+                    </div>
                 </div>
             </div>
             
@@ -281,44 +289,33 @@
                 </div>
                 <div class="info-content">
                     <div class="info-label">Mobile Number</div>
-                    <div class="info-value">+1 9876543210</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="profile-section">
-            <h2 class="section-title">
-                <i class="fas fa-lock"></i> Security
-            </h2>
-            
-            <div class="info-card">
-                <div class="info-icon">
-                    <i class="fas fa-key"></i>
+                    <div class="info-value">
+                         <input type="text" name="std_phone" value="<%=user.std_phone%>" class="form-control">
+                    </div>
                 </div>
                 <div class="info-content">
-                    <div class="info-label">Password</div>
+                    <div class="info-label">Update Image</div>
                     <div class="info-value">
-                        ••••••••
-                        <button class="password-toggle" onclick="togglePassword()">
-                            <i class="fas fa-eye"></i> Show
-                        </button>
+                     <input type="file" name="std_photo" class="form-control">
                     </div>
                 </div>
             </div>
-            
-             
         </div>
         
+        
         <div class="action-buttons">
-            <button class="btn btn-danger">
+            <a href="/stu" class="btn btn-danger">
                 <i class="fas fa-"></i> Cancel
-            </button>
-            <button class="btn btn-primary">
+            </a>
+            <button class="btn btn-primary" type="submit">
                 <i class="fas fa-check"></i> Save Changes
             </button>
         </div>
     </div>
 </div>
+</form>
+
+
 
 <script>
     function togglePassword() {
