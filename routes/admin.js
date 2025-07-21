@@ -260,4 +260,12 @@ router.get("/delete_std/:id",async function(req,res){
   res.redirect("/admin/view_students")
 })
 
+//   book_library
+
+router.get('/book_library', async function(req, res) {
+  res.render('admin/book_library.ejs');
+});
+
+
+
 module.exports = router;
