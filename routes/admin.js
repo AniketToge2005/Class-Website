@@ -8,6 +8,112 @@ var exe = require('./../connection');
 router.get("/",function(req, res) {
   res.render("admin/home.ejs")
 });
+
+//1.slider
+router.get("/slider",async function(req,res){
+  var data = await exe(`SELECT * FROM slider`);
+  var obj = {"slist":data}
+  res.render("admin/slider.ejs",obj)
+
+})
+//2. slider post
+router.post("/save_slider",async function(req,res){
+  var photo = new Date().getTime()+req.files.photo.name;
+  req.files.photo.mv("public/uplaod/"+photo);
+
+  var d = req.body;
+  var sql = `INSERT INTO slider(title,subtitle,photo) VALUES (?,?,?)`
+  var data = await exe(sql,[d.title,d.subtitle,photo])
+  res.redirect("/admin/slider")
+})
+
+router.get("/edit_slider/:id",async function(req,res){
+  var id = req.params.id;
+  var data = await exe(`SELECT * FROM slider WHERE id = '${id}'`);
+  var obj = {"sdet":data}
+  res.render("admin/edit_slider.ejs",obj)
+})
+
+router.post("/update_slider",async function(req,res){
+  var d = req.body;
+   if(req.files){
+    var filename = new Date().getTime()+req.files.photo.name;
+      req.files.photo.mv("public/uplaod/"+filename);
+      var sql = `UPDATE slider SET photo = '${filename}' WHERE id = '${d.id}'`;
+      var data = await exe(sql)
+   }
+   var sql = `UPDATE slider SET
+                title = ?,
+                subtitle = ?
+              WHERE id = ?  
+   `
+   var data = await exe(sql,[d.title,d.subtitle,d.id])
+  res.redirect("/admin/slider")
+})
+
+// slider delete
+router.get("/delete_slider/:id",async function(req,res){
+  var id = req.params.id;
+  var data = await exe(`DELETE FROM slider WHERE id = '${id}'`);
+  res.redirect("/admin/slider")
+})
+
+// 2.specification png title subtitle
+router.get("/specification",async function(req,res){
+  var data = await exe(`SELECT * FROM specification`);
+  var obj = {"slist":data};
+  res.render("admin/specification.ejs",obj)
+})
+
+router.post("/save_specification",async function(req,res){
+  var filename = new Date().getTime()+req.files.photo.name;
+  req.files.photo.mv("public/uplaod/"+filename)
+
+  var d = req.body
+  var sql = `INSERT INTO specification(title,subtitle,photo) VALUES (?,?,?)`
+  var data = await exe(sql,[d.title,d.subtitle,filename])
+  res.redirect("/admin/specification")
+})
+
+// edit specification
+router.get("/edit_speci/:id",async function(req,res){
+  var id = req.params.id;
+  var sql = `SELECT * FROM specification WHERE id = '${id}'`;
+  var data = await exe(sql)
+  var obj = {"sdet":data}
+  res.render("admin/edit_specification.ejs",obj);
+})
+
+router.post("/update_specification",async function(req,res){
+  var d = req.body;
+   if(req.files)
+    {
+      var filename = new Date().getTime()+req.files.photo.name;
+      req.files.photo.mv("public/uplaod/"+filename);
+      var sql = `UPDATE specification SET  photo = '${filename}'  WHERE id = '${d.id}'`
+      var data = await exe(sql) 
+      // res.send(data);          
+    }
+
+  var sql = `UPDATE specification SET
+                title = ?,
+                subtitle = ?
+              WHERE 
+                 id = ?
+        `  
+      var data = await exe(sql,[d.title,d.subtitle,d.id])
+      res.redirect("/admin/specification")
+})
+
+// delete specification
+router.get("/delete_speci/:id",async function(req,res){
+  var id = req.params.id;
+  var sql = `DELETE FROM specification WHERE id ='${id}'`;
+  var data = await exe(sql)
+  res.redirect("/admin/specification");
+})
+
+
 //select contact info
 router.get("/about_class",async function(req,res){
    var contact_info=await exe(`SELECT * FROM contact_info`)

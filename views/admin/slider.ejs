@@ -1,0 +1,160 @@
+<%-include("navbar")%>
+    <style>
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #4895ef;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            outline: none;
+        }
+
+        .photo-preview {
+            margin-top: 1rem;
+            display: none;
+            text-align: center;
+        }
+
+        .photo-preview img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #4895ef;
+        }
+    </style>
+    <div class="container py-5">
+        <!-- Banner -->
+        <div class="row border rounded-3 p-3">
+            <div class="col-md-12">
+                <div class="banner d-flex align-items-center rounded-3 bg-primary">
+                    <h3 class="text-white px-3 ">Add Home Page Section</h3>
+                    <div class="stripes "></div>
+                </div>
+            </div>
+        </div>
+
+        <%if(slist.length<=3){%>
+      <section class="mt-5">
+  <div class="col-md-8 bg-white m-4 p-4 shadow-lg rounded-3 mx-auto">
+    <form action="/admin/save_slider" method="post" enctype="multipart/form-data">
+      <div class="row g-4">
+        <div class="col-12 col-md-6">
+          <div class="form-floating">
+            <input type="text" name="title" class="form-control" id="titleInput" placeholder="Enter Title" required>
+            <label for="titleInput">Title</label>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="form-floating">
+            <input type="text" name="subtitle" class="form-control" id="subtitleInput" placeholder="Enter Subtitle" required>
+            <label for="subtitleInput">Subtitle</label>
+          </div>
+        </div>
+        <div class="col-12 mt-4 mb-4">
+                                <label for="photo"><i class="fas fa-camera"></i> Photo</label>
+                                <input type="file" id="photo" name="photo" accept="image/*" />
+                                <div class="photo-preview" id="photoPreview">
+                                    <img id="previewImage" src="#" alt="Preview" />
+                                </div>
+                            </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary w-100 py-2">Add Slider</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <%}%>
+
+   <div class="container bg-white mt-4 p-3 rounded shadow-sm">
+  <div class="table-responsive">
+    <h3>1.Slider Data</h3>
+    <table class="table table-hover table-bordered   align-middle mb-0">
+      <thead class="table-primary rounded-3">
+        <tr>
+          <th>Sr.No</th>
+          <th>Title</th>
+          <th>Subtitle</th>
+          <th>Photo</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (var i = 0; i < slist.length; i++) { %>
+        <tr>
+          <th scope="row"><%= i + 1 %></th>
+          <td><%= slist[i].title %></td>
+          <td><%= slist[i].subtitle %></td>
+           
+          <td>
+            <img src="/uplaod/<%= slist[i].photo %>" class="rounded-circle img-thumbnail slider-img" width="50" height="50" style="object-fit:cover; cursor:pointer;" 
+                 data-bs-toggle="modal" data-bs-target="#sliderImageModal<%= i %>">
+            <!-- Modal -->
+            <div class="modal fade" id="sliderImageModal<%= i %>" tabindex="-1" aria-labelledby="sliderImageModalLabel<%= i %>" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body d-flex justify-content-center">
+                    <div class="card shadow" style="width: 22rem;">
+                      <img src="/uplaod/<%= slist[i].photo %>" class="card-img-top" alt="Slider Image" style="object-fit:cover; max-height:350px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+
+         <td class="text-center">
+            <a href="/admin/edit_slider/<%= slist[i].id %>" class="btn btn-sm btn-outline-primary">
+              <i class="fas fa-edit"></i>
+            </a>
+            
+            <a href="/admin/delete_slider/<%= slist[i].id %>" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are You Sure?');">
+              <i class="fas fa-trash-alt"></i>
+            </a>
+            </td>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+        </div>
+
+    </div>
+    </section>
+</div>
+
+
+           
+
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const photoInput = document.getElementById('photo');
+            const photoPreview = document.getElementById('photoPreview');
+            const previewImage = document.getElementById('previewImage');
+
+            // Photo preview functionality
+            if (photoInput) {
+                photoInput.addEventListener('change', () => {
+                    if (photoInput.files && photoInput.files[0]) {
+                        const reader = new FileReader();
+                        reader.onload = e => {
+                            previewImage.src = e.target.result;
+                            photoPreview.style.display = 'block';
+                        };
+                        reader.readAsDataURL(photoInput.files[0]);
+                    }
+                });
+            }
+        })
+    </script>
+    <%-include("footer")%>
