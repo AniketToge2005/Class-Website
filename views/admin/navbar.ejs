@@ -18,6 +18,16 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- DataTables CSS -->
+<link
+  href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css"
+  rel="stylesheet"
+/>
+<link
+  href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css"
+  rel="stylesheet"
+/>
+
 
   <style>
     :root {
@@ -327,7 +337,7 @@
   position: absolute;
   top: 0;
   left: 70%;
-  width: 50px;
+  width: 25px;
   height: 100%;
   background: repeating-linear-gradient(
     -45deg,
@@ -399,17 +409,44 @@
 
  
   
-      <a href="/admin/departments" class="menu-item">
+      <a href="/admin/book_library" class="menu-item">
         <i class="fas fa-tasks"></i>
-        <span class="menu-item-text">Departments</span>
+        <span class="menu-item-text">Books Library</span>
       </a>
       
-      
-       
-      <a href="/admin/notice" class="menu-item">
-        <i class="fa-regular fa-bell"></i>
-        <span class="menu-item-text">Notices</span>
-      </a>
+    
+      <div class="menu-item submenu-toggle">
+  <i class="fa-solid fa-graduation-cap"></i>
+  <span class="menu-item-text">Assignments</span>
+  <i class="fas fa-chevron-down ms-auto toggle-icon"></i>
+</div>
+<div class="submenu">
+  <a href="/admin/add_assignments" class="menu-item">
+    <i class="fas fa-user-plus"></i>
+    <span class="menu-item-text">Add Assignments</span>
+  </a>
+  <a href="/admin/all_assignments" class="menu-item">
+    <i class="fas fa-list"></i>
+    <span class="menu-item-text">All Assignments</span>
+  </a>
+</div>
+
+<div class="menu-item submenu-toggle">
+  <i class="fa-solid fa-graduation-cap"></i>
+  <span class="menu-item-text">Study Materials</span>
+  <i class="fas fa-chevron-down ms-auto toggle-icon"></i>
+</div>
+<div class="submenu">
+  <a href="/admin/study_material" class="menu-item">
+    <i class="fas fa-user-plus"></i>
+    <span class="menu-item-text">Add Materials</span>
+  </a>
+  <a href="/admin/all_study_material" class="menu-item">
+    <i class="fas fa-list"></i>
+    <span class="menu-item-text">All Materials</span>
+  </a>
+</div>
+
 
 
        <a href="/admin/fees" class="menu-item">
@@ -421,6 +458,11 @@
          <a href="/admin/about" class="menu-item">
         <i class="fa-solid fa-comments-dollar"></i>
         <span class="menu-item-text">About Our Education</span>
+      </a>
+
+       <a href="/admin/offer" class="menu-item">
+        <i class="fa-solid fa-comments-dollar"></i>
+        <span class="menu-item-text">New Offer</span>
       </a>
     
     </div>

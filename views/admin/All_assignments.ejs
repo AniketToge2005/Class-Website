@@ -27,10 +27,6 @@
   <button style="background-color: #4b3f91;" class="btn text-white" id="search-btn" type="button">Search</button>
 </div>
 
-<div class="col-md-6">
-  <div class="d-flex justify-content-end mb-2" id="export-buttons"></div>
-</div>
-
   <div class="row  rounded-3 p-4 mt-3">
     <div class="col-md-12">
       <div id="assignment-table-wrapper">
@@ -38,28 +34,31 @@
           <thead>
             <tr>
               <th>Sr.No</th>
-              <th>Name</th>
-              <th>Mobile</th>
               <th>Class</th>
-              <th>School/collage</th>
+              <th>Assignment Title</th>
+              <th>Last Date</th>
+              <th>Assignment PDF</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <% students.forEach(function(col, i){ %>
+            <% assignments.forEach(function(col, i){ %>
               <tr>
                 <td><%= i + 1 %></td>
-                <td><%= col.std_name%></td>
-                <td><%= col.std_phone%></td>
-                <td><%= col.std_class_id%><sup>th</sup></td>
-                <td><%= col.std_sc_name%></td>
+                <td><%= col.std_class_id %><sup>th</sup></td>
+                <td><%= col.title %></td>
+                <td><%= col.date %></td>
                 <td>
-                  <a href="/admin/view_student/<%-col.std_id%>">
-                    <button class="btn btn-primary"><i class="fa-solid fa-eye"></i></button>
-                  </a>
-                  <a href="/admin/delete_student/<%-col.std_id%>">
-                    <button class="btn btn-warning"><i class="fa-solid fa-triangle-exclamation"></i></button>
-                  </a>
+                  <button style="background-color: #4b3f91;" class="btn">
+                    <a class="text-white text-decoration-none" href="/uplaod/<%-col.pdf %>">
+                      View PDF
+                    </a>
+                  </button>
+                </td>
+                <td>
+                    <a href="/admin/delete_assignments/<%-col.assignments_id%>">
+                        <button  class="btn btn-warning"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                    </a>
                 </td>
               </tr>
             <% }) %>
@@ -74,22 +73,6 @@
     </div>
   </div>
 </div>
-
-<style>
-/* in your <style> */
-.btn-purple {
-  background-color: #4b3f91;
-  border-color: #4b3f91;
-  color: #fff;
-}
-.btn-purple:hover {
-  background-color: #7c75bc;
-  border-color: #776fae;
-  color: #fff;
-}
-
-
-</style>
 <style>
 /* Active page background and border */
 .pagination .page-item.active .page-link {
@@ -102,7 +85,8 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const tbody       = document.querySelector('#assignment-table tbody');
+  const table       = document.getElementById('assignment-table');
+  const tbody       = table.querySelector('tbody');
   const allRows     = Array.from(tbody.querySelectorAll('tr'));
   const controls    = document.getElementById('pagination-controls');
   const rowsPerPage = 10;
@@ -113,53 +97,59 @@ document.addEventListener('DOMContentLoaded', function () {
   const searchBtn   = document.getElementById('search-btn');
 
   function renderPage(page) {
-    const pageCount = Math.ceil(filteredRows.length / rowsPerPage);
-    currentPage = Math.max(1, Math.min(pageCount, page));
+    currentPage = Math.max(1, Math.min(Math.ceil(filteredRows.length / rowsPerPage), page));
     const start = (currentPage - 1) * rowsPerPage;
     const end   = start + rowsPerPage;
 
     allRows.forEach(row => row.style.display = 'none');
     filteredRows.slice(start, end).forEach(row => row.style.display = '');
 
-    renderControls(pageCount);
+    renderControls();
   }
 
-  function renderControls(pageCount) {
+  function renderControls() {
     controls.innerHTML = '';
+    const pageCount = Math.ceil(filteredRows.length / rowsPerPage);
 
-    const makeBtn = (text, disabled, cb) => {
-      const li = document.createElement('li');
-      li.className = 'page-item ' + (disabled ? 'disabled' : '');
-      li.innerHTML = `<a class="page-link" href="#">${text}</a>`;
-      if (!disabled) li.addEventListener('click', e => { e.preventDefault(); cb(); });
-      return li;
-    };
-
-    controls.appendChild(makeBtn('Prev', currentPage === 1, () => renderPage(currentPage - 1)));
+    const prevLi = document.createElement('li');
+    prevLi.className = 'page-item ' + (currentPage === 1 ? 'disabled' : '');
+    prevLi.innerHTML = `<a class="page-link" href="#">Prev</a>`;
+    prevLi.addEventListener('click', e => {
+      e.preventDefault();
+      if (currentPage > 1) renderPage(currentPage - 1);
+    });
+    controls.appendChild(prevLi);
 
     for (let p = 1; p <= pageCount; p++) {
       const li = document.createElement('li');
       li.className = 'page-item ' + (p === currentPage ? 'active' : '');
       li.innerHTML = `<a class="page-link" href="#">${p}</a>`;
-      li.addEventListener('click', e => { e.preventDefault(); renderPage(p); });
+      li.addEventListener('click', e => {
+        e.preventDefault();
+        renderPage(p);
+      });
       controls.appendChild(li);
     }
 
-    controls.appendChild(makeBtn('Next', currentPage === pageCount, () => renderPage(currentPage + 1)));
+    const nextLi = document.createElement('li');
+    nextLi.className = 'page-item ' + (currentPage === pageCount ? 'disabled' : '');
+    nextLi.innerHTML = `<a class="page-link" href="#">Next</a>`;
+    nextLi.addEventListener('click', e => {
+      e.preventDefault();
+      if (currentPage < pageCount) renderPage(currentPage + 1);
+    });
+    controls.appendChild(nextLi);
   }
 
   searchBtn.addEventListener('click', function () {
     const selectedClass = classFilter.value;
 
-    if (!selectedClass) {
+    if (selectedClass === "") {
       filteredRows = [...allRows];
     } else {
       filteredRows = allRows.filter(row => {
-        // 0: Sr.No, 1: Name, 2: Mobile, 3: Class, …
-        const classCell = row.querySelectorAll('td')[3];
-        // strip “th” or any non‑digits
-        const clsText = classCell.textContent.trim().replace(/\D+$/, '');
-        return clsText === selectedClass;
+        const classCell = row.querySelectorAll('td')[1];
+        return classCell.textContent.trim().startsWith(selectedClass);
       });
     }
 
@@ -167,41 +157,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   renderPage(1);
-});
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const dt = $('#assignment-table').DataTable({
-    dom: 'B',
-    paging: false,
-    searching: false,
-    info: false,
-    buttons: [
-      {
-        extend: 'copy',
-        text: 'Copy',
-        className: 'dt-button btn btn-purple'
-      },
-      {
-        extend: 'csv',
-        text: 'CSV',
-        className: 'dt-button btn btn-purple'
-      },
-      {
-        extend:'excel',
-        text :'pdf',
-         className: 'dt-button btn btn-purple'
-      },
-      {
-        extend: 'print',
-        text: 'Print',
-        className: 'dt-button btn btn-purple'
-      }
-    ]
-  });
-
-  dt.buttons().container()
-    .appendTo('#export-buttons');
 });
 </script>
 

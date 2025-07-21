@@ -1,0 +1,58 @@
+<%-include("navbar.ejs")%>
+<form action="/admin/save_assignments" method="post" enctype="multipart/form-data">
+<div class="container p-5">
+    <div class="row border rounded-3 p-3">
+        <div class="col-md-12">
+            <div class="banner d-flex align-items-center rounded-3">
+            <h3 class="text-white px-3">Add Assignments</h3>
+            <div class="stripes"></div>
+           </div>
+        </div>
+    </div>
+    <div class="row border rounded-3 p-4 mt-5">
+        <input type="hidden" value="active" name="status" id="">
+        <div class="col-md-4 mt-4 ">
+            Select Class <b class="text-danger">*</b>
+            <select class="form-control mt-2" name="class" id="" aria-placeholder="data" required>
+                <option>Select Class </option>
+                <option value="5">5 <sub>th</sub></option>
+                <option value="6">6<sub>th</sub></option>
+                <option value="7">7<sub>th</sub></option>
+                <option value="8">8<sub>th</sub></option>
+                <option value="9">9<sub>th</sub></option>
+                <option value="10">10<sub>th</sub></option>
+                <option value="11">11<sub>th</sub></option>
+                <option value="12">12<sub>th</sub></option>
+            </select>
+        </div>
+        <div class="col-md-4 mt-4">
+            Enter Assignments Title <b class="text-danger">*</b>
+            <input class="form-control mt-2" type="text" name="title" id="" placeholder="Enter Assignments Title " required>
+        </div>
+        <div class="col-md-4 mt-4">
+            Enter Last Date <b class="text-danger">*</b>
+            <input class="form-control" type="date" name="date" id="" required>
+        </div>
+        <div class="col-md-4 mt-4">
+            Enter Subject Name <b class="text-danger">*</b>
+            <input list="Subject" class="form-control mt-2" type="text" name="subject" id="" placeholder="Enter Subject Name" required>
+        </div>
+
+        <div class="col-md-4 mt-4">
+            Enter Assignments PDF  <b class="text-danger">*</b>
+            <input class="form-control mt-2" type="file" name="pdf" id="" placeholder="Enter FDF" required>
+        </div>
+        <datalist id="Subject">
+            <option>Marathi</option>
+            <option>Hindi</option>
+        </datalist>
+
+        <div class="col-md-12 mt-5 text-center">
+            <button style="background-color: #4b3f91;" class="btn text-white">Add Assignments</button>
+        </div>
+
+    </div>
+</div>
+</form>    
+
+<%-include("footer.ejs")%>
