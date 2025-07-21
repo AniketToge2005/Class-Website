@@ -1,0 +1,33 @@
+<%-include("navbar")%>
+ <div class="container py-5">
+        <div class="bg-white rounded-3 shadow-sm p-4 mx-auto" style="max-width: 800px;">
+            <h3 class="mb-4">Specification</h3>
+            <form action="/admin/update_specification" method="post" enctype="multipart/form-data">
+                <div class="row g-3">
+                    <div class="col-md-6">
+
+                        <input type="hidden" name="id" value="<%=sdet[0].id%>">
+
+                        <label class="form-label">Main Title</label>
+                        <input type="text" name="title" class="form-control" value="<%=sdet[0].title%>">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label"><i class="fas fa-camera me-1"></i>Photo</label>
+                        
+                        <input type="file" id="photo" name="photo" value="<%=sdet[0].photo%>" class="form-control form-control-sm" accept="image/*">
+                            <img id="previewImage" src="/uplaod/<%=sdet[0].photo%>" alt="Preview" class="img-thumbnail"style="width:100px;height:100px;">
+                        </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <label class="form-label">Sub Title</label>
+                        <textarea name="subtitle" class="form-control editor" rows="3"
+                            placeholder="Enter subtitle"><%=sdet[0].subtitle%></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary w-100">Edit Specification</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+<%-include("footer")%>

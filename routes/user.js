@@ -6,9 +6,11 @@ var exe = require('./../connection');
 
 router.get("/",async function (req, res) {
   var contact_info=await exe(`SELECT * FROM contact_info`)
-  var obj={"contact_info":contact_info[0]}
+  var slider = await exe(`SELECT * FROM slider`)
+  var specification = await exe(`SELECT * FROM specification`)
+  var obj={"contact_info":contact_info[0],"slider":slider,"specification":specification}
   res.render("user/home.ejs",obj);
-
+  // console.log(slider[0].photo)
 });
 router.get("/services",async function (req, res) {
   var contact_info=await exe(`SELECT * FROM contact_info`)
