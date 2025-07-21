@@ -5,6 +5,7 @@ var exe = require('./../connection');
 
 
 
+
 router.get("/",function(req, res) {
   res.render("admin/home.ejs")
 });
@@ -417,8 +418,8 @@ router.get('/book_library', async function(req, res) {
 
 // new offer page
 
-router.get("/offer",function(req,res){
-  res.render("admin/offer.ejs")
+router.get("/offers",function(req,res){
+  res.render('admin/offers.ejs');
 })
 
 module.exports = router;
