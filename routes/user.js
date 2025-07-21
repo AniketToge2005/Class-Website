@@ -121,6 +121,7 @@ router.get("/new_offer",async function (req, res) {
   res.render("user/new_offer.ejs",obj);
 })
 
+
 // 
 
 
