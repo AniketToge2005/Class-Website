@@ -1,0 +1,36 @@
+<%-include("navbar")%>
+    <section class="mt-5">
+        <div class="col-md-8 bg-white m-4 p-4 shadow-lg rounded-3 mx-auto">
+            <form action="/admin/update_slider" method="post" enctype="multipart/form-data">
+                <div class="row g-4">
+                    <div class="col-12 col-md-6">
+                        <div class="form-floating">
+                            <input type="hidden" name="id" value="<%=sdet[0].id%>">
+                            <input type="text" name="title" value="<%=sdet[0].title%>" class="form-control"
+                                id="titleInput" placeholder="Enter Title" required>
+                            <label for="titleInput">Title</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-floating">
+                            <input type="text" name="subtitle" value="<%=sdet[0].subtitle%>" class="form-control"
+                                id="subtitleInput" placeholder="Enter Subtitle" required>
+                            <label for="subtitleInput">Subtitle</label>
+                        </div>
+                    </div>
+                    <div class="col-6 mt-4 mb-4">
+                        <label class="form-label"><i class="fas fa-camera me-1"></i>Photo</label>
+
+                        <input type="file" id="photo" name="photo" value="<%=sdet[0].photo%>"
+                            class="form-control form-control-sm" accept="image/*">
+                        <img id="previewImage" src="/uplaod/<%=sdet[0].photo%>" alt="Preview" class="img-thumbnail"
+                            style="width:100px;height:100px;">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary w-100 py-2">Add Slider</button>
+                </div>
+        </div>
+        </form>
+        </div>
+        <%-include("footer")%>

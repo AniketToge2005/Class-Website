@@ -1,6 +1,5 @@
 <%- include("navbar") %>
 
-
 <!-- Google Fonts + Font Awesome -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -20,7 +19,7 @@
   :root {
     --primary: #C8102E;
     --dark: #2B2B2B;
-    --accent: #4cc9f0;
+    /* --accent: #4cc9f0; */
     --radius: 12px;
     --light-bg: #f4f4f4;
   }
@@ -198,7 +197,7 @@
     color: #000;
   }
 
-  .btn {
+  .btn1 {
     width: 100%;
     max-width: 420px;
     padding: 14px;
@@ -212,7 +211,7 @@
     transition: background 0.3s ease;
   }
 
-  .btn:hover {
+  .btn1:hover {
     background: #3f37c9;
   }
 
@@ -299,22 +298,29 @@
   <div class="login-box">
     <i class="fas fa-user-graduate student-icon"></i>
     <h2>Student Login</h2>
-    <form>
+    <form action="/save_login" method="post">
       <div class="form-group">
         <label for="student-email">Email or Username</label>
-        <input type="text" id="student-email" required placeholder="Enter your email or username">
+        <input type="text" id="student-email" name="email" required placeholder="Enter your email or username">
       </div>
       <div class="form-group">
         <label for="student-password">Password</label>
-        <input type="password" id="student-password" required placeholder="Enter your password">
+        <input type="password" id="student-password" name="password" required placeholder="Enter your password">
       </div>
-      <button type="submit" class="btn">Student Login</button>
+      <button type="submit" class="btn1">Student Login</button>
     </form>
     <div class="forgot-password">
       <a href="#">Forgot Password?</a>
     </div>
+    <!-- ✅ Updated section below -->
     <div class="register-link">
-      Don't have an account? <a href="/registerStudent">Register Here</a>
+      Connect with us:  
+      <a href="https://wa.me/917666168187" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a> |
+      <a href="tel:7666168187">
+        <i class="fas fa-phone-alt"></i> Call
+      </a>
     </div>
   </div>
 </div>
