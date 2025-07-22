@@ -42,7 +42,7 @@
     <!-- Class Selection -->
     <div class="col-md-6 mb-3">
       <label for="book_class" class="form-label">Select Class</label>
-      <select class="form-select" id="book_class" name="book_class" required>
+      <select class="form-select" id="book_class" name="class_id" required>
         <option disabled selected>-- Select Class --</option>
         <% for(let i = 5; i <= 12; i++) { %>
           <option value="Class <%= i %>">Class <%= i %></option>
@@ -51,7 +51,7 @@
     </div>
 
     <div class="col-12 text-center mt-3">
-      <button type="submit" class="btn btn-success">✅ Submit</button>
+      <button type="submit" class="btn btn-success">Submit</button>
     </div>
   </div>
   </form>

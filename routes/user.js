@@ -6,6 +6,7 @@ var exe = require('./../connection');
 
 router.get("/",async function (req, res) {
   var contact_info=await exe(`SELECT * FROM contact_info`)
+  // 
   var obj={"contact_info":contact_info[0]}
   res.render("user/home.ejs",obj);
 
@@ -119,6 +120,8 @@ router.get("/new_offer",async function (req, res) {
   var obj={"contact_info":contact_info[0]}
   res.render("user/new_offer.ejs",obj);
 })
+
+// 
 
 
 
