@@ -298,14 +298,14 @@
   <div class="login-box">
     <i class="fas fa-user-graduate student-icon"></i>
     <h2>Student Login</h2>
-    <form>
+    <form action="/save_login" method="post">
       <div class="form-group">
         <label for="student-email">Email or Username</label>
-        <input type="text" id="student-email" required placeholder="Enter your email or username">
+        <input type="text" id="student-email" name="email" required placeholder="Enter your email or username">
       </div>
       <div class="form-group">
         <label for="student-password">Password</label>
-        <input type="password" id="student-password" required placeholder="Enter your password">
+        <input type="password" id="student-password" name="password" required placeholder="Enter your password">
       </div>
       <button type="submit" class="btn1">Student Login</button>
     </form>
