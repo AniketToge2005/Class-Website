@@ -1,0 +1,85 @@
+<%-include("navbar")%>
+<div class="container p-5">
+  <div class="row border rounded-3 p-3">
+    <div class="col-md-12">
+      <div class="banner d-flex align-items-center rounded-3">
+        <h3 class="text-white px-3">Edit Offer</h3>
+        <div class="stripes"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Offer Form -->
+  <form action="/admin/update_offers/<%= offer.id %>" method="POST" enctype="multipart/form-data" class="mt-4">
+    <div class="row border rounded-3 p-4">
+      <!-- Subject -->
+      <div class="col-md-4 mt-3">
+        <label for="subject" class="form-label">Subject</label>
+        <input type="text" class="form-control" id="subject" name="subject" value="<%= offer.subject %>" required>
+      </div>
+      <!-- Course Title -->
+      <div class="col-md-4 mt-3">
+        <label for="course_title" class="form-label">Course Title</label>
+        <input type="text" class="form-control" id="course_title" name="course_title" value="<%= offer.course_title %>" required>
+      </div>
+      <!-- Image Upload -->
+      <div class="col-md-4 mt-3">
+        <label for="image" class="form-label">Upload Image</label>
+        <input type="file" class="form-control" id="image" name="image" accept="image/*">
+        <% if(offer.image_url){ %>
+          <img src="/uplaod/<%= offer.image_url %>" alt="Offer Image" width="80" class="mt-2"/>
+        <% } %>
+      </div>
+      <!-- Original Price -->
+      <div class="col-md-4 mt-3">
+        <label for="original_price" class="form-label">Original Price</label>
+        <input type="number" class="form-control" id="original_price" name="original_price" value="<%= offer.original_price %>" required>
+      </div>
+      <!-- Discounted Price -->
+      <div class="col-md-4 mt-3">
+        <label for="discounted_price" class="form-label">Discounted Price</label>
+        <input type="number" class="form-control" id="discounted_price" name="discounted_price" value="<%= offer.discounted_price %>" required>
+      </div>
+      <!-- Discount Percentage -->
+      <div class="col-md-4 mt-3">
+        <label for="discount_percentage" class="form-label">Discount Percentage</label>
+        <input type="number" class="form-control" id="discount_percentage" name="discount_percentage" value="<%= offer.discount_percentage %>" required>
+      </div>
+      <!-- Status -->
+      <div class="col-md-4 mt-3">
+        <label for="status" class="form-label">Offer Status</label>
+        <select class="form-select" id="status" name="status" required>
+          <option value="">Select Status</option>
+          <option value="Active" <%= offer.status === 'Active' ? 'selected' : '' %>>Active</option>
+          <option value="Expired" <%= offer.status === 'Expired' ? 'selected' : '' %>>Expired</option>
+        </select>
+      </div>
+      <!-- Offer End Message -->
+      <div class="col-md-4 mt-3">
+        <label for="offer_end_message" class="form-label">Offer End Message</label>
+        <input type="text" class="form-control" id="offer_end_message" name="offer_end_message" value="<%= offer.offer_end_message %>">
+      </div>
+      <!-- Select Class -->
+      <div class="col-md-4 mt-3">
+        <label for="class" class="form-label">Select Class</label>
+        <select class="form-select" id="class" name="class_id" required>
+          <option value="">-- Select Class --</option>
+          <% [5,6,7,8,9,10,11,12].forEach(function(cls){ %>
+            <option value="<%= cls %>" <%= offer.class_id == cls ? 'selected' : '' %>><%= cls %>th</option>
+          <% }) %>
+        </select>
+      </div>
+      <!-- Description -->
+      <div class="col-md-12 mt-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control editor" id="description" name="description" rows="4"><%= offer.description %></textarea>
+      </div>
+      <!-- Submit Button -->
+      <div class="col-md-12 text-center mt-4">
+        <button type="submit" class="btn btn-success px-4">Update Offer</button>
+        <a href="/admin/offers" class="btn btn-secondary px-4 ms-2">Cancel</a>
+      </div>
+    </div>
+  </form>
+</div>
+<%-include("footer")%>

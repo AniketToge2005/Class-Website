@@ -415,11 +415,64 @@ router.get('/book_library', async function(req, res) {
 
 
 
+//NEW OFFER PAGE 
+
 
 // new offer page
 
-router.get("/offers",function(req,res){
-  res.render('admin/offers.ejs');
+router.get("/offers",async function(req,res){
+  var data = await exe(`SELECT * FROM offers`);
+  res.render('admin/offers.ejs',{data});
 })
+
+// Edit Offer Page
+router.get("/edit_offers/:id", async function(req, res) {
+  var id = req.params.id;
+  var data = await exe("SELECT * FROM offers WHERE id = ?", [id]);
+  if(data.length > 0) {
+    res.render("admin/edit_offers.ejs", { offer: data[0] });
+  } else {
+    res.redirect("/admin/offers");
+  }
+});
+
+// Update Offer
+router.post("/update_offers/:id", async function(req, res) {
+  var id = req.params.id;
+  var d = req.body;
+  var image = null;
+  if(req.files && req.files.image){
+    image = new Date().getTime()+req.files.image.name;
+    req.files.image.mv("public/uplaod/"+image);
+  }
+  var sql, params;
+  if(image){
+    sql = `UPDATE offers SET subject=?, course_title=?, class_id=?, image_url=?, original_price=?, discounted_price=?, discount_percentage=?, status=?, offer_end_message=?, description=? WHERE id=?`;
+    params = [d.subject, d.course_title, d.class_id, image, d.original_price, d.discounted_price, d.discount_percentage, d.status, d.offer_end_message, d.description, id];
+  } else {
+    sql = `UPDATE offers SET subject=?, course_title=?, class_id=?, original_price=?, discounted_price=?, discount_percentage=?, status=?, offer_end_message=?, description=? WHERE id=?`;
+    params = [d.subject, d.course_title, d.class_id, d.original_price, d.discounted_price, d.discount_percentage, d.status, d.offer_end_message, d.description, id];
+  }
+  await exe(sql, params);
+  res.redirect("/admin/offers");
+});
+
+// Delete Offer
+router.get("/delete_offers/:id", async function(req, res) {
+  var id = req.params.id;
+  await exe("DELETE FROM offers WHERE id = ?", [id]);
+  res.redirect("/admin/offers");
+});
+
+
+  router.post("/save_offers", async function(req,res){
+    var d=req.body;
+    var image= new Date().getTime()+req.files.image.name;
+    req.files.image.mv("public/uplaod/"+image);
+    var sql="INSERT INTO offers (subject,course_title,class_id,image_url,original_price,discounted_price,discount_percentage,status,offer_end_message,description) VALUES (?,?,?,?,?,?,?,?,?,?)";
+    var data=await exe(sql,[d.subject,d.course_title,d.class_id,image,d.original_price,d.discounted_price,d.discount_percentage,d.status,d.offer_end_message,d.description]);
+    res.redirect("/admin/offers");
+  })
+  
 
 module.exports = router;

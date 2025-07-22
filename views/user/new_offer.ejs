@@ -23,6 +23,30 @@
       --transition: all 0.3s ease;
     }
 
+    .filter-navbar .nav-link {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  color: #333;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.filter-navbar .nav-link:hover {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.filter-navbar .nav-link.active,
+.filter-navbar .nav-link:focus {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+    
+
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #f8f9fa;
@@ -619,53 +643,41 @@
   </section>
 
   <!-- Filter Navbar -->
-  <div class="container" style="height: 50px;">
-    <nav class="navbar navbar-expand-lg filter-navbar">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#filterNavbar">
-          <i class="fas fa-filter"></i> Filters
-        </button>
-        <div class="collapse navbar-collapse" id="filterNavbar">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="#" data-filter="all">All Courses</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="5">Class 5</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="6">Class 6</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="7">Class 7</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="8">Class 8</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="9">Class 9</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="10">Class 10</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="11">Class 11</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="12">Class 12</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="competitive">Competitive</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="dropper">Dropper Batch</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+  <div class="container py-3">
+    <nav class="filter-navbar">
+      <ul class="nav justify-content-center flex-wrap gap-2">
+        <li class="nav-item">
+          <a class="active filter-btn" href="?class_id=all" data-filter="all">All Courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=5">Class 5</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=6" data-filter="6">Class 6</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=7" data-filter="7">Class 7</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=8" data-filter="8">Class 8</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=9" data-filter="9">Class 9</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=10" data-filter="10">Class 10</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=11" data-filter="11">Class 11</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=12" data-filter="12">Class 12</a>
+        </li>
+      </ul>
     </nav>
   </div>
-
+  
+  
   <!-- Main Content -->
   <div class="container py-4">
     <!-- No Results Message (Hidden by default) -->
@@ -686,310 +698,53 @@
     <!-- Courses Grid -->
     <div id="courses-container">
       <!-- Class 5 Offers -->
-      <div class="col-12 mb-5" id="class5-section">
-        <h3 class="section-header"><i class="fas fa-school me-2"></i> Class 5</h3>
-        <div class="row" id="class5-offers">
-          
-          <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate_animated animate_fadeIn" data-class="5" data-tag="math">
-            <div class="offer-card h-100">
-              <span class="offer-highlight">New</span>
-              <img src="https://media.gettyimages.com/id/459387513/photo/group-of-small-indian-children-performing-in-a-rural-school.jpg?s=612x612&w=0&k=20&c=KvLbiGik17GliHk4QXwguvQqzGPjKO8_3REAEAOzJTM=" alt="Math Mastery" class="offer-card-img">
-              <div class="offer-card-body">
-                <span class="badge-custom">Math</span>
-                <h5 class="offer-card-title">Math Mastery (Class 5)</h5>
-                <p class="offer-card-text">Comprehensive math course covering all Class 5 topics with interactive exercises</p>
-                
-                <div class="price-container">
-                  <span class="current-price">₹2,999</span>
-                  <span class="original-price">₹4,999</span>
-                  <span class="discount-badge">40% OFF</span>
-                </div>
-                
-                <div class="card-actions">
-                  <a href="/class5"><button class="btn btn-primary" data-price="2999">Explore <i class="fas fa-chevron-right"></i></button></a>
-                  <button class="btn btn-buy buy-btn" data-offer="Math Mastery" data-price="2999">Buy Now <i class="fas fa-shopping-cart"></i></button>
-                </div>
-                
-                <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
-              </div>
-            </div>
-          </div>
 
-        </div>
-      </div>
-      
-      <!-- Class 6 Offers -->
-      <div class="col-12 mb-5" id="class6-section">
-        <h3 class="section-header"><i class="fas fa-school me-2"></i> Class 6</h3>
-        <div class="row" id="class6-offers"></div>
-          
-         <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate_animated animate_fadeIn" data-class="6" data-tag="science"></a>
-            <div class="offer-card h-100">
-              <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Science Fundamentals" class="offer-card-img">
-              <div class="offer-card-body">
-                <span class="badge-custom">Science</span>
-                <h5 class="offer-card-title">Science Fundamentals (Class 6)</h5>
-                <p class="offer-card-text">Build strong science foundation with practical examples</p>
-                
-                <div class="price-container">
-                  <span class="current-price">₹3,299</span>
-                  <span class="original-price">₹4,999</span>
-                  <span class="discount-badge">34% OFF</span>
-                </div>
-                
-                <div class="card-actions">
-                   <a href="/class6"><button class="btn btn-primary" entals" data-price="3299">Explore <i class="fas fa-chevron-right"></i></button></a>
-                  <button class="btn btn-buy buy-btn" data-offer="Science Fundamentals" data-price="3299">Buy Now <i class="fas fa-shopping-cart"></i></button>
-                </div>
-                
-                <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
+      <% for (var i = 0; i < aniket.length; i++) { %>
+  <% if (selectedClassId == 'all' || aniket[i].class_id == selectedClassId) { %>
+    <div class="col-12 mb-5" id="class<%= aniket[i].class_id %>-section">
+      <h3 class="section-header"><i class="fas fa-school me-2"></i> Class <%= aniket[i].class_id %></h3>
+      <div class="row" id="class<%= aniket[i].class_id %>-offers">
+
+        <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate_animated animate_fadeIn" data-class="<%= aniket[i].class_id %>" data-tag="<%= aniket[i].subject.toLowerCase() %>">
+          <div class="offer-card h-100">
+            <span class="offer-highlight">New</span>
+            <img src="/uplaod/<%= aniket[i].image_url %>" alt="<%= aniket[i].subject %>" class="offer-card-img">
+            
+            <div class="offer-card-body">
+              <span class="badge-custom"><%= aniket[i].subject %></span>
+              <h5 class="offer-card-title"><%= aniket[i].course_title %></h5>
+              <p class="offer-card-text"><%- aniket[i].description %></p>
+
+              <div class="price-container">
+                <span class="current-price"><%= aniket[i].original_price %></span>
+                <span class="original-price"><%= aniket[i].discounted_price %></span>
+                <span class="discount-badge"><%= aniket[i].discount_percentage %>% OFF</span>
+              </div>
+
+              <div class="card-actions">
+                <a href="/class<%= aniket[i].class_id %>">
+                  <button class="btn btn-primary">Explore <i class="fas fa-chevron-right"></i></button>
+                </a>
+                <button class="btn btn-buy buy-btn" data-offer="<%= aniket[i].course_title %>" data-price="<%= aniket[i].price %>">
+                  Buy Now <i class="fas fa-shopping-cart"></i>
+                </button>
+              </div>
+
+              <div class="countdown-timer mt-3">
+                Offer ends in: 
+                <span class="countdown" data-end="<%= aniket[i].end_date %>"><%= aniket[i].end_date %></span>
               </div>
             </div>
           </div>
         </div>
+
       </div>
+    </div>
+  <% } %>
+<% } %>
+  
       
-      <!-- Class 7 Offers -->
-      <div class="col-12 mb-5" id="class7-section">
-        <h3 class="section-header"><i class="fas fa-school me-2"></i> Class 7</h3>
-        <div class="row" id="class7-offers">
-          
-          <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate_animated animate_fadeIn" data-class="7" data-tag="science">
-            <div class="offer-card h-100">
-              <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Physics Introduction" class="offer-card-img">
-              <div class="offer-card-body">
-                <span class="badge-custom">Science</span>
-                <h5 class="offer-card-title">Physics Introduction (Class 7)</h5>
-                <p class="offer-card-text">Basic physics concepts explained with real-world examples</p>
-                
-                <div class="price-container">
-                  <span class="current-price">₹3,499</span>
-                  <span class="original-price">₹5,299</span>
-                  <span class="discount-badge">34% OFF</span>
-                </div>
-                
-                <div class="card-actions">
-                  <a href="/class7"><button class="btn btn-primary" uction" data-price="3499">Explore <i class="fas fa-chevron-right"></i></button></a>
-                  <button class="btn btn-buy buy-btn" data-offer="Physics Introduction" data-price="3499">Buy Now <i class="fas fa-shopping-cart"></i></button>
-                </div>
-                
-                <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Class 8 Offers -->
-      <div class="col-12 mb-5" id="class8-section">
-        <h3 class="section-header"><i class="fas fa-school me-2"></i> Class 8</h3>
-        <div class="row" id="class8-offers">
-          <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate_animated animate_fadeIn" data-class="8" data-tag="math">
-            <div class="offer-card h-100">
-              <span class="offer-highlight">Popular</span>
-              <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Geometry Mastery" class="offer-card-img">
-              <div class="offer-card-body">
-                <span class="badge-custom">Math</span>
-                <h5 class="offer-card-title">Geometry Mastery (Class 8)</h5>
-                <p class="offer-card-text">Master geometric concepts with visual learning techniques</p>
-                
-                <div class="price-container">
-                  <span class="current-price">₹3,999</span>
-                  <span class="original-price">₹6,499</span>
-                  <span class="discount-badge">38% OFF</span>
-                </div>
-                
-                <div class="card-actions">
-                  <a href="/class8"><button class="btn btn-primary" ry" data-price="3999">Explore <i class="fas fa-chevron-right"></i></button></a>
-                  <button class="btn btn-buy buy-btn" data-offer="Geometry Mastery" data-price="3999">Buy Now <i class="fas fa-shopping-cart"></i></button>
-                </div>
-                
-                <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
-              </div>
-            </div>
-          </div>
-          
-               
-      <!-- Class 9 Offers -->
-      <div class="col-12 mb-5" id="class9-section">
-        <h3 class="section-header"><i class="fas fa-graduation-cap me-2"></i> Class 9</h3>
-        <div class="row" id="class9-offers">
-          <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate_animated animate_fadeIn" data-class="9" data-tag="pcm">
-            <div class="offer-card h-100">
-              <span class="offer-highlight">Bestseller</span>
-              <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="CBSE Mathematics" class="offer-card-img">
-              <div class="offer-card-body">
-                <span class="badge-custom">PCM</span>
-                <h5 class="offer-card-title">CBSE Mathematics (Class 9)</h5>
-                <p class="offer-card-text">Complete CBSE syllabus coverage with NCERT solutions</p>
-                
-                <div class="price-container">
-                  <span class="current-price">₹4,999</span>
-                  <span class="original-price">₹7,999</span>
-                  <span class="discount-badge">38% OFF</span>
-                </div>
-                
-                <div class="card-actions">
-                  <a href="/class9"><button class="btn btn-primary" cs" data-price="4999">Explore <i class="fas fa-chevron-right"></i></button></a>
-                  <button class="btn btn-buy buy-btn" data-offer="CBSE Mathematics" data-price="4999">Buy Now <i class="fas fa-shopping-cart"></i></button>
-                </div>
-                
-                <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
-              </div>
-            </div>
-          </div>
-          
-         
-      
-      <!-- Class 10 Offers -->
-      <div class="col-12 mb-5" id="class10-section">
-        <h3 class="section-header"><i class="fas fa-graduation-cap me-2"></i> Class 10</h3>
-        <div class="row" id="class10-offers">
-          <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate_animated animate_fadeIn" data-class="10" data-tag="math">
-            <div class="offer-card h-100">
-              <span class="offer-highlight">Limited</span>
-              <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Board Exam Mathematics" class="offer-card-img">
-              <div class="offer-card-body">
-                <span class="badge-custom">Math</span>
-                <h5 class="offer-card-title">Board Exam Mathematics (Class 10)</h5>
-                <p class="offer-card-text">Complete board exam preparation with sample papers</p>
-                
-                <div class="price-container">
-                  <span class="current-price">₹5,999</span>
-                  <span class="original-price">₹9,999</span>
-                  <span class="discount-badge">40% OFF</span>
-                </div>
-                
-                <div class="card-actions">
-                  <a href="/class10"><button class="btn btn-primary" hematics" data-price="5999">Explore <i class="fas fa-chevron-right"></i></button></a>
-                  <button class="btn btn-buy buy-btn" data-offer="Board Exam Mathematics" data-price="5999">Buy Now <i class="fas fa-shopping-cart"></i></button>
-                </div>
-                
-                <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
-              </div>
-            </div>
-          </div>
-          
-          
-      
-      <!-- Class 11 Offers -->
-      <div class="col-12 mb-5" id="class11-section">
-        <h3 class="section-header"><i class="fas fa-flask me-2"></i> Class 11</h3>
-        <div class="row" id="class11-offers">
-          <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate_animated animate_fadeIn" data-class="11" data-tag="pcm">
-            <div class="offer-card h-100">
-              <span class="offer-highlight">Popular</span>
-              <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="PCM Complete" class="offer-card-img">
-              <div class="offer-card-body">
-                <span class="badge-custom">PCM</span>
-                <h5 class="offer-card-title">PCM Complete (Class 11)</h5>
-                <p class="offer-card-text">Physics, Chemistry, Mathematics complete package</p>
-                
-                <div class="price-container">
-                  <span class="current-price">₹8,999</span>
-                  <span class="original-price">₹14,999</span>
-                  <span class="discount-badge">40% OFF</span>
-                </div>
-                
-                <div class="card-actions">
-                  <a href="/class11"><button class="btn btn-primary" data-price="8999">Explore <i class="fas fa-chevron-right"></i></button></a>
-                  <button class="btn btn-buy buy-btn" data-offer="PCM Complete" data-price="8999">Buy Now <i class="fas fa-shopping-cart"></i></button>
-                </div>
-                
-                <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
-              </div>
-            </div>
-          </div>
-          
-          
-      <!-- Class 12 Offers -->
-      <div class="col-12 mb-5" id="class12-section">
-        <h3 class="section-header"><i class="fas fa-flask me-2"></i> Class 12</h3>
-        <div class="row" id="class12-offers">
-          <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate_animated animate_fadeIn" data-class="12" data-tag="pcm">
-            <div class="offer-card h-100">
-              <span class="offer-highlight">Bestseller</span>
-              <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="PCM Advanced" class="offer-card-img">
-              <div class="offer-card-body">
-                <span class="badge-custom">PCM</span>
-                <h5 class="offer-card-title">PCM Advanced (Class 12)</h5>
-                <p class="offer-card-text">Advanced concepts for board and competitive exams</p>
-                
-                <div class="price-container">
-                  <span class="current-price">₹9,999</span>
-                  <span class="original-price">₹16,999</span>
-                  <span class="discount-badge">41% OFF</span>
-                </div>
-                
-                <div class="card-actions">
-                  <a href="/class12"><button class="btn btn-primary" data-price="9999">Explore <i class="fas fa-chevron-right"></i></button></a>
-                  <button class="btn btn-buy buy-btn" data-offer="PCM Advanced" data-price="9999">Buy Now <i class="fas fa-shopping-cart"></i></button>
-                </div>
-                
-                <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
-              </div>
-            </div>
-          </div>
-          
-         
-      <!-- Dropper Batch Offers -->
-      <div class="col-12 mb-5" id="dropper-section">
-        <h3 class="section-header"><i class="fas fa-trophy me-2"></i> Dropper Batch</h3>
-        <div class="row" id="dropper-offers">
-          <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate_animated animate_fadeIn" data-class="dropper" data-tag="medical">
-            <div class="offer-card h-100">
-              <span class="offer-highlight">Bestseller</span>
-              <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="NEET Complete" class="offer-card-img">
-              <div class="offer-card-body">
-                <span class="badge-custom">Medical</span>
-                <h5 class="offer-card-title">NEET Complete (Dropper Batch)</h5>
-                <p class="offer-card-text">Complete NEET preparation with mock tests</p>
-                
-                <div class="price-container">
-                  <span class="current-price">₹12,999</span>
-                  <span class="original-price">₹19,999</span>
-                  <span class="discount-badge">35% OFF</span>
-                </div>
-                
-                <div class="card-actions">
-                  <a href="/dropper"><button class="btn btn-primary"  data-price="12999">Explore <i class="fas fa-chevron-right"></i></button></a>
-                  <button class="btn btn-buy buy-btn" data-offer="NEET Complete" data-price="12999">Buy Now <i class="fas fa-shopping-cart"></i></button>
-                </div>
-                
-                <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
-              </div>
-            </div>
-          </div>
-          
-          
-      <!-- Competitive Exams -->
-      <div class="col-12 mb-5" id="competitive-section">
-        <h3 class="section-header"><i class="fas fa-trophy me-2"></i> Competitive Exams</h3>
-        <div class="row" id="competitive-offers">
-          <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate_animated animate_fadeIn" data-class="competitive" data-tag="scholarship">
-            <div class="offer-card h-100">
-              <span class="offer-highlight">New</span>
-              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="NTSE Complete" class="offer-card-img">
-              <div class="offer-card-body">
-                <span class="badge-custom">Scholarship</span>
-                <h5 class="offer-card-title">NTSE Complete</h5>
-                <p class="offer-card-text">Complete preparation for NTSE stage 1 and 2</p>
-                
-                <div class="price-container">
-                  <span class="current-price">₹5,999</span>
-                  <span class="original-price">₹9,999</span>
-                  <span class="discount-badge">40% OFF</span>
-                </div>
-                
-                <div class="card-actions">
-                  <a href="/competitive"><button class="btn btn-primary"  data-price="5999">Explore <i class="fas fa-chevron-right"></i></button></a>
-                  <button class="btn btn-buy buy-btn" data-offer="NTSE Complete" data-price="5999">Buy Now <i class="fas fa-shopping-cart"></i></button>
-                </div>
-                
-                <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
-              </div>
-            </div>
-          </div>
+    
           
          
 
