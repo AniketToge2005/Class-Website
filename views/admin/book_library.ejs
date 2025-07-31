@@ -1,105 +1,70 @@
 <%- include("navbar") %>
 
-              <form action="/admin/book_library" method="POST" enctype="multipart/form-data"></form>
-
 <div class="container p-5">
-    <div class="row border rounded-3 p-3">
-        <div class="col-md-12">
-            <div class="banner d-flex align-items-center rounded-3">
-            <h3 class="text-white px-3">About Class</h3>
-            <div class="stripes"></div>
-           </div>
-        </div>
-    </div>
-     
-   <br>
-   <br>
-
-
-       <div class="container">
-  <form>
-    <div class="row border rounded-3 p-4">
-    <div class="col-md-6 mb-3">
-      <label for="book_title" class="form-label">Book Title</label>
-      <input type="text" class="form-control" id="book_title" name="book_title" required>
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <label for="book_author" class="form-label">Book Name</label>
-      <input type="text" class="form-control" id="book_author" name="book_author" required>
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <label for="book_cover" class="form-label">Book Image</label>
-      <input type="file" class="form-control" id="book_cover" name="book_cover" accept="image/*" required>
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <label for="book_pdf" class="form-label">Book PDF</label>
-      <input type="file" class="form-control" id="book_pdf" name="book_pdf" accept=".pdf" required>
-    </div>
-
-    <!-- Class Selection -->
-    <div class="col-md-6 mb-3">
-      <label for="book_class" class="form-label">Select Class</label>
-      <select class="form-select" id="book_class" name="class_id" required>
-        <option disabled selected>-- Select Class --</option>
-        <% for(let i = 5; i <= 12; i++) { %>
-          <option value="Class <%= i %>">Class <%= i %></option>
-        <% } %>
-      </select>
-    </div>
-
-    <div class="col-12 text-center mt-3">
-      <button type="submit" class="btn btn-success">Submit</button>
+  <div class="row border rounded-3 p-3">
+    <div class="col-md-12">
+      <div class="banner d-flex align-items-center rounded-3">
+        <h3 class="text-white px-3">About Class</h3>
+        <div class="stripes"></div>
+      </div>
     </div>
   </div>
+
+  <br><br>
+
+  <!-- FORM START -->
+  <form action="/admin/book_library" method="POST" enctype="multipart/form-data">
+    <div class="row border rounded-3 p-4">
+      <div class="col-md-6 mb-3">
+        <label for="book_author" class="form-label">Book Name</label>
+        <input type="text" class="form-control" id="book_author" name="book_author" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="book_cover" class="form-label">Book Image</label>
+        <input type="file" class="form-control" id="book_cover" name="book_cover" accept="image/*" required>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="book_pdf" class="form-label">Book PDF</label>
+        <input type="file" class="form-control" id="book_pdf" name="book_pdf" accept=".pdf" required>
+      </div>
+
+      <!-- Class Selection -->
+      <div class="col-md-6 mb-3">
+        <label for="book_class" class="form-label">Select Class</label>
+        <select class="form-select" id="book_class" name="class_id" required>
+          <option disabled selected>-- Select Class --</option>
+          <% for(let i = 5; i <= 12; i++) { %>
+            <option value="<%= i %>">Class <%= i %></option>
+          <% } %>
+        </select>
+      </div>
+
+      <div class="col-12 text-center mt-3">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </div>
   </form>
+  <!-- FORM END -->
+
 </div>
-
-</div>  
-
 
 <!-- ------------------- -->
 
- 
 <h3 class="text-center my-4" style="color: #2E3A59;">📖 Book List</h3>
 
-<div class="row border rounded-3 p-4 mt-5" >
-  <table class="table table-bordered shadow " style="border: 3px solid #2E3A59; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-    
+<div class="row border rounded-3 p-4 mt-5">
+  <table class="table table-bordered shadow" style="border: 3px solid #2E3A59; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
     <thead style="background-color: #2E3A59; color: white; border-bottom: 3px solid #1c2537;">
       <tr>
         <th style="border-right: 2px solid #fff;">Sr.No</th>
-        <th style="border-right: 2px solid #fff;">Book Title</th>
         <th style="border-right: 2px solid #fff;">Book Name</th>
         <th style="border-right: 2px solid #fff;">Book Image</th>
         <th>Book PDF</th>
       </tr>
     </thead>
-
   </table>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <%- include("footer") %>

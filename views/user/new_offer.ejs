@@ -23,6 +23,30 @@
       --transition: all 0.3s ease;
     }
 
+    .filter-navbar .nav-link {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  color: #333;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.filter-navbar .nav-link:hover {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.filter-navbar .nav-link.active,
+.filter-navbar .nav-link:focus {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+    
+
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #f8f9fa;
@@ -619,53 +643,41 @@
   </section>
 
   <!-- Filter Navbar -->
-  <div class="container" style="height: 50px;">
-    <nav class="navbar navbar-expand-lg filter-navbar">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#filterNavbar">
-          <i class="fas fa-filter"></i> Filters
-        </button>
-        <div class="collapse navbar-collapse" id="filterNavbar">
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="#" data-filter="all">All Courses</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="5">Class 5</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="6">Class 6</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="7">Class 7</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="8">Class 8</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="9">Class 9</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="10">Class 10</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="11">Class 11</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="12">Class 12</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="competitive">Competitive</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-filter="dropper">Dropper Batch</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+  <div class="container py-3">
+    <nav class="filter-navbar">
+      <ul class="nav justify-content-center flex-wrap gap-2">
+        <li class="nav-item">
+          <a class="active filter-btn" href="?class_id=all" data-filter="all">All Courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=5">Class 5</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=6" data-filter="6">Class 6</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=7" data-filter="7">Class 7</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=8" data-filter="8">Class 8</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=9" data-filter="9">Class 9</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=10" data-filter="10">Class 10</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=11" data-filter="11">Class 11</a>
+        </li>
+        <li class="nav-item">
+          <a class="filter-btn" href="?class_id=12" data-filter="12">Class 12</a>
+        </li>
+      </ul>
     </nav>
   </div>
-
+  
+  
   <!-- Main Content -->
   <div class="container py-4">
     <!-- No Results Message (Hidden by default) -->
@@ -686,74 +698,61 @@
     <!-- Courses Grid -->
     <div id="courses-container">
       <!-- Class 5 Offers -->
-      <div class="col-12 mb-5" id="class5-section">
-        <h3 class="section-header"><i class="fas fa-school me-2"></i> Class 5</h3>
-        <div class="row" id="class5-offers">
-          
-          <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate_animated animate_fadeIn" data-class="5" data-tag="math">
-            <div class="offer-card h-100">
-              <span class="offer-highlight">New</span>
-              <img src="https://media.gettyimages.com/id/459387513/photo/group-of-small-indian-children-performing-in-a-rural-school.jpg?s=612x612&w=0&k=20&c=KvLbiGik17GliHk4QXwguvQqzGPjKO8_3REAEAOzJTM=" alt="Math Mastery" class="offer-card-img">
-              <div class="offer-card-body">
-                <span class="badge-custom">Math</span>
-                <h5 class="offer-card-title">Math Mastery (Class 5)</h5>
-                <p class="offer-card-text">Comprehensive math course covering all Class 5 topics with interactive exercises</p>
-                
-                <div class="price-container">
-                  <span class="current-price">₹2,999</span>
-                  <span class="original-price">₹4,999</span>
-                  <span class="discount-badge">40% OFF</span>
-                </div>
-                
-                <div class="card-actions">
-                  <a href="/class5"><button class="btn btn-primary" data-price="2999">Explore <i class="fas fa-chevron-right"></i></button></a>
-                  <button class="btn btn-buy buy-btn" data-offer="Math Mastery" data-price="2999">Buy Now <i class="fas fa-shopping-cart"></i></button>
-                </div>
-                
-                <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
-              </div>
-            </div>
-          </div>
 
-        </div>
-      </div>
-      
-      <!-- Class 6 Offers -->
-      <div class="col-12 mb-5" id="class6-section">
-        <h3 class="section-header"><i class="fas fa-school me-2"></i> Class 6</h3>
-        <div class="row" id="class6-offers"></div>
-          
-         <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate_animated animate_fadeIn" data-class="6" data-tag="science"></a>
-            <div class="offer-card h-100">
-              <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Science Fundamentals" class="offer-card-img">
-              <div class="offer-card-body">
-                <span class="badge-custom">Science</span>
-                <h5 class="offer-card-title">Science Fundamentals (Class 6)</h5>
-                <p class="offer-card-text">Build strong science foundation with practical examples</p>
-                
-                <div class="price-container">
-                  <span class="current-price">₹3,299</span>
-                  <span class="original-price">₹4,999</span>
-                  <span class="discount-badge">34% OFF</span>
-                </div>
-                
-                <div class="card-actions">
-                   <a href="/class6"><button class="btn btn-primary" entals" data-price="3299">Explore <i class="fas fa-chevron-right"></i></button></a>
-                  <button class="btn btn-buy buy-btn" data-offer="Science Fundamentals" data-price="3299">Buy Now <i class="fas fa-shopping-cart"></i></button>
-                </div>
-                
-                <div class="countdown-timer mt-3">Offer ends in: <span class="countdown" data-end="2023-12-31T23:59:59">2d 14h 30m</span></div>
+      <% for (var i = 0; i < aniket.length; i++) { %>
+  <% if (selectedClassId == 'all' || aniket[i].class_id == selectedClassId) { %>
+    <div class="col-12 mb-5" id="class<%= aniket[i].class_id %>-section">
+      <h3 class="section-header"><i class="fas fa-school me-2"></i> Class <%= aniket[i].class_id %></h3>
+      <div class="row" id="class<%= aniket[i].class_id %>-offers">
+
+        <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate_animated animate_fadeIn" data-class="<%= aniket[i].class_id %>" data-tag="<%= aniket[i].subject.toLowerCase() %>">
+          <div class="offer-card h-100">
+            <span class="offer-highlight">New</span>
+            <img src="/uplaod/<%= aniket[i].image_url %>" alt="<%= aniket[i].subject %>" class="offer-card-img">
+            
+            <div class="offer-card-body">
+              <span class="badge-custom"><%= aniket[i].subject %></span>
+              <h5 class="offer-card-title"><%= aniket[i].course_title %></h5>
+              <p class="offer-card-text"><%- aniket[i].description %></p>
+
+              <div class="price-container">
+                <span class="current-price"><%= aniket[i].original_price %></span>
+                <span class="original-price"><%= aniket[i].discounted_price %></span>
+                <span class="discount-badge"><%= aniket[i].discount_percentage %>% OFF</span>
+              </div>
+
+              <div class="card-actions">
+                <a href="/class<%= aniket[i].class_id %>">
+                  <button class="btn btn-primary">Explore <i class="fas fa-chevron-right"></i></button>
+                </a>
+                <button class="btn btn-buy buy-btn" data-offer="<%= aniket[i].course_title %>" data-price="<%= aniket[i].price %>">
+                  Buy Now <i class="fas fa-shopping-cart"></i>
+                </button>
+              </div>
+
+              <div class="countdown-timer mt-3">
+                Offer ends in: 
+                <span class="countdown" data-end="<%= aniket[i].end_date %>"><%= aniket[i].end_date %></span>
               </div>
             </div>
           </div>
         </div>
+<<<<<<< HEAD
         </div>
           
          
           
           
+=======
+
+>>>>>>> 7948108b8dc76ec27b8f18b9d6764e682f6d7dbc
       </div>
+    </div>
+  <% } %>
+<% } %>
+  
       
+<<<<<<< HEAD
       <!-- Class 7 Offers -->
       <div class="col-12 mb-5" id="class7-section">
         <h3 class="section-header"><i class="fas fa-school me-2"></i> Class 7</h3>
@@ -1116,6 +1115,9 @@
               </div>
             </div>
           </div>
+=======
+    
+>>>>>>> 7948108b8dc76ec27b8f18b9d6764e682f6d7dbc
           
           <div class="col-md-6 col-lg-4 mb-4 offer-card-container animate__animated animate__fadeIn" data-class="competitive" data-tag="olympiad">
             <div class="offer-card h-100">

@@ -112,16 +112,17 @@
    
   </style>
 
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-    
-    <a href="https://cdn1.byjus.com/wp-content/uploads/2019/06/Maharashtra-board-class-5-Maths-Textbook.pdf" style="text-decoration: none; color: inherit;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+  <% books.forEach(function(book) { %>
+    <a href="<%= book_pdf %>" style="text-decoration: none; color: inherit;" target="_blank">
       <div class="course-card">
-        <img src="https://m.media-amazon.com/images/I/71ttvKm-3nS._UF1000,1000_QL80_.jpg" class="course-img rotate-book" alt="Math">
-        <h5 style="margin-top: 10px; color: #03403f;">🧮 Mathematics :- Book</h5>
+        <img src="<%=book_img %>" class="course-img rotate-book" alt="<%= book.book_name %>">
+        <h5 style="margin-top: 10px; color: #03403f;">📘 <%= book_name %></h5>
       </div>
     </a>
+  <% }) %>
+</div>
 
-  </div>
 </section>
 
 <!-- --------------------------------------------------------- -->

@@ -474,3 +474,35 @@
       }
     }
 
+
+    .filter-navbar .nav-item .filter-btn {
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-weight: 500;
+      color: #333;
+      background-color: #f1f1f1;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+    }
+  
+    .filter-navbar .nav-item .filter-btn:hover {
+      background-color: #0d6efd;
+      color: white;
+    }
+  
+    .filter-navbar .nav-item .active {
+      background-color: #0d6efd;
+      color: white !important;
+      border-color: #0d6efd;
+    }
+  
+    @media (max-width: 576px) {
+      .filter-navbar .nav-item .filter-btn {
+        font-size: 14px;
+        padding: 6px 14px;
+      }
+    }
+

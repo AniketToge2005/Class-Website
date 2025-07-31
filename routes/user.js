@@ -135,14 +135,35 @@ router.get("/class12",async function (req, res) {
   res.render("user/class12.ejs",obj);
 })
 
-router.get("/new_offer",async function (req, res) {
-  var contact_info=await exe(`SELECT * FROM contact_info`)
-  var obj={"contact_info":contact_info[0]}
-  res.render("user/new_offer.ejs",obj);
-})
+router.get("/new_offer", async function (req, res) {
+  try {
+    const classId = req.query.class_id || "all";
+
+    const contact_info = await exe(`SELECT * FROM contact_info`);
+    const offers = await exe(`SELECT * FROM offers order by class_id asc`);
+
+    // Filter offers by classId (if not 'all')
+    let filteredOffers = offers;
+    if (classId !== "all") {
+      filteredOffers = offers.filter(offer => offer.class_id == classId);
+    }
+
+    const obj = {
+      contact_info: contact_info[0],
+      aniket: filteredOffers,
+      selectedClassId: classId
+    };
+
+    res.render("user/new_offer.ejs", obj);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
 
-// 
+
+// --------------------------------------------------------------------------
 
 
 
